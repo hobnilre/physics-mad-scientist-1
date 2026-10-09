@@ -1,11 +1,19 @@
 # Mad Scientist 1
 
-Four calculated leads toward COP greater than one
+Seeking four measurable results above COP 1.2
 
 ## What this article adds, and why it matters
 
-The article reports executed simulations of a falling-weight lever, switched
-transformer, contact chain and coil release. It follows preparation, useful
+The goal is four distinct open problems with clear simulated complete-cycle
+COP > 1.2 and a predicted surplus measurable with ordinary instruments. Any
+candidate that misses either criterion is replaced; selection continues until
+four qualify. Each receives two pages with background, an explanatory figure,
+executed simulations, numerical graphs, work tables and a concrete measurement
+case. Signed work integrals and independently evaluated stores decide the
+findings, including unexpected gains or deficits.
+
+The current baseline draft reports executed simulations of a falling-weight
+lever, switched transformer, contact chain and coil release. It follows preparation, useful
 receiver delivery and reset, with 86 explored parameter cases, numerical graphs,
 work tables and independently checked leading results.
 
@@ -13,8 +21,8 @@ The lever reaches an operating-window output/input ratio of 1.1666 and a
 complete-history COP of 0.9951. Transformer commutation reduces gross input by
 6.90% at matched receiver delivery. Gap and release choices produce substantial
 changes in useful output. The complete accounts connect those gains to the
-continuing search for COP greater than one; none of the tested models has an
-above-one complete-history COP.
+search for COP > 1.2. None of these tested models qualifies. The four qualifying
+results remain to be found; these calculations preserve the starting evidence.
 
 This local, unpublished draft has ten pages: an introduction, four continuous
 two-page treatments, and a shared account of the results and numerical checks.

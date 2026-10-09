@@ -1,18 +1,18 @@
 ---
 title: "Mad Scientist 1"
-subtitle: "Four calculated leads toward COP greater than one"
+subtitle: "Seeking four measurable results above COP 1.2"
 author: "Hob Nilre & Bo C. Herlin"
 date: "2026-10-09"
 abstract: |
-  We computed preparation, loaded operation and reset for four candidate
+  We seek four distinct open problems with clear simulated complete-cycle
+  COP greater than 1.2 and a surplus measurable with ordinary instruments.
+  We computed preparation, loaded operation and reset for four starting
   mechanisms: a falling-weight lever, switched transformer, contact chain
-  and coil release. The lever delivered 1.1666 times its lifting input before
-  reset, and 0.9951 times all input over the complete history. Transformer
-  commutation reduced gross input by 6.90% at matched receiver delivery.
-  Contact geometry and coil-release timing changed useful delivery substantially.
-  The graphs and tables connect these gains to their actual transfers, giving
-  the search for COP greater than one a quantitative starting point. The tested
-  models' complete-history COP values remain below one.
+  and coil release. The lever's complete-history COP reached 0.9951;
+  transformer commutation reduced input by 6.90% at matched receiver delivery.
+  Graphs and work tables establish the baseline. The tested models'
+  complete-history COP values remain below one. Replacement candidates must
+  meet both criteria; the four qualifying results remain to be found.
 keywords:
   - coefficient of performance
   - numerical simulation
@@ -24,19 +24,17 @@ keywords:
 \begingroup\scriptsize
 \noindent PDF created: \pdfbuildtimestamp\par
 \noindent Local draft; the GitHub destination below is planned, not published.\par
-\noindent Latest on GitHub: \url{https://github.com/hobnilre/physics-mad-scientist-1}\par
+\noindent Latest on GitHub: \url{https://github.com/hobnilre/physics-mad-scientist-1} (planned destination)\par
 \endgroup
 
-# The top four {-}
+# The search for four {-}
 
-I want useful output, a repeatable machine state and a complete input record.
-The ambition is COP greater than one. Here COP means useful receiver work divided
+The selection target is **COP greater than 1.2**: useful receiver work divided
 by **all gross inward energy**, including preparation, control and reset.
-The calculations below follow that ambition through four concrete mechanisms.
 
-The list alternates the two leading mechanical and two leading electrical
-questions, preserving their order within each domain. This is an investigation
-priority, not a prediction of performance.
+These four starting questions alternate mechanical and electrical investigations.
+The final selection is open across domains: replace any candidate that misses
+the COP or measurement criterion until four qualify.
 
 1. **The falling-weight lever.** Timed descent and compliance concentrate
    motion into a loaded takeoff arm. [OP-CT-HW-01]
@@ -47,19 +45,15 @@ priority, not a prediction of performance.
 4. **The coupled-coil release.** Release phase, clamp voltage and winding
    orientation determine where a prepared electrical state goes. [OP-LR48-03]
 
-We integrated 69 initial parameter cases and 17 exploratory coil extensions,
-then refined the leading cases and compared independent numerical methods.
-These are new finite model calculations, with exact examples explaining the
-observations that motivated them. Mechanical receivers absorb force--velocity
-work; electrical receivers collect resistor heat. All receiver energy stays
-outside the machine boundary. Runs began at rest with zero electrical and gate
-states.
+We integrated 69 initial cases and 17 exploratory coil extensions, refined the
+leading cases and compared independent numerical methods. Exact examples explain
+the motivating observations; computed graphs and work tables report the finite
+models. Useful receivers sit outside each machine boundary.
 
-The affirmative case for pursuing COP greater than one starts with resolved
-transfer gains: a loaded above-one operating-window ratio, a smaller supply
-requirement at equal service, and release choices that more than double the
-coil receiver's yield. The full histories identify exactly how far those gains
-carry.
+A qualifying result must survive numerical checks and be measurable with
+ordinary instruments at uncertainty small enough to resolve the margin above
+1.2. Investigate surprising findings directly through their work integrals and
+changing stores. Let the evidence choose the four.
 
 \newpage
 
@@ -145,7 +139,7 @@ an upward arm speed of about $5.46\,\mathrm{m/s}$ but COP $0.8971$.
 A $0.10\,\mathrm{s}$ delay at $b=32$ reduced COP to $0.5990$.
 The calculated lead is precise: contact timing gives strong motion and almost
 complete useful delivery in the best case, while restoration determines the
-remaining distance to above-one operation over the whole history.
+remaining distance to the COP $>1.2$ target over the whole history.
 
 \newpage
 
@@ -233,7 +227,7 @@ This calculation supplies an affirmative result for the switching idea:
 physical commutation can improve useful delivery per unit of gross input.
 The gain belongs to a specified circuit and service comparison. Its complete
 work account also gives the size of the additional improvement required to
-reach the article's above-one target.
+reach the article's COP $>1.2$ target.
 
 \newpage
 
@@ -409,11 +403,9 @@ linkage-magnitude excursion and the best COP occur at different times.
 
 # What the calculations establish {-}
 
-The strongest calculated leads are a lever that crosses one in a loaded
-operating window, transformer commutation that saves input at equal receiver
-service, and coil timing that more than doubles useful delivery. They give
-specific mechanisms and scales to the ambition of COP greater than one.
-The whole-history account shows where each result stands.
+The target is four clear complete-history results above COP 1.2, measurable on
+an ordinary bench. The present calculations supply baseline comparisons;
+none yet earns a place in that final selection.
 
 | Best tested model | Input $D$ (J) | Useful $W_R$ (J) | COP |
 | :-- | --: | --: | --: |
@@ -454,13 +446,15 @@ $3\times10^{-11}$ J. Exact contact/coil reference cases and symbolic component
 power identities supplied further checks. These are numerical sensitivity
 checks for the stated models, not certified error bounds or hardware uncertainty.
 
-**The case for continuing toward COP greater than one.** Timing, topology and
-release laws changed useful output enough to justify treating them as design
-variables rather than fixed details. The computations also isolate the remaining
-question. For the passive laws used here, the derived power identities give
-$r_E=0$; at a restored state, equation \ref{eq:complete-account} leaves COP
-at or below one. Near-unity conversion by itself is not evidence of a crossing.
-An above-one complete-cycle argument therefore needs an independently supported
-physical contribution beyond these baselines. The calculated histories specify
-where to look for it: contact transfer and return, finite commutation, and the
-release/clamp path. That is the positive research case these results support.
+**Finding the four.** The derived power identities of these particular models
+give $r_E=0$; at a restored state, equation \ref{eq:complete-account} leaves COP
+at or below one. Replacement candidates must supply their own component laws,
+executed histories and numerical checks. Any persistent gain or deficit remains
+a finding to investigate, with its sign, magnitude and conditions preserved.
+
+**Making the surplus visible.** Mechanical work needs synchronized force and
+motion, with a lifted weight as an independent check. Electrical work needs
+synchronized voltage and current, with a characterized receiver. A qualifying
+case must specify ranges, event bandwidth, timing and calibration uncertainty
+small enough to resolve $W_R-1.2D>0$. These are requirements for the next
+selection; the present results establish the baseline from which to search.
