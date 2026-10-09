@@ -5,7 +5,7 @@
 \begin{tikzpicture}
 \path[use as bounding box] (0,-.65) rectangle (15,3.9);
 \draw[boundary] (3.65,-.45) rectangle (11.45,3.8);
-\node[font=\footnotesize,anchor=north west] at (3.85,3.77) {Machine boundary};
+\node[font=\footnotesize,anchor=north west] at (3.85,3.77) {Model boundary};
 \node[block,minimum width=2.2cm,minimum height=1.1cm] (src) at (1.45,1.55) {Source input $D_s$\\$v_s,i_s$};
 \draw[thick] (src.east)--(5,1.55);
 \draw[thick] (1.45,1.0)--(1.45,.0)--(5,.0);
@@ -20,7 +20,7 @@
 \draw[thick] (13.25,3.05)--(rec.north);
 \draw[thick] (rec.south)--(13.25,.6)--(10.4,.6);
 \node[block,minimum width=3.2cm,minimum height=1.3cm] (sw) at (8.8,.8)
- {Finite selector\\and clamp paths};
+ {Finite selector model\\and clamp paths};
 \draw[thick] (5,1.55)--(6.8,1.55)--(6.8,1.08)--(sw.west |- 0,1.08);
 \draw[thick] (5,0)--(6.6,0)--(6.6,.52)--(sw.west |- 0,.52);
 \node[font=\footnotesize,above] at (11.45,.6) {return $r$};

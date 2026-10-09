@@ -5,8 +5,8 @@
 \begin{tikzpicture}
 \path[use as bounding box] (0,-.5) rectangle (15,4.3);
 \draw[boundary] (.2,.1) rectangle (11.35,3.4);
-\node[font=\footnotesize,anchor=north west] at (.4,3.35) {Machine boundary: all masses and contacts};
-\node[font=\footnotesize,align=center] at (10.05,4.03) {Metered launch/reset,\\release and fixture inputs};
+\node[font=\footnotesize,anchor=north west] at (.4,3.35) {Model boundary: all masses and contacts};
+\node[font=\footnotesize,align=center] at (10.05,4.03) {Integrated launch/reset,\\release and fixture inputs};
 \draw[flow,elemD] (10.65,3.72)--(10.65,3.12);
 \draw[frameline] (.5,.8)--(11.2,.8);
 \foreach \x/\n/\sty in {1.2/1/massA,4.7/2/massB,8.3/3/mediator} {
@@ -23,9 +23,9 @@
 \node[above] at (7.5,1.9) {$d_{23}$};
 \node[block,minimum width=1.5cm,minimum height=.55cm] (branch) at (9.65,2.83) {Branch mass};
 \draw[dashed,frameline] (5.275,1.6)--(5.275,2.4)--(7.8,2.83)--(branch.west);
-\node[font=\footnotesize,above] at (7.45,2.78) {Optional};
+\node[font=\footnotesize,above] at (7.45,2.78) {Separate model};
 \draw[flow,elemC] (9.5,1.2)--(11.8,1.2);
-\node[font=\footnotesize,above] at (10.65,1.2) {$F_R,v_R$};
+\node[font=\footnotesize,above] at (10.65,1.2) {$f_R,v_R$};
 \node[block,receiver,minimum width=2.3cm,minimum height=.95cm] at (13.1,1.2) {Receiver\\useful work $W_R$};
 \end{tikzpicture}
 \end{document}

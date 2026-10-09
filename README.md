@@ -1,22 +1,25 @@
 # Mad Scientist 1
 
-Four apparatus investigations for COP greater than one
+Four simulation studies for COP greater than one
 
 ## What this article adds, and why it matters
 
 Can a timed launch, switched transformer, contact chain or coupled-coil release
 deliver more useful receiver work than all the energy supplied over a complete
-cycle? These four investigations connect their motivating observations to that
-COP question, with measured preparation, operation and actual reset.
+cycle? These four proposed simulation studies connect their motivating
+observations to that COP question through explicit dynamical models.
 
-Each OP receives two illustrated pages: background, observation and physical
-idea, followed by a COP experiment with its own equation, input ports, receiver
-measurement and control comparisons. Each experiment targets a repeatable COP
-lower bound above one with independently checked machine states. A common energy
-account defines gross input, useful output, return flow and uncertainty.
+Each OP receives two illustrated pages, with background and observation flowing
+into the simulation. State variables, contact or switching laws, receiver work,
+all input ports and modeled reset define the calculation. Parameter comparisons,
+exact reference cases and numerical checks make the resulting COP interpretable.
+The common method distinguishes numerical error estimates, justified bounds and
+uncertainty about component laws.
 
 This is a local, unpublished draft. The PDF contains ten pages and eight figures:
-an introduction, four two-page investigations, and the common measurement method.
+an introduction, four two-page studies, and the common simulation account.
+The studies are proposed work; the exact illustrations are analytic reference
+cases, with no numerical simulation results reported.
 
 <!-- article-tools:translations:start -->
 <!-- article-tools:translations:end -->
