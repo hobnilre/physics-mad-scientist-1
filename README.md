@@ -4,17 +4,18 @@ Four apparatus investigations for COP greater than one
 
 ## What this article adds, and why it matters
 
-Can a falling-weight lever deliver a receiver gain after its reset work is
-measured? Where does the work go when a transformer changes taps or a coupled
-coil releases into a load? How does a fast terminal mass in a contact chain
-deliver work when every mass and spring is tracked?
+What makes a teeterboard launch so striking? Why do different terminal pairs on
+the same transformer suggest a switching idea? How can sums of momentum or
+flux-linkage magnitudes grow, and what physical question follows when a contact
+releases or a coil is opened?
 
 This article combines two mechanical and two electrical investigations into one
 ranked list: falling-weight lever, switched transformer, contact chain and
-coupled-coil release. Each has one page for its apparatus, measurements, controls
-and open questions. A common energy account follows preparation, driver supplies,
-switching, relaxation and actual reset. The goal is to turn an exciting effect
-into a complete result another experimenter can check.
+coupled-coil release. Each has one page explaining the background, the motivating
+observation, why the question remains open and the physical idea worth pursuing.
+A short experiment paragraph closes each page. A common energy account follows
+preparation, operation and reset, connecting those ideas to complete-cycle
+performance.
 
 This is a local, unpublished draft. The PDF contains six pages: an introduction,
 four one-page investigations, and the common measurement method.

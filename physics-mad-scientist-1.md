@@ -4,12 +4,12 @@ subtitle: "Four apparatus investigations for COP greater than one"
 author: "Hob Nilre & Bo C. Herlin"
 date: "2026-10-09"
 abstract: |
-  Four proposed bench investigations pursue an ambitious goal: a repeatable
-  machine that delivers more useful energy than all the energy supplied to it.
-  A falling-weight lever, switched transformer, contact chain and coupled-coil
-  release each receive one page of apparatus, measurements, controls and open
-  questions. A shared method follows energy through preparation, operation and
-  reset, so an exciting observation can become a result others can check.
+  Four open problems pursue an ambitious goal: a repeatable machine that
+  delivers more useful energy than all the energy supplied to it. A falling-weight
+  lever, switched transformer, contact chain and coupled-coil release each receive
+  one page explaining the background, motivating observation and physical idea
+  behind the question. Brief experiments point toward the next discovery; a
+  shared energy account connects that discovery to complete-cycle performance.
 keywords:
   - energy measurement
   - mechanical contact
@@ -46,248 +46,242 @@ experimental priority. The COP of each apparatus is a quantity to measure.
 4. **The coupled-coil release.** How is transfer divided among receiver,
    clamp and parasitic stores when a coupled circuit opens? [OP-LR48-03]
 
-The lever starts with scales, rulers, video and calibrated force sensors; the
-chain adds timing that separates contacts. Synchronized voltage and current
-channels reveal the electrical benches' bidirectional switching power, including
-the driver supplies. These are concrete routes from a promising effect to a
-readable energy account.
+The starting points are striking: a fast launch, different voltages across
+different terminal pairs, and growing sums of momentum or flux-linkage
+magnitudes. Each suggests a physical idea worth following. Their open questions
+concern the contact histories and changing connections that turn the idea into
+an apparatus.
 
-Each following page proposes a first screen and identifies the physics it can
-explore. Demonstrating repeatable full-cycle excess output is the experimental
-challenge. The final page gives all four benches the same measurement standard.
+Each page traces that background and explains what made the question open,
+ending with a short route to an experiment. Demonstrating repeatable full-cycle
+excess output is the challenge. The final page supplies the common energy account.
 
 \newpage
 
 # The falling-weight lever
 
-**Why it comes first.** A receiver rising through a measured height makes
-mechanical delivery visible. A lever with compliant contact can turn a slow
-descent into a rapid launch; the question is how much useful work survives a
-load, with the work of preparing and restoring the apparatus included.
+**Background.** A teeterboard turns the downward arrival of one or two people
+into the upward flight of another. It is a vivid starting point for a mad
+scientist: a short contact produces a dramatic launch, and changes in timing,
+leg compression or board flexibility can change the outcome. The falling-weight
+lever brings that idea to the tabletop, replacing the people with guided masses
+and a receiver while retaining the contact-transfer question.
 
-**The apparatus.** Use a tabletop lever, one or two guided falling masses,
-a spring or compliant contact, and a guided receiver. Begin with soft, long
-contacts that the instruments can resolve. Compare rigid and compliant contact,
-one and two drivers, and simultaneous and delayed arrivals. Choose heights,
-masses, spring settings and receiver conditions before evaluating the work.
-
-**The boundary and measurements.** Enclose the lever, driver masses, springs
-and release mechanism. Include the drivers' gravitational interaction energy
-among the machine's stores; keep the useful receiver outside. Integrate force
-times velocity at every preparation, release, receiver and moving-support
-interface. Force and velocity must refer to the same contact point and frame.
-Record every mass's height and velocity, lever rotation, spring deflection and
-support motion through preparation, launch, relaxation and actual reset.
-
-A scale and ruler establish masses and distances. Synchronized video and
-calibrated load cells supply motion and force histories. For a rigid receiver
-of mass $m$, moving vertically without friction, the force law
-$F=m\dot v+mg$ gives the independent work check
+**The observation that starts the inquiry.** Consider an illustrative comparison:
+two incoming masses, each $m=70\,\mathrm{kg}$, move downward at
+$u=5\,\mathrm{m/s}$, while one receiver of the same mass leaves upward at
+$w=8\,\mathrm{m/s}$. Their incoming and outgoing kinetic energies differ by
 \begin{equation}
-W_{\mathrm{rec}}=\int_a^b Fv\,dt
-=mg(h_b-h_a)+\frac{m}{2}(v_b^2-v_a^2).
-\label{eq:receiver}
+\Delta K_{\mathrm{comparison}}
+=\frac{m}{2}(w^2-2u^2)
+=\frac{70}{2}(64-50)\,\mathrm{J}
+=490\,\mathrm{J}.
+\label{eq:launch-comparison}
 \end{equation}
-Here $F$ is the upward force exerted by the machine, $v=\dot h$, and $g$ is
-constant gravitational acceleration. Elastic changes, friction and other
-receiver transfers add terms when present. Resolve them and the kinetic change
-to turn a height reading into an independent energy check.
+That is an invitation to reconstruct the launch. The descending masses can
+continue losing gravitational potential energy during contact; elastic
+compression can store and return work; active leg forces can contribute along
+the way. These chosen endpoint speeds leave those histories to be identified.
 
-**The discriminating control.** Repeat the same rig with compliance removed,
-while still measuring active release work. Observe how the receiver work and
-the complete input history change together. Replenishing a driver's height or
-a spring's compression is a measured preparation or reset input. Record that
-work directly, giving the output an independent input measurement to beat.
+**Why this became an open problem.** The launch also exchanges momentum with
+the support. An ideal fixed pivot can deliver an impulse while doing zero work,
+because its point of application stays still. Momentum delivered to the flyer
+and work delivered to the flyer therefore require different accounts. Board
+bending, leg stroke, catch engagement and the instant of separation make the
+route between the endpoints still richer.
 
-**The opportunity.** The motivating launch comparison places launch energy
-beside potentially available descent energy. The experimental next step is to
-measure both alongside the complete preparation and reset. This mass-driven
-tabletop adaptation opens a separate investigation from human teeterboard
-motion, with its own mechanical model and protocol. Identifying flexure,
-support motion and heat storage makes the result more decisive.
+Models with the same prescribed takeoff speed can have different force histories
+and active-work requirements. Watching the final flight alone leaves those
+possibilities together. The associated hardware question organizes the missing
+force, motion and calibration records needed to distinguish them. Takeoff time,
+board recoil, contact force and compression history are clues to the underlying
+mechanism.
 
-A higher launch is a useful observation. The stronger result would be receiver
-work exceeding every measured input over a complete history, with independently
-checked machine states and an uncertainty margin that survives repetition.
+**The idea worth pursuing.** Replace active performers with falling masses and
+let geometry, compliance and arrival timing do the organizing. A spring can
+receive work during one part of the motion and return it while the receiver
+moves differently. Two arrivals may interact through the board's ongoing
+rotation and deformation. The attractive question is how deliberately shaping
+that sequence changes useful delivery, including the work needed to prepare
+and restore the machine. This passive version is a proposed adaptation with its
+own model, separate from the human apparatus.
+
+**A first experiment.** Compare a rigid and a compliant tabletop lever, then
+vary the delay between two falling masses. Track their motion and the receiver's
+force and displacement, including preparation and reset. One compact comparison
+can reveal whether compliance changes the transfer history in the way the idea
+requires.
 
 \newpage
 
 # The switched transformer
 
-**Why it comes second.** A tapped transformer offers accessible source and
-receiver terminals, while a physical change of connection exposes a specific
-unresolved step: the work transferred during commutation. The useful comparison
-is how source draw, source return and receiver delivery change together when
-the actual return connection moves.
+**Background.** A transformer winding with a tap offers several places to
+connect a receiver. The motivating analogy is a planet gear: its rotation
+relative to its carrier differs from its rotation relative to the ring. For
+the transformer, the corresponding choice is the pair of terminals across
+which voltage is observed. This makes the return connection an interesting
+part of the apparatus.
 
-**The apparatus.** Use an isolated, current-limited low-voltage source, a
-tapped transformer, a finite switch network, an observable clamp and a resistor
-or capacitor receiver. Compare a fixed connection with physical tap commutation
-at predeclared phases. Start with edges slow enough for the acquisition system
-to resolve. Document the winding connections on each side of the transition
-so the comparison follows the actual physical change.
-
-**The boundary and measurements.** Enclose the windings, switches, clamp and
-drivers. Simultaneously record voltage and current at the external source,
-every independent driver supply and the receiver. Integrate each signed power
-separately. Clamp and switch observations locate transfers inside this boundary;
-count the useful delivery where it crosses into the receiver.
-
-Follow winding currents, capacitor voltages, magnetic state, controller stores
-and temperature through energization, commutation, relaxation and reset.
-Check magnetic and thermal return independently alongside repeating voltages.
-Shunts and an oscilloscope provide the main work measurements; meters provide
-independent checks within their bandwidth. Resistor calorimetry requires a
-calibrated thermal response and heat-leak correction.
-
-For an ideal constant-capacitance receiver, $i=C\dot V$ gives a second check:
+**The observation that starts the inquiry.** Call the terminals $a,b,c$.
+Winding 1 lies between $a$ and $c$; winding 2 between $b$ and $a$. On the same
+electrical trajectory, their voltage differences satisfy
 \begin{equation}
-W_C=\int_a^b Vi\,dt
-=\int_{V_a}^{V_b}CV\,dV
-=\frac{C}{2}(V_b^2-V_a^2).
-\label{eq:capacitor}
+V_b-V_c=(V_b-V_a)+(V_a-V_c).
+\label{eq:tap-identity}
 \end{equation}
-Receiver resistance, leakage and dielectric history must be identified before
-applying this expression to a real component. Compare endpoint storage with
-terminal charging work as two independent views of the same delivery.
+For an ideal opposed winding ratio of $-4$ and an input
+$V_a-V_c=1\,\mathrm{V}$, winding 2 gives $V_b-V_a=-4\,\mathrm{V}$ and the
+series connection gives $V_b-V_c=-3\,\mathrm{V}$. Both readings describe the
+same instant. The tempting idea is to exploit the two connections during
+different parts of a cycle.
 
-**The discriminating controls.** Use the fixed tap, zero-current switching
-and a separately calibrated dummy load. Compare declared receiver service,
-such as the same delivered work over the same interval, while retaining all
-endpoint differences. Include every driver supply and preserve source-return
-intervals with their measured sign. Any make-before-break or break-before-make
-comparison requires its own stated conducting paths.
+A lightly loading meter reveals the two voltages. A receiver drawing current
+also changes the source's return path and the subsequent electrical motion.
+Each loaded connection consequently has its own current history. Shifting the
+numerical zero of every potential leaves the differences unchanged; moving the
+receiver's actual return wire creates the physical intervention.
 
-**The opportunity.** Finite switching models give the bench a starting account;
-measuring the real switch law is the next step. A bounded complete-history
-comparison required more total supply in its switched case at matched receiver
-service. That supplies a concrete benchmark to improve upon. Actual commutation,
-clamp conduction and charge sharing are the physical questions to investigate.
+**Why this became an open problem.** Comparing two fixed connections leaves a
+third piece of physics to supply: the transition between them. A winding may
+still carry current when its switch opens, and a capacitor may still hold
+voltage when a new connection is made. Current then follows a clamp, winding
+capacitance, an arc or another conducting path. Capacitors can redistribute
+charge. The selector and its driver participate in the same event.
 
-The first useful result is a reproducible map of where the switching work goes.
-An improvement becomes compelling when receiver delivery and every driver,
-clamp, preparation and reset measurement tell the same story.
+The original fixed-connection descriptions retained current paths through their
+declared changes. They left actual opening and tap commutation to a fuller
+switching description. Later finite models provide examples of how that
+transition can be represented, while the real switch and gap laws remain to
+be identified. A bounded complete-history comparison required more supply in
+its switched case at matched receiver delivery, giving further designs a
+concrete benchmark.
+
+**The idea worth pursuing.** Treat connection and timing as physical design
+variables. Can the receiver be connected where the evolving winding and
+capacitor states favor delivery, then reconnected for a different part of the
+cycle? How much of the subsequent transfer reaches the receiver, returns to
+the source or stays in the machine? The open question lives in this changing
+circuit and its real switching behavior.
+
+**A first experiment.** Compare a fixed tap with a physically commutated tap
+on an isolated, current-limited low-voltage bench. Keep the receiver and clamp
+observable, and record synchronized source, driver and receiver power through
+switching and reset. This gives the proposed timing idea a direct comparison.
 
 \newpage
 
 # The contact chain
 
-**Why it comes third.** A light final mass can leave a chain at an impressive
-speed. Unequal masses, separated arrivals and a branch make this an accessible
-test of energy concentration and contact timing. The practical question is
-whether the terminal motion delivers useful work under load and how that work
-compares with preparation and restoration of the whole chain.
+**Background.** A row of unequal masses joined by springs or compliant
+contacts can pass a disturbance from one end to the other. Some masses reverse
+while others keep advancing; a light terminal mass can acquire a large speed.
+The interesting possibility is to organize many local exchanges into a strong
+final delivery. Mass order, contact duration and the arrival sequence become
+design choices.
 
-**The apparatus.** Arrange three unequal carts or suspended masses with spring
-bumpers. Begin in a line. Compare zero gap with two independently measured
-nonzero gaps, then compare the line with one branch. Couple the terminal mass
-to an instrumented receiver. Fix mass ratios, gaps, arrival conditions and
-receiver settings before reading the energy results.
-
-**The boundary and measurements.** Enclose every chain mass and spring.
-Preparation, receiver, fixture and release-actuator connections cross the
-boundary. Measure every mass with synchronized video or photogates, each
-compliant contact with force and displacement, and the receiver with its own
-force and motion record. Include fixture motion and any associated support
-work. Resolve successive contacts rather than assigning one average force
-to the entire event.
-
-Evaluate kinetic energy in every moving mass and elastic energy remaining in
-every spring at both endpoints. For an identified linear spring of stiffness
-$k$ and compression $x$, the elastic store follows from
-$\int_0^x k\xi\,d\xi=kx^2/2$. Include gravitational changes for suspended
-configurations, rotation when present, and independently assessed thermal
-changes. Keep following the first and middle masses after the last reaches
-the receiver: their remaining motion belongs in the result too.
-
-**A useful diagnostic.** For a translating mass with kinetic energy $E$,
+**The observation that starts the inquiry.** The underlying models track both
+the signed total momentum $P$ and the sum of momentum magnitudes $A_p$. If
+$p_j$ is the momentum of mass $j$ along the line, then
 \begin{equation}
-E=\frac12 mv^2
-\quad\Longrightarrow\quad
-|v|=\sqrt{\frac{2E}{m}}.
-\label{eq:chain}
+A_p=\sum_j |p_j|
+=P+2\sum_{p_j<0}|p_j|,
+\qquad P=\sum_j p_j.
+\label{eq:momentum-magnitudes}
 \end{equation}
-At equal kinetic energy a smaller mass is faster. Equation
-\eqref{eq:chain} gives a clean reference for interpreting a fast endpoint;
-the loaded experiment determines how this chain actually transfers work.
-Follow contact work inside the chain, and count useful output once where it
-crosses the boundary into the receiver.
+In a free chain, equal-and-opposite internal forces leave $P$ unchanged.
+Equation \eqref{eq:momentum-magnitudes} shows how $A_p$ can nevertheless grow
+as backward and forward motion develop together. More motion in opposing
+directions can coexist with the same signed total.
 
-**The discriminating controls.** Reverse the mass order and remove the branch.
-Compare unloaded motion with nominal and heavier receiver conditions. Preserve
-the complete preparation, contact, relaxation and reset history in every case.
-A promising terminal-speed result earns a stronger test through all-mass
-tracking and measurement of the individual contact events.
+That distinction is central to the original curiosity. Kinetic energy follows
+the separate expression $\sum_j p_j^2/(2m_j)$, with $m_j$ the individual masses;
+compressed contacts carry elastic stores as well. The growing magnitude sum,
+the terminal speed and the energy available to a receiver are three different
+views of the evolving chain. Their relationship makes the system worth exploring.
 
-**The opportunity.** Nonzero gaps, physical restitution or plasticity,
-branching, fixture impulses and hardware behavior extend beyond the bounded
-compliant models. Softer contacts make the first measurements accessible.
-Progressively harder contacts and different materials then ask new questions,
-each with its own identified contact law; the rigid-impact limit remains a
-separate target.
+**Why this became an open problem.** A spring joining two masses can push and
+pull continuously. A collision contact pushes during compression and releases
+when the bodies separate. Thus the set of interacting pairs changes during
+the motion. In the initial compliant descriptions the bodies start with zero
+gaps, the chain is free of fixtures, and the contact law sets a finite duration.
 
-The visible effect is concentration of motion. The decisive observation is
-loaded receiver work alongside all remaining motion, deformation and measured
-inputs, with any unexplained balance retained at its actual sign and size.
+Actual gaps introduce travel between contacts and alter which events overlap.
+A branch offers more than one route for the impulse. Plastic deformation,
+restitution and fixture motion introduce further physical behavior. Making a
+contact increasingly stiff also raises a distinct question: what limiting
+impulse and work describe the event? These are the extensions that produced
+the selected OP. They connect a bounded compliant-chain description to richer
+physical contact networks.
+
+**The idea worth pursuing.** Use the spacing and mass order to arrange when
+the terminal mass encounters the next transfer. A branch could change the
+timing or division of that transfer; a receiver feeds its reaction back into
+the chain. This turns the striking internal motion into a concrete design
+question: which combinations concentrate useful delivery, and what preparation
+and remaining stores accompany them?
+
+**A first experiment.** Start with three unequal masses and spring bumpers.
+Compare touching and separated starts, then reverse the mass order. Track every
+mass and spring while a receiver takes work from the end. The full preparation
+and reset account connects the visible motion to the COP question.
 
 \newpage
 
 # The coupled-coil release
 
-**Why it comes fourth.** This experiment focuses on the instant a coupled
-circuit acquires a different physical connection. It asks how prepared magnetic
-energy, continuing supply work and switching transfers divide among a receiver,
-a clamp, winding capacitance and other stores. It reuses the transformer bench's
-synchronized electrical measurements while isolating a different event.
+**Background.** Two inductors exchanging through a capacitor provide an
+electrical counterpart to the contact chain. Flux linkages can develop opposite
+signs while their signed sum stays fixed. The sum of their magnitudes can then
+grow. The provocative next idea is to change the connection at a chosen moment
+and direct part of that evolving state into a receiver.
 
-**The apparatus.** Prepare two coupled coils through a metered source. Change
-one branch's connection and route the resulting transfer into a measured
-receiver capacitor or resistor, retaining an observable finite clamp path.
-Compare three independently characterized coupling settings, both winding
-orientations, and zero-current versus finite-current switching. Vary the clamp
-and measured stray capacitance in separately declared configurations.
-
-**The boundary and measurements.** Enclose both coils, the switches, clamp,
-drivers and internal capacitors. Record source, independent driver and receiver
-powers throughout preparation, release, relaxation and actual reset. Track both
-coil currents, winding voltages, receiver charge, temperature and the states
-on each side of switching. Resolve the fastest transfer being investigated,
-and follow the prepared magnetic store as carefully as the source terminal.
-
-**The joint magnetic store.** For reciprocal, fixed, linear inductances
-$L_1,L_2>0$ and signed mutual inductance $M$, with $M^2\leq L_1L_2$, let
-$\lambda_1=L_1i_1+Mi_2$ and $\lambda_2=Mi_1+L_2i_2$ be flux linkages.
-The inductive power $i_1\dot\lambda_1+i_2\dot\lambda_2$ is the derivative of
+**The observation that starts the inquiry.** A transparent ideal example uses
+the zero-mutual-coupling limit, $L_1=1\,\mathrm{H}$ and
+$L_2=19\,\mathrm{H}$, connected through a capacitor $C>0$. Initially,
+$i_1=10\,\mathrm{A}$, $i_2=0$ and the capacitor voltage is zero. For the
+equal-and-opposite winding-voltage connection, the exact LC solution is
 \begin{equation}
-U_{\mathrm{mag}}=
-\frac12 L_1i_1^2+Mi_1i_2+\frac12 L_2i_2^2.
-\label{eq:mutual}
+i_1=\frac{1+19\cos\theta}{2}\,\mathrm{A},
+\qquad
+i_2=\frac{1-\cos\theta}{2}\,\mathrm{A},
+\label{eq:coil-exchange}
 \end{equation}
-The zero-current state fixes the store's reference. Identify the inductances
-independently, and define current directions and winding orientation consistently
-with the sign of $M$. Retain the mutual term alongside both individual-coil terms.
-Winding resistance, capacitance, core hysteresis and temperature require their
-own transfers or stores. Equation \eqref{eq:mutual} describes a reversible linear
-magnetic law; a nonlinear core opens a separate material-history investigation.
+where $\theta=\omega t$ and $\omega^2=(1/L_1+1/L_2)/C$.
+At half an exchange cycle, $\theta=\pi$, the currents are $-9$ and
+$1\,\mathrm{A}$ and the capacitor voltage returns to zero. The flux linkages
+$\lambda_j=L_ji_j$ have moved from $(10,0)$ to $(-9,19)\,\mathrm{Wb}$.
+Their signed sum stays $10\,\mathrm{Wb}$ while their magnitude sum rises from
+$10$ to $28\,\mathrm{Wb}$.
 
-**The discriminating controls.** Compare zero-current switching with the
-prepared finite-current release, then change coupling, winding orientation,
-clamp and capacitance under the declared conditions. Cross-check receiver work
-with equation \eqref{eq:capacitor} in its applicable regime or calibrated
-resistor calorimetry. Report changes in transfer partition alongside the
-complete balance. A change in receiver delivery can accompany a change in
-clamp loss or remaining magnetic storage.
+The independently evaluated magnetic store is $50\,\mathrm{J}$ initially and
+$(81+19)/2=50\,\mathrm{J}$ at this endpoint. The example makes the motivating
+distinction visible: a growing flux-linkage magnitude and redistributed stored
+energy occur together. It supplies a precise starting state from which to ask
+what a different connection would deliver.
 
-**The opportunity.** The connected model tracks its total store alongside a
-growing absolute sum; receiver-work measurements give the physical comparison.
-Switch and gap laws, arc ignition or restrike, clamp release, winding capacitance
-and the full circuit during release remain open hardware questions. A finite
-clamped screen can establish the transfer partition over its observed paths
-and operating range, creating a firm starting point for the next configuration.
+**Why this became an open problem.** Opening a branch changes the equations
+that linked the two winding voltages. The relation supporting the connected
+exchange must be reconsidered on the new circuit. Ideal zero-current opening
+offers a clean special case; finite-current opening brings the switch gap,
+clamp, winding capacitance and possible arc into the motion.
 
-The opportunity is to measure the release itself. Any residual that survives
-the joint-store calculation and complete event record deserves an independently
-prepared repetition, with its uncertainty and remaining unknowns preserved.
+The real release therefore needs its own physical description. Which path
+carries the current? How does the clamp release? Can an arc reignite? What
+remains in the winding and capacitor states? These missing device laws and
+the complete circuit during release are the selected OP.
+
+**The idea worth pursuing.** Choose the release time, coupling and winding
+orientation to steer the transfer into a receiver. With fixed reciprocal linear
+coupling, the magnetic store includes $Mi_1i_2$ in addition to
+$L_1i_1^2/2+L_2i_2^2/2$, where $M$ is the signed mutual inductance.
+The connected example is a starting comparison; the physical release asks a
+new question about the paths created by switching.
+
+**A first experiment.** Prepare both coils through a metered source and release
+into a capacitor or resistor through an observable clamp. Compare zero-current
+and finite-current release, tracking both coil currents and receiver work.
+Include driver supplies, preparation and reset in the same account.
 
 \newpage
 
