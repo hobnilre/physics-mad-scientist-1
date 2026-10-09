@@ -1,0 +1,28 @@
+\documentclass[border=4pt]{standalone}
+\input{figure-style}
+\input{diagram-style}
+\begin{document}
+\begin{tikzpicture}
+\path[use as bounding box] (0,-.5) rectangle (15,3.45);
+\node[font=\small\bfseries] at (3.55,3.15) {Before contact};
+\node[font=\small\bfseries] at (11.35,3.15) {After elastic release};
+\draw[frameline!45] (7.3,-.2)--(7.3,3.3);
+\draw[massA] (1.0,1.05) rectangle (2.0,1.8);
+\draw[massB] (4.35,1.05) rectangle (6.15,1.8);
+\node at (1.5,1.42) {$m$};
+\node at (5.25,1.42) {$3m$};
+\draw[flow,elemA] (1.5,2.12)--(3.6,2.12);
+\node[above] at (2.5,2.12) {$p_1=p_0$};
+\node[above] at (5.25,2.12) {$p_2=0$};
+\node[align=center] at (3.55,.26) {$P=p_0$\qquad $A_p=p_0$\\$K=\tfrac12mu^2$};
+\draw[massA] (8.6,1.05) rectangle (9.6,1.8);
+\draw[massB] (11.5,1.05) rectangle (13.3,1.8);
+\node at (9.1,1.42) {$m$};
+\node at (12.4,1.42) {$3m$};
+\draw[flow,elemA] (9.3,2.12)--(8.25,2.12);
+\draw[flow,elemB] (10.75,2.12)--(13.9,2.12);
+\node[above] at (8.75,2.12) {$-\tfrac12p_0$};
+\node[above] at (12.4,2.12) {$+\tfrac32p_0$};
+\node[align=center] at (11.35,.26) {$P=p_0$\qquad $A_p=2p_0$\\$K=\tfrac12mu^2$};
+\end{tikzpicture}
+\end{document}

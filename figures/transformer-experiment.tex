@@ -1,0 +1,32 @@
+\documentclass[border=4pt]{standalone}
+\input{figure-style}
+\input{diagram-style}
+\begin{document}
+\begin{tikzpicture}
+\path[use as bounding box] (0,-.65) rectangle (15,3.9);
+\draw[boundary] (3.65,-.45) rectangle (11.45,3.8);
+\node[font=\footnotesize,anchor=north west] at (3.85,3.77) {Machine boundary};
+\node[block,minimum width=2.2cm,minimum height=1.1cm] (src) at (1.45,1.55) {Source\\$v_s,i_s$};
+\draw[thick] (src.east)--(5,1.55);
+\draw[thick] (1.45,1.0)--(1.45,.0)--(5,.0);
+\draw[thick] (5,.0) to[L,l_=$W_1$,color=elemA] (5,1.55)
+ to[L,l_=$W_2$,color=elemB] (5,3.05);
+\foreach \y/\n in {0/c,1.55/a,3.05/b} {
+ \fill (5,\y) circle(1.8pt);
+ \node[anchor=south west] at (5.05,\y+.03) {$\n$};
+}
+\draw[thick] (5,3.05)--(13.25,3.05);
+\node[block,receiver,minimum width=2.6cm,minimum height=.95cm] (rec) at (13.25,1.9) {Receiver\\$v_R,i_R$};
+\draw[thick] (13.25,3.05)--(rec.north);
+\draw[thick] (rec.south)--(13.25,.6)--(10.4,.6);
+\node[block,minimum width=3.2cm,minimum height=1.3cm] (sw) at (8.8,.8)
+ {Finite selector\\and clamp paths};
+\draw[thick] (5,1.55)--(6.8,1.55)--(6.8,1.08)--(sw.west |- 0,1.08);
+\draw[thick] (5,0)--(6.6,0)--(6.6,.52)--(sw.west |- 0,.52);
+\node[font=\footnotesize,above] at (11.45,.6) {return $r$};
+\node[font=\footnotesize] at (8.8,-.19) {$r=a$ or $r=c$};
+\node[font=\footnotesize,align=center] at (9.7,2.25) {Driver input\\$v_g,i_g$};
+\draw[elemD,thick] (8.8,3.94)--(8.8,3.18);
+\draw[flow,elemD] (8.8,2.88)--(8.8,1.48);
+\end{tikzpicture}
+\end{document}

@@ -11,14 +11,14 @@ releases or a coil is opened?
 
 This article combines two mechanical and two electrical investigations into one
 ranked list: falling-weight lever, switched transformer, contact chain and
-coupled-coil release. Each has one page explaining the background, the motivating
-observation, why the question remains open and the physical idea worth pursuing.
-A short experiment paragraph closes each page. A common energy account follows
-preparation, operation and reset, connecting those ideas to complete-cycle
-performance.
+coupled-coil release. Each receives two pages: background, motivating observation
+and physical idea, followed by a developed experiment. An explanatory observation
+figure and an apparatus schematic accompany each OP, with mathematics on both
+pages. A common energy account follows preparation, operation and reset,
+connecting those ideas to complete-cycle performance.
 
-This is a local, unpublished draft. The PDF contains six pages: an introduction,
-four one-page investigations, and the common measurement method.
+This is a local, unpublished draft. The PDF contains ten pages and eight figures:
+an introduction, four two-page investigations, and the common measurement method.
 
 <!-- article-tools:translations:start -->
 <!-- article-tools:translations:end -->

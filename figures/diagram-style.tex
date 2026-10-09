@@ -1,0 +1,14 @@
+% Article-specific diagram styling; common figure-style.tex remains managed.
+\usepackage{circuitikz}
+\usetikzlibrary{decorations.pathmorphing,fit,backgrounds}
+\tikzset{
+  every node/.style={font=\small},
+  block/.style={draw=frameline,rounded corners=2pt,minimum height=7mm,align=center,fill=white},
+  massA/.style={draw=elemA,fill=elemA!10,thick},
+  massB/.style={draw=elemB,fill=elemB!10,thick},
+  receiver/.style={draw=elemC,fill=elemC!9,thick},
+  mediator/.style={draw=elemD,fill=elemD!8,thick},
+  flow/.style={-{Latex[length=2.3mm]},thick},
+  boundary/.style={draw=frameline,dashed,rounded corners=3pt},
+  spring/.style={decorate,decoration={coil,aspect=.4,segment length=3mm,amplitude=1.5mm},thick,elemD}
+}
