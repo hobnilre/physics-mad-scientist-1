@@ -1,16 +1,24 @@
 # Mad Scientist 1
 
-Seeking four measurable results above COP 1.2
+Seeking four measurable results above event COP 1.2
 
 ## What this article adds, and why it matters
 
-The goal is four distinct open problems with clear simulated complete-cycle
-COP > 1.2 and a predicted surplus measurable with ordinary instruments. Any
+The goal is four distinct open problems with clear simulated event
+COP > 1.2 and predictions measurable with ordinary instruments. Any
 candidate that misses either criterion is replaced; selection continues until
 four qualify. Each receives two pages with background, an explanatory figure,
 executed simulations, numerical graphs, work tables and a concrete measurement
 case. Signed work integrals and independently evaluated stores decide the
 findings, including unexpected gains or deficits.
+
+Event COP is useful receiver work divided by explicitly modelled prepared
+starting energy plus gross external input during a declared event. State the
+boundary and energy reference, report receiver backflow and remaining stores,
+and identify unknown component accounts. Preparation efficiency, reset and
+repeatability can remain follow-up questions. Each result is conditional on its
+stated model, with executed simulations, independent checks and a prospective
+measurement uncertainty budget.
 
 The current baseline draft reports executed simulations of a falling-weight
 lever, switched transformer, contact chain and coil release. It follows preparation, useful
@@ -21,8 +29,9 @@ The lever reaches an operating-window output/input ratio of 1.1666 and a
 complete-history COP of 0.9951. Transformer commutation reduces gross input by
 6.90% at matched receiver delivery. Gap and release choices produce substantial
 changes in useful output. The complete accounts connect those gains to the
-search for COP > 1.2. None of these tested models qualifies. The four qualifying
-results remain to be found; these calculations preserve the starting evidence.
+search for event COP > 1.2. The retained numbers use complete-history accounting;
+they await reassessment under the new criterion. No OP has yet completed that
+selection, and these calculations preserve the starting evidence.
 
 This local, unpublished draft has ten pages: an introduction, four continuous
 two-page treatments, and a shared account of the results and numerical checks.

@@ -1,18 +1,18 @@
 ---
 title: "Mad Scientist 1"
-subtitle: "Seeking four measurable results above COP 1.2"
+subtitle: "Seeking four measurable results above event COP 1.2"
 author: "Hob Nilre & Bo C. Herlin"
 date: "2026-10-09"
 abstract: |
-  We seek four distinct open problems with clear simulated complete-cycle
-  COP greater than 1.2 and a surplus measurable with ordinary instruments.
+  We seek four distinct open problems with clear simulated event COP
+  greater than 1.2 and predictions measurable with ordinary instruments.
   We computed preparation, loaded operation and reset for four starting
   mechanisms: a falling-weight lever, switched transformer, contact chain
   and coil release. The lever's complete-history COP reached 0.9951;
   transformer commutation reduced input by 6.90% at matched receiver delivery.
   Graphs and work tables establish the baseline. The tested models'
-  complete-history COP values remain below one. Replacement candidates must
-  meet both criteria; the four qualifying results remain to be found.
+  complete-history COP values remain below one. Event-based selection now
+  requires reassessment; four qualifying results remain to be found.
 keywords:
   - coefficient of performance
   - numerical simulation
@@ -29,8 +29,10 @@ keywords:
 
 # The search for four {-}
 
-The selection target is **COP greater than 1.2**: useful receiver work divided
-by **all gross inward energy**, including preparation, control and reset.
+The selection target is **event COP greater than 1.2**: useful receiver work
+divided by **prepared starting energy plus gross external input during a declared
+event**. State the boundary and energy reference; report remaining stores.
+Preparation efficiency, reset and unknown component accounts can remain open.
 
 These four starting questions alternate mechanical and electrical investigations.
 The final selection is open across domains: replace any candidate that misses
@@ -48,7 +50,8 @@ the COP or measurement criterion until four qualify.
 We integrated 69 initial cases and 17 exploratory coil extensions, refined the
 leading cases and compared independent numerical methods. Exact examples explain
 the motivating observations; computed graphs and work tables report the finite
-models. Useful receivers sit outside each machine boundary.
+models. Their reported COPs retain complete-history accounting; event-COP
+reassessment is pending. Useful receivers sit outside each machine boundary.
 
 A qualifying result must survive numerical checks and be measurable with
 ordinary instruments at uncertainty small enough to resolve the margin above
@@ -137,9 +140,9 @@ $0.038999\,\mathrm{J}$ and actuator return $0.000011\,\mathrm{J}$.
 With the same stiffness and simultaneous release, reducing $b$ to $2$ produced
 an upward arm speed of about $5.46\,\mathrm{m/s}$ but COP $0.8971$.
 A $0.10\,\mathrm{s}$ delay at $b=32$ reduced COP to $0.5990$.
-The calculated lead is precise: contact timing gives strong motion and almost
-complete useful delivery in the best case, while restoration determines the
-remaining distance to the COP $>1.2$ target over the whole history.
+Contact timing gives strong motion and almost complete useful delivery in the
+best full-history case. Event-COP reassessment must specify the initial stores
+and event inputs; the calculated restoration cost remains a separate result.
 
 \newpage
 
@@ -226,8 +229,8 @@ $16\,\Omega$ reached the largest COP, $0.433787$.
 This calculation supplies an affirmative result for the switching idea:
 physical commutation can improve useful delivery per unit of gross input.
 The gain belongs to a specified circuit and service comparison. Its complete
-work account also gives the size of the additional improvement required to
-reach the article's COP $>1.2$ target.
+work account remains a baseline; event-COP selection requires a declared
+initial-energy reference and integration interval.
 
 \newpage
 
@@ -403,9 +406,9 @@ linkage-magnitude excursion and the best COP occur at different times.
 
 # What the calculations establish {-}
 
-The target is four clear complete-history results above COP 1.2, measurable on
-an ordinary bench. The present calculations supply baseline comparisons;
-none yet earns a place in that final selection.
+The target is four modelled events above COP 1.2, measurable on an ordinary
+bench. The complete-history results below remain baseline comparisons;
+selection under the event criterion requires reassessment.
 
 | Best tested model | Input $D$ (J) | Useful $W_R$ (J) | COP |
 | :-- | --: | --: | --: |
@@ -416,7 +419,7 @@ none yet earns a place in that final selection.
 
 Table: Best full-history COP in each explored family. These are selected model results, not universal optima.
 
-**One complete account.** At every supply or actuator port, inward power
+**The baseline account.** At every supply or actuator port, inward power
 $P_k$ was integrated separately into gross draw
 $D_k=\int[P_k]_+dt$ and returned work $X_k=\int[-P_k]_+dt$.
 We used $D=\sum D_k$, $X=\sum X_k$, outside receiver delivery $W_R$
@@ -427,10 +430,9 @@ r_E=\Delta U-D+X+W_R+H,\qquad
 =1-\frac{X+H+\Delta U-r_E}{D}.
 \label{eq:complete-account}
 \end{equation}
-The receivers were passive, with no inward return. Shared supplies were counted
-once. Mechanical reset used work-metered forces and torques; electrical reset
-used the stated dissipative paths. Heat crossed an ideal bath boundary.
-Real controller losses and thermal dynamics would require additional laws.
+These COPs include preparation and reset. Receivers had no backflow; shared
+supplies were counted once. Reset work and remaining stores were calculated,
+with exported heat crossing an ideal bath boundary.
 
 **What was checked.** We integrated Newton/Kirchhoff equations rather than
 imposing energy closure. Refined leading cases used relative tolerance
@@ -446,15 +448,21 @@ $3\times10^{-11}$ J. Exact contact/coil reference cases and symbolic component
 power identities supplied further checks. These are numerical sensitivity
 checks for the stated models, not certified error bounds or hardware uncertainty.
 
-**Finding the four.** The derived power identities of these particular models
-give $r_E=0$; at a restored state, equation \ref{eq:complete-account} leaves COP
-at or below one. Replacement candidates must supply their own component laws,
-executed histories and numerical checks. Any persistent gain or deficit remains
-a finding to investigate, with its sign, magnitude and conditions preserved.
+**The selection account.** For a declared event $[t_0,t_1]$, use
+$$
+D_{\rm event}=E_{\rm start}+\sum_k\int_{t_0}^{t_1}[P_{k,\rm external}]_+dt,
+\qquad \mathrm{COP}_{\rm event}=\frac{W_{\rm useful}}{D_{\rm event}}>1.2.
+$$
+$E_{\rm start}$ is modelled prepared energy above a stated reference. Count
+specified external inputs once and use net receiver delivery. Internal transfers
+stay internal; final stores are reported separately. Unknown component accounts
+and reset can remain open. Use the stated laws and label each result conditional
+on its model; no missing supply is inferred from a residual.
 
 **Making the surplus visible.** Mechanical work needs synchronized force and
 motion, with a lifted weight as an independent check. Electrical work needs
 synchronized voltage and current, with a characterized receiver. A qualifying
-case must specify ranges, event bandwidth, timing and calibration uncertainty
-small enough to resolve $W_R-1.2D>0$. These are requirements for the next
-selection; the present results establish the baseline from which to search.
+case must specify ranges, event bandwidth, timing and calibration uncertainty,
+including starting energy, small enough to resolve
+$W_{\rm useful}-1.2D_{\rm event}>0$. These requirements guide reassessment and
+the search for new candidates.
