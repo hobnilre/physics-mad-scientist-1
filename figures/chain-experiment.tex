@@ -3,9 +3,11 @@
 \input{diagram-style}
 \begin{document}
 \begin{tikzpicture}
-\path[use as bounding box] (0,-.5) rectangle (15,3.55);
+\path[use as bounding box] (0,-.5) rectangle (15,4.3);
 \draw[boundary] (.2,.1) rectangle (11.35,3.4);
 \node[font=\footnotesize,anchor=north west] at (.4,3.35) {Machine boundary: all masses and contacts};
+\node[font=\footnotesize,align=center] at (10.05,4.03) {Metered launch/reset,\\release and fixture inputs};
+\draw[flow,elemD] (10.65,3.72)--(10.65,3.12);
 \draw[frameline] (.5,.8)--(11.2,.8);
 \foreach \x/\n/\sty in {1.2/1/massA,4.7/2/massB,8.3/3/mediator} {
  \draw[\sty] (\x,.85) rectangle +(1.15,.75);
@@ -24,6 +26,6 @@
 \node[font=\footnotesize,above] at (7.45,2.78) {Optional};
 \draw[flow,elemC] (9.5,1.2)--(11.8,1.2);
 \node[font=\footnotesize,above] at (10.65,1.2) {$F_R,v_R$};
-\node[block,receiver,minimum width=2.3cm,minimum height=.95cm] at (13.1,1.2) {Loaded\\receiver};
+\node[block,receiver,minimum width=2.3cm,minimum height=.95cm] at (13.1,1.2) {Receiver\\useful work $W_R$};
 \end{tikzpicture}
 \end{document}

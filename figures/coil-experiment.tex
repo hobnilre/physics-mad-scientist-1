@@ -24,14 +24,14 @@
 \draw[thick] (4,1.85)--(5.2,1.85)--(clamp.north);
 \draw[thick] (clamp.south)--(5.2,0);
 \node[font=\footnotesize] at (8.5,-.25) {Coupling $M$, orientation, release time $t_s$};
-\node[block,receiver,minimum width=2cm,minimum height=.8cm] (R) at (13.55,1.02) {Receiver\\$v_R,i_R$};
+\node[block,receiver,minimum width=2cm,minimum height=.8cm] (R) at (13.55,1.02) {Useful work $W_R$\\$v_R,i_R$};
 \fill (10.5,2.75) circle(1.6pt);
 \fill (11.15,2.75) circle(1.6pt);
 \draw[thick] (10.5,2.75)--(11.03,3.05);
 \node[font=\footnotesize,anchor=south] at (10.75,3.06) {$S_R$};
 \draw[thick] (11.15,2.75)--(13.55,2.75)--(R.north);
 \draw[thick] (R.south)--(13.55,0);
-\node[block,minimum width=1.95cm,font=\footnotesize,align=center] at (1.0,1.7) {Metered\\preparation};
+\node[block,minimum width=1.95cm,font=\footnotesize,align=center] at (1.0,1.7) {Metered source\\prepare/reset};
 \draw[flow,frameline] (1.9,1.7)--(2.55,1.7);
 \node[font=\footnotesize,align=center] at (1.0,.48) {Metered\\driver supplies};
 \draw[flow,elemD] (1.9,.5)--(2.55,.5);

@@ -3,9 +3,11 @@
 \input{diagram-style}
 \begin{document}
 \begin{tikzpicture}
-\path[use as bounding box] (0,-.5) rectangle (15,3.65);
+\path[use as bounding box] (0,-.65) rectangle (15,4.4);
 \draw[boundary] (.45,.05) rectangle (10.3,3.55);
 \node[anchor=north west,font=\footnotesize] at (.65,3.5) {Machine: masses, lever, contacts and release};
+\node[font=\footnotesize,align=center] at (10.05,4.12) {Metered lifting/reset\\and release inputs};
+\draw[flow,elemD] (9.7,3.85)--(9.7,3.2);
 \draw[frameline,very thick] (1.5,1.15)--(10.2,1.15);
 \draw[frameline,fill=frameline!12] (6.65,1.1)--(6.25,.35)--(7.05,.35)--cycle;
 \draw[massA] (2,2.35) rectangle (3,2.95);
@@ -19,11 +21,11 @@
 \node[font=\footnotesize,align=center] at (7.65,2.5) {Arrival delay $\Delta t$\\contact stiffness $k$};
 \draw[flow,elemC] (10.4,1.15)--(11.65,1.15);
 \node[font=\footnotesize,above] at (11.0,1.2) {$F_R,v_R$};
-\node[block,receiver,minimum width=2.6cm,minimum height=1cm] at (13.2,1.15) {Guided receiver\\$m_R,h_R,v_R$};
+\node[block,receiver,minimum width=2.6cm,minimum height=1cm] at (13.2,1.15) {Useful work $W_R$\\$m_R,h_R,v_R$};
 \draw[flow,elemC] (13.2,1.8)--(13.2,2.65);
 \node[anchor=south,font=\footnotesize] at (13.2,2.7) {Lift and motion};
 \draw[flow,frameline] (6.65,-.42)--(6.65,.3);
 \node[font=\footnotesize,anchor=east] at (6.3,-.25) {Support port};
-\node[font=\footnotesize,anchor=west] at (7.0,-.25) {Measure preparation and reset};
+\node[font=\footnotesize,anchor=west] at (7.0,-.25) {Include all inward work over the cycle};
 \end{tikzpicture}
 \end{document}

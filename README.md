@@ -4,18 +4,16 @@ Four apparatus investigations for COP greater than one
 
 ## What this article adds, and why it matters
 
-What makes a teeterboard launch so striking? Why do different terminal pairs on
-the same transformer suggest a switching idea? How can sums of momentum or
-flux-linkage magnitudes grow, and what physical question follows when a contact
-releases or a coil is opened?
+Can a timed launch, switched transformer, contact chain or coupled-coil release
+deliver more useful receiver work than all the energy supplied over a complete
+cycle? These four investigations connect their motivating observations to that
+COP question, with measured preparation, operation and actual reset.
 
-This article combines two mechanical and two electrical investigations into one
-ranked list: falling-weight lever, switched transformer, contact chain and
-coupled-coil release. Each receives two pages: background, motivating observation
-and physical idea, followed by a developed experiment. An explanatory observation
-figure and an apparatus schematic accompany each OP, with mathematics on both
-pages. A common energy account follows preparation, operation and reset,
-connecting those ideas to complete-cycle performance.
+Each OP receives two illustrated pages: background, observation and physical
+idea, followed by a COP experiment with its own equation, input ports, receiver
+measurement and control comparisons. Each experiment targets a repeatable COP
+lower bound above one with independently checked machine states. A common energy
+account defines gross input, useful output, return flow and uncertainty.
 
 This is a local, unpublished draft. The PDF contains ten pages and eight figures:
 an introduction, four two-page investigations, and the common measurement method.
