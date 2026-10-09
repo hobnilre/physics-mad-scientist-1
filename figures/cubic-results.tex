@@ -1,0 +1,17 @@
+\documentclass[border=4pt]{standalone}
+\input{figure-style}
+\usepackage{pgfplotstable}
+\usepgfplotslibrary{groupplots}
+\input{cubic-data}
+\begin{document}
+\begin{tikzpicture}
+\begin{groupplot}[group style={group size=2 by 1,horizontal sep=1.5cm},width=7cm,height=4.6cm,grid=major,grid style={frameline!12},tick label style={font=\footnotesize},label style={font=\footnotesize},title style={font=\small},legend style={at={(.5,-.36)},anchor=north,draw=none,font=\footnotesize},legend cell align=left]
+\nextgroupplot[title={Computed first-stop event},xlabel={Time (ms)},ylabel={Energy (J)},xmin=0,xmax=16,ymin=0,ymax=.43]
+\addplot[thick,elemC] table[x=t,y=W] \cubicevent;\addlegendentry{Receiver work}
+\addplot[dashed,elemA] table[x=t,y=E] \cubicevent;\addlegendentry{Kinetic + spring}
+\nextgroupplot[title={Changing the jerk coefficient},xlabel={$\alpha=Xk/(md)$},ylabel={Event COP},xmin=0,xmax=2.05,ymin=.5,ymax=2.2]
+\addplot[thick,elemD,mark=*] table[x=alpha,y=COP] \cubicsweep;\addlegendentry{$d=50$ N s/m}
+\addplot[dashed,black,domain=0:2.05] {1.15};\addlegendentry{Threshold}
+\end{groupplot}
+\end{tikzpicture}
+\end{document}

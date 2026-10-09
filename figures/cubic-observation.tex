@@ -1,0 +1,21 @@
+\documentclass[border=4pt]{standalone}
+\input{figure-style}
+\input{diagram-style}
+\begin{document}
+\begin{tikzpicture}
+\path[use as bounding box] (0,-.6) rectangle (15,3.4);
+\draw[boundary] (.2,-.3) rectangle (9.2,3.1);
+\node[font=\footnotesize,anchor=west] at (.4,2.83) {Mass, spring and hypothetical internal element};
+\node[block,massA,minimum width=2cm,minimum height=1.1cm] (m) at (3,1.2) {$m=0.5$ kg};
+\draw[flow,elemA] (.6,1.2)--(1.8,1.2);\node[above,font=\footnotesize] at (1.1,1.3) {$v_0=1$ m/s};
+\node[block,mediator,minimum width=2.8cm] (x) at (6.8,2.1) {$F_X=Xx'''$};
+\draw[thick] (m.east)--(4.5,1.2)--(4.5,2.1)--(x.west);
+\draw[spring] (4.5,.5)--(8.5,.5);\draw[thick] (4.5,.5)--(4.5,1.2);
+\node[below,font=\footnotesize] at (6.5,.45) {$k=5000$ N/m};
+\draw[thick] (8.5,.5)--(8.5,2.1)--(x.east);
+\node[block,receiver,minimum width=3.7cm,minimum height=1cm] (r) at (12,1.2) {Resistance receiver\\$F_R=d\dot x$};
+\draw[flow,elemC] (8.5,1.2)--(r.west);
+\node[font=\footnotesize,align=center] at (12,2.5) {Measure force and motion\\$W_R=\int F_R\,dx$};
+\node[font=\footnotesize] at (12,-.05) {Stop at first $\dot x=0$};
+\end{tikzpicture}
+\end{document}

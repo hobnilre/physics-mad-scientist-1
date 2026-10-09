@@ -1,24 +1,24 @@
 ---
 title: "Mad Scientist 1"
-subtitle: "Seeking four measurable results above event COP 1.2"
+subtitle: "Four conditional model results above event COP 1.15"
 author: "Hob Nilre & Bo C. Herlin"
 date: "2026-10-09"
 abstract: |
-  We seek four distinct open problems with clear simulated event COP
-  greater than 1.2 and predictions measurable with ordinary instruments.
-  We computed preparation, loaded operation and reset for four starting
-  mechanisms: a falling-weight lever, switched transformer, contact chain
-  and coil release. The lever's complete-history COP reached 0.9951;
-  transformer commutation reduced input by 6.90% at matched receiver delivery.
-  Graphs and work tables establish the baseline. The tested models'
-  complete-history COP values remain below one. Event-based selection now
-  requires reassessment; four qualifying results remain to be found.
+  Four declared event models give simulated receiver work above 1.15 times
+  their modelled starting energy and gross external event input. Representative
+  COPs are 1.18827 for a falling-weight lever, 1.57080 for a third-derivative
+  contact law, 17.92044 for a signed-residue port, and 1.67992 for an
+  unconstrained fitted port. We executed 201 new integrations with independent
+  methods, work quadrature, endpoint accounts and separate confirmation cases.
+  Prospective instrument budgets retain an above-threshold margin. These
+  results distinguish additional gravitational descent, hypothetical internal
+  laws and an approximation that disagrees with its passive reference.
 keywords:
-  - coefficient of performance
+  - event coefficient of performance
   - numerical simulation
-  - mechanical contact
-  - transformer switching
-  - coupled coils
+  - work and energy
+  - higher-order dynamics
+  - active impedance
 ---
 
 \begingroup\scriptsize
@@ -27,442 +27,405 @@ keywords:
 \noindent Latest on GitHub: \url{https://github.com/hobnilre/physics-mad-scientist-1} (planned destination)\par
 \endgroup
 
-# The search for four {-}
+# Four predictions to investigate {-}
 
-The selection target is **event COP greater than 1.2**: useful receiver work
-divided by **prepared starting energy plus gross external input during a declared
-event**. State the boundary and energy reference; report remaining stores.
-Preparation efficiency, reset and unknown component accounts can remain open.
+The target is **event COP greater than 1.15**. Divide net useful receiver work
+by modelled prepared energy above a declared reference, plus every specified
+gross external input during the event. Report endpoint stores separately.
+Preparation efficiency, reset and unknown internal component accounts remain
+explicit further questions.
 
-These four starting questions alternate mechanical and electrical investigations.
-The final selection is open across domains: replace any candidate that misses
-the COP or measurement criterion until four qualify.
+The following order gives priority to direct measurement and a clear model
+interpretation, then to the larger electrical predictions. It is an investigation
+ranking, not an ordering of hardware success probabilities.
 
-1. **The falling-weight lever.** Timed descent and compliance concentrate
-   motion into a loaded takeoff arm. [OP-CT-HW-01]
-2. **The switched transformer.** Physical commutation changes the receiver's
-   return path and the source-work history. [OP-TRF-02]
-3. **The contact chain.** Mass order and gaps reshape the passage of motion
-   into a terminal load. [OP-LR54-03]
-4. **The coupled-coil release.** Release phase, clamp voltage and winding
-   orientation determine where a prepared electrical state goes. [OP-LR48-03]
+1. **Falling-weight lever:** a loaded descent delivers more work than the
+   initial height reference, with the extra descent recorded. [OP-CT-HW-01]
+2. **Third-derivative contact:** an assumed internal force sustains resistance
+   work through the first stop. [OP-LR34-02]
+3. **Signed-residue port:** a specified active terminal law drives a receiver
+   and grows the remaining electrical stores. [OP-LR15-01]
+4. **Unconstrained fitted port:** a finite-band approximation predicts work
+   that its supplied passive reference does not. [OP-LR35-02]
 
-We integrated 69 initial cases and 17 exploratory coil extensions, refined the
-leading cases and compared independent numerical methods. Exact examples explain
-the motivating observations; computed graphs and work tables report the finite
-models. Their reported COPs retain complete-history accounting; event-COP
-reassessment is pending. Useful receivers sit outside each machine boundary.
-
-A qualifying result must survive numerical checks and be measurable with
-ordinary instruments at uncertainty small enough to resolve the margin above
-1.2. Investigate surprising findings directly through their work integrals and
-changing stores. Let the evidence choose the four.
+Each treatment develops a stated model into an executed event study. The last
+three use hypothetical internal laws whose physical energy accounts remain
+open. The fitted law's result applies to that law; its reference is calculated
+alongside it. These are concrete signals and model differences to investigate,
+with no measured hardware performance implied.
 
 \newpage
 
 # The falling-weight lever
 
 A teeterboard turns downward arrivals into an upward launch. Timing, leg
-compression and board flexibility affect the outgoing motion. The motivating
-question is whether that concentration can become useful work exceeding the
-input needed to prepare and repeat it.
+compression and board flexibility change the outgoing motion. The question
+begins with an endpoint comparison, then asks what work the complete contact
+trajectory actually delivers to a receiver.
 
-![Illustrative equal-mass endpoint comparison. Continued descent and deformation are part of the contact history.](figures/lever-observation.pdf){#fig:lever-observation width=98%}
+![Illustrative equal-mass launch comparison. Continued descent and deformation connect the incoming and outgoing kinetic terms.](figures/lever-observation.pdf){#fig:lever-observation width=98%}
 
-**The observation.** For two incoming masses and one outgoing mass, each
-$70\,\mathrm{kg}$, speeds of $5$ and $8\,\mathrm{m/s}$ give
-\begin{equation}
-K_{\mathrm{in}}=1750\,\mathrm{J},\qquad
-K_{\mathrm{out}}=2240\,\mathrm{J},\qquad
-K_{\mathrm{out}}/K_{\mathrm{in}}=32/25.
-\label{eq:lever-observation}
-\end{equation}
-The selected kinetic terms differ by $490\,\mathrm{J}$. During contact,
-gravity continues doing work, springs compress, and active forces may act.
-The missing information is the trajectory connecting those endpoints.
-An ideal fixed pivot supplies impulse at zero work; it leaves the descent,
-rotation and contact forces to determine the delivery.
+For two incoming masses and one outgoing mass, each $70\,\mathrm{kg}$,
+speeds of $5$ and $8\,\mathrm{m/s}$ give $K_{\rm in}=1750$ J and
+$K_{\rm out}=2240$ J: ratio $32/25$. Gravity, compliance and active forces
+can contribute during contact. An ideal fixed pivot supplies impulse at zero
+work. The trajectory is therefore the interesting missing measurement.
 
-## Calculated descent, delivery and return
+## A calculated loaded descent
 
-We replaced the performers with two $1\,\mathrm{kg}$ vertical drivers at arm
-$a=-0.5\,\mathrm{m}$. The balanced rigid lever has inertia $I=0.15\,\mathrm{kg\,m^2}$,
-a $50\,\mathrm{N\,m/rad}$ torsion spring and bearing damping
-$0.1\,\mathrm{N\,m\,s}$. Its opposite arm, $a_R=0.8\,\mathrm{m}$, drives
-an outside viscous receiver: $v_R=a_R\cos\phi\,\dot\phi$ and
-$P_R=bv_R^2$. This loaded adaptation has its own scope alongside the human launch.
-
-With upward driver heights $y_i$, contact compression is
-$\delta_i=a\sin\phi-y_i$ and $f_i=k[\delta_i]_+$,
-where $[z]_+=\max(z,0)$.
-The equations integrated were
+Our adaptation has two $1$ kg vertical drivers, contact arms $a=-0.5$ m,
+lever inertia $I=0.15\,\mathrm{kg\,m^2}$, torsion stiffness
+$50\,\mathrm{N\,m/rad}$ and bearing damping $0.1\,\mathrm{N\,m\,s}$.
+The receiver arm is $a_R=0.8$ m. With upward heights $y_i$, angle $\phi$,
+compression $\delta_i=[a\sin\phi-y_i]_+$ and contact force $f_i=k\delta_i$,
+Newton's equations during the free event are
 \begin{equation}
 \begin{split}
-m\ddot y_i&=-mg+f_i+u_i,\\
-I\ddot\phi&=\tau_a-\sum_i f_i a\cos\phi
--50\phi-0.1\dot\phi-b(a_R\cos\phi)^2\dot\phi.
+m\ddot y_i&=-mg+f_i,\\
+I\ddot\phi&=-\sum_i f_i a\cos\phi-50\phi-0.1\dot\phi
+-b(a_R\cos\phi)^2\dot\phi.
 \end{split}
 \label{eq:lever-model}
 \end{equation}
-Actuator powers were $u_i\dot y_i$
-and $\tau_a\dot\phi$. We used $g=9.81\,\mathrm{m/s^2}$.
+Here $g=9.81\,\mathrm{m/s^2}$, $v_R=a_R\cos\phi\,\dot\phi$ and the
+external viscous receiver takes $P_R=bv_R^2$.
 
-The drivers rose $0.30\,\mathrm{m}$ during the first second, then released
-with a delay of $0$, $0.10$ or $0.20\,\mathrm{s}$. Stiffnesses were $500$
-and $1500\,\mathrm{N/m}$; receiver damping was $2$, $8$ or
-$32\,\mathrm{N\,s/m}$. At $2.5\,\mathrm{s}$, finite actuator trajectories
-returned the machine to its initial positions and velocities by $3.5\,\mathrm{s}$.
-Preparation and return followed quintic position curves with continuous velocity;
-all their positive and negative work was integrated separately.
+The event starts with simultaneous release from $y_1=y_2=0.30$ m,
+$\phi=0$ and zero velocities. It ends $1.5$ s later, immediately before
+the previously specified reset. The original ready plane defines gravitational
+zero; we retained that reference and event window. There is no external event
+actuator, and $D_{\rm event}=2mgH=5.886$ J. Independently evaluated storage is
+\begin{equation}
+U=\tfrac12m\sum_i\dot y_i^2+mg\sum_i y_i
++\tfrac12I\dot\phi^2+25\phi^2+\tfrac12k\sum_i\delta_i^2.
+\label{eq:lever-store}
+\end{equation}
 
-![Computed lever results. Left: the best full-history case, including its driven reset. Right: the nine $k=1500\,\mathrm{N/m}$ cases; $b$ is in $\mathrm{N\,s/m}$. The dotted horizontal line is COP $=1$.](figures/lever-results.pdf){#fig:lever-results width=98%}
+![Executed lever event and separately declared confirmation cases. The store includes gravity relative to the original ready plane. Lines on the right connect the computed endpoints.](figures/lever-event.pdf){#fig:lever-event width=98%}
 
 \FloatBarrier
 
-**What the calculation delivered.** Simultaneous arrival with $k=1500$ and
-$b=32$ gave the highest COP among the 18 cases. Its lifting input was exactly
-$2mgH=5.886\,\mathrm{J}$. Before reset, the receiver had collected
-$6.866664\,\mathrm{J}$: a resolved operating-window ratio of **1.1666**.
-At that instant the machine store was $-1.014425\,\mathrm{J}$ relative to
-its initial reference, including the drivers' lower gravitational positions.
+At $k=500$ N/m and $b=32$ N s/m, receiver work is **6.994139 J**,
+giving **COP 1.188267**. Bearing heat is $0.034598$ J. Final storage is
+$-1.142737$ J: gravitational energy $-2.244651$ J plus $1.101914$ J of
+kinetic and elastic storage. The drivers end $0.114406$ m below the ready
+plane. Their additional descent supplies the difference from the starting
+reference; the independently calculated account closes numerically.
 
-| Interval | Gross input (J) | Useful output (J) |
-| :-- | --: | --: |
-| Lift, $0$--$1$ s | 5.886000 | 0.000000 |
-| Descent/delivery, $1$--$2.5$ s | 0.000000 | 6.866664 |
-| Driven return, $2.5$--$3.5$ s | 2.080219 | 1.060545 |
-| Complete history | **7.966219** | **7.927209** |
+| Contact $k$ (N/m) | Receiver $b$ (N s/m) | Useful work (J) | Event COP |
+| --: | --: | --: | --: |
+| 500 | 32 | 6.994139 | 1.188267 |
+| 450 | 30 | 7.013120 | 1.191492 |
+| 450 | 34 | 7.017282 | 1.192199 |
+| 550 | 30 | 6.974505 | 1.184931 |
+| 550 | 34 | 6.978687 | 1.185642 |
 
-Table: Computed work for the best lever case. Output during return is counted and identified explicitly.
+Table: Representative event and four separate confirmation cases, each executed at three solver settings.
 
-The full-history COP was **0.995103**. Other exported heat was
-$0.038999\,\mathrm{J}$ and actuator return $0.000011\,\mathrm{J}$.
-With the same stiffness and simultaneous release, reducing $b$ to $2$ produced
-an upward arm speed of about $5.46\,\mathrm{m/s}$ but COP $0.8971$.
-A $0.10\,\mathrm{s}$ delay at $b=32$ reduced COP to $0.5990$.
-Contact timing gives strong motion and almost complete useful delivery in the
-best full-history case. Event-COP reassessment must specify the initial stores
-and event inputs; the calculated restoration cost remains a separate result.
+**Make the margin visible.** A scale and ruler determine initial energy;
+a load cell and encoder give $W_R=\int F_R\,ds_R$. Predicted peaks are
+$52.40$ N and $1.637$ m/s, with $0.156$ m receiver excursion. Assume a
+calibrated 200 Hz response, 2 kHz sampling and at most $0.1$ ms channel skew.
+Including gain, offset, timing, loading and reference allowances gives
+$B_{\rm in}=0.02943$ J and $B_{\rm out}=0.06608$ J. The conservative COP
+is **1.171**, above 1.15; all four confirmation cases also pass.
+The predicted threshold margin is $0.225239$ J. In the retained full history,
+reset requires another $2.210180$ J gross input; its COP is $0.995077$.
 
 \newpage
 
-# The switched transformer
+# A third-derivative contact law
 
-A tapped transformer offers different physical terminal pairs to a receiver.
-The motivating mechanical analogy is a gear train with several moving members:
-a receiver responds to the difference across its chosen connection. Electrical
-taps make the analogous voltage difference directly accessible.
+A mass, spring and resistance describe a familiar impact approximation.
+A higher-order extension adds an internal force proportional to jerk, the
+rate of change of acceleration. Dimensional construction permits this term;
+its physical realization is the open question. It gives a precise way to ask
+what resistance work the assumed law predicts before the moving mass stops.
 
-![Ideal opposed-tap observation. The two terminal-pair voltages belong to one trajectory; a loaded return change creates a different circuit.](figures/transformer-observation.pdf){#fig:transformer-observation width=98%}
+![Declared force model and receiver boundary, shown schematically. The internal jerk element has an assigned force law; its physical storage and preparation remain open.](figures/cubic-observation.pdf){#fig:cubic-observation width=98%}
 
-**The observation.** Winding 1 joins $a,c$ and winding 2 joins $b,a$.
-For an opposed ideal turns ratio $-4$,
+Let displacement be $x$, velocity $v$, mass $m$, spring stiffness $k$ and
+receiver resistance $d$. Add the constitutive force $F_X=Xx'''$, with
+$X=\alpha md/k$ in kg s. Newton's law becomes
 \begin{equation}
-V_b-V_c=(V_b-V_a)+(V_a-V_c),\qquad
-V_b-V_a=-4(V_a-V_c).
-\label{eq:tap-identity}
+Xx'''+mx''+dx'+kx=0,\qquad P_R=dv^2,\qquad P_X=Xx'''v.
+\label{eq:cubic-model}
 \end{equation}
-At $V_a-V_c=1\,\mathrm{V}$, the two readouts are $-4$ and $-3\,\mathrm{V}$.
-This invites a cycle that uses different connections at different times.
-A potential-zero shift leaves both differences unchanged; a physical return
-selector changes the currents and stored fields.
+The sign of $P_X$ measures work entering the internal element from the
+resolved motion. It is computed from that force law, independently of the
+kinetic and spring stores.
 
-Fixed-tap descriptions leave that transition unspecified. Winding currents,
-stray charge, finite conductance and driver supplies participate in it.
-Earlier bounded switching comparisons do not give a universal supply ordering.
-We calculated an explicit finite selector to determine its ordering at a
-matched receiver service.
+At $\alpha=1$, the operator factors as
+$(dD+k)((m/k)D^2+1)$, where $D$ means time differentiation. This is also the
+boundary between stable and unstable roots in the normalized cubic control
+when $d^2=mk$. Root stability and physical realizability are separate questions.
 
-## Calculated finite commutation
+## First contact to first stop
 
-We grounded $c$ and used nodes $(a,b,r)$, each with $2\,\mathrm{mF}$ to ground.
-Currents run $a\to c$ and $b\to a$. The reciprocal winding matrix and series
-resistances were
+We used $m=0.5$ kg, $k=5000$ N/m, $x(0)=0$, $v(0)=1$ m/s and
+$x''(0)=0$. The event ends at the first positive-time zero of $v$.
+No external forcing is specified. Prepared kinetic energy is $0.250$ J;
+resistance work is the useful output. Permanent nail penetration is outside
+this spring-resistance model.
+
+For $\alpha=1$, the independent exact reference is
 \begin{equation}
-\mathbf L=\begin{pmatrix}0.05&-0.19\\-0.19&0.8\end{pmatrix}\!\mathrm{H},
-\qquad \mathbf R=\operatorname{diag}(0.05,0.2)\,\Omega,
-\qquad \mathbf L\dot{\mathbf i}+\mathbf R\mathbf i=\mathbf A^T\mathbf v.
-\label{eq:transformer-model}
+\omega=\sqrt{k/m},\quad x=\frac{v_0}{\omega}\sin\omega t,
+\quad t_*=\frac{\pi}{2\omega},\quad
+\frac{W_R}{mv_0^2/2}=\frac{\pi d}{2\sqrt{mk}}.
+\label{eq:cubic-exact}
 \end{equation}
-The incidence matrix $\mathbf A$ has $+1$ at current entry and $-1$ at exit.
-Kirchhoff's node equations determine the three capacitor voltages.
-The source was $V_s=A_s\sin(4\pi t)$ through $0.2\,\Omega$ for $0<t<1$ s,
-then zero through the same resistor. The useful receiver resistor joins $b,r$.
+The simulation, rather than substitution alone, supplies the plotted work.
+At $d=50$ N s/m, it reaches the first stop in $15.708$ ms, after $10.000$ mm
+travel. Receiver work is **0.392699 J**, and **COP is 1.570796**.
 
-The selector joins $r$ to $a$ or ground through
-$G=0.001+49.999x$ siemens, where $\dot x=(\sigma-x)/(2\,\mathrm{ms})$.
-Each gate is a $1\,\mu\mathrm{F}$ capacitor driven through $2\,\mathrm{k}\Omega$
-from $5\sigma$ volts; its supply power was included. During operation,
-$\sigma_a=1$ when $\sin(4\pi t+\psi)\geq0$ and
-$\sigma_c=1-\sigma_a$. Both commands went to zero at $1$ s.
-A third gate added $x$ siemens to each node's permanent $0.001$ S bleeder
-from $1$ to $10$ s. Integration continued to $12$ s.
-
-![Computed transformer results. Left: switched $R=4\,\Omega$, $\psi=\pi$; the early history is shown, while totals include the full 12 s. Right: all twelve commutated cases at unit source amplitude.](figures/transformer-results.pdf){#fig:transformer-results width=98%}
+![Executed first-stop work and derivative-coefficient comparison. At the reference point the kinetic-plus-spring sum remains 0.250 J while the receiver accumulates work.](figures/cubic-results.pdf){#fig:cubic-results width=98%}
 
 \FloatBarrier
 
-We computed fixed returns $a,c$ and four phases
-$\psi\in\{0,\pi/2,\pi,3\pi/2\}$ at receiver resistances $1$, $4$ and
-$16\,\Omega$: 18 cases. Among switched cases at $4\,\Omega$, phase $\pi$
-gave the highest COP. For the comparison below, we adjusted each fixed case's
-source amplitude and reran it to match the switched receiver's full-history
-$0.388864\,\mathrm{J}$. Load and total interval remained the same; instantaneous
-receiver-power traces were allowed to differ. The fitted source amplitudes were
-$0.971127$ V for fixed $a$ and $1.106268$ V for fixed $c$, against $1$ V
-for commutation.
+| $\alpha$ | $d$ (N s/m) | Receiver work (J) | Event COP |
+| --: | --: | --: | --: |
+| 0, ordinary control | 50 | 0.175391 | 0.701564 |
+| 0.5 | 50 | 0.307903 | 1.231611 |
+| 1 | 50 | 0.392699 | 1.570796 |
+| 2 | 50 | 0.510642 | 2.042569 |
 
-| Return path | Gross input (J) | Useful output (J) | COP |
-| :-- | --: | --: | --: |
-| Fixed $a$ | 0.972101 | 0.388864 | 0.400025 |
-| Fixed $c$ | 0.946703 | 0.388864 | 0.410756 |
-| Commutated, $\psi=\pi$ | **0.905044** | **0.388864** | **0.429663** |
+Table: Four of the declared comparisons. All cases and independent integrations were retained.
 
-Table: Calculated matched-service comparison, including gate power and finite reset.
+At the reference stop, kinetic energy is zero and spring energy is $0.250$ J.
+The known-store remainder $\Delta U+W_R$ is $+0.392699$ J. Independently
+integrated internal force-work is $W_X=-0.392699$ J. This locates the modeled
+transfer without assigning a hidden store or an external balancing supply.
+What material or controlled mechanism could implement $F_X$ is still open.
 
-Commutation reduced gross input by **6.90%** against fixed $a$, and **4.40%**
-against fixed $c$. Its source return was $0.004690\,\mathrm{J}$ and other heat
-$0.511491\,\mathrm{J}$; final magnetic, capacitive and gate storage was below
-$10^{-20}\,\mathrm{J}$. Across all 18 unit-amplitude cases, fixed $a$ at
-$16\,\Omega$ reached the largest COP, $0.433787$.
+**A short, measurable pulse.** Peak receiver force is $50$ N and incoming
+speed is $1$ m/s. A load cell, displacement encoder or photogates, and a
+synchronous DAQ can resolve those scales. The final prospective specification
+uses a characterized 5 kHz force response, 40 kHz sampling and at most
+$1\,\mu$s skew. Zero pre-contact sensor state was included. An earlier
+2 kHz response exceeded its allowance in some cases and was retained as a
+failed instrumentation comparison.
 
-This calculation supplies an affirmative result for the switching idea:
-physical commutation can improve useful delivery per unit of gross input.
-The gain belongs to a specified circuit and service comparison. Its complete
-work account remains a baseline; event-COP selection requires a declared
-initial-energy reference and integration interval.
+With input bound $0.005$ J and output bound $0.00841$ J, conservative COP
+is **1.507**. Four new confirmation cases at $\alpha=0.9,1.1$ and
+$d=45,55$ N s/m give COP $1.36188$--$1.79145$ and pass the same criteria.
+Across both stages, all 14 declared configurations were executed with three
+solver settings. Preparation of the acceleration state and the internal
+component's energy account remain concrete subjects for the next investigation.
 
 \newpage
 
-# The contact chain
+# A signed-residue electrical port
 
-A disturbance passing through unequal masses can reverse one body and accelerate
-another. Contact release and re-engagement add a timing variable that a permanent
-spring does not possess. The COP question concerns how much of that rearranged
-motion reaches a useful receiver over a repeatable cycle.
+A terminal impedance can hide several internal relaxation modes. Positive
+residues admit familiar resistor-capacitor constructions. Signed residues
+extend the mathematical family: some combinations remain positive real,
+while others predict delivery from the internal port. The useful question is
+whether that specified law can deliver work to an actual modeled receiver.
 
-![Exact elastic-contact example. Opposite momenta increase the magnitude sum while preserving the signed total.](figures/chain-observation.pdf){#fig:chain-observation width=98%}
+![The signed-residue impedance and its declared loaded extension. The negative-real region grows with the residue scale. The boundary diagram identifies the prepared store and outside receiver.](figures/signed-port-observation.pdf){#fig:signed-port-observation width=98%}
 
-**The observation.** A mass $m$ arrives at speed $u>0$ and strikes a stationary
-mass $3m$ through a lossless spring contact of stiffness $k$.
-During compression and recovery,
+The two-state terminal law is
 \begin{equation}
-v_1=\frac{u}{4}(1+3\cos\theta),\qquad
-v_2=\frac{u}{4}(1-\cos\theta),\qquad
-\theta=t\sqrt{\frac{4k}{3m}}.
-\label{eq:chain-reference}
+\begin{split}
+\tau_j\dot z_j&=i-z_j,\qquad v_X=0.35i+R_1z_1+0.55z_2,\\
+(\tau_1,\tau_2)&=(0.08,0.18)\ \mathrm{s},\qquad
+R_1=-0.738869257399\alpha\ \Omega.
+\end{split}
+\label{eq:signed-port}
 \end{equation}
-At separation, $\theta=\pi$, the momenta are $-mu/2$ and $3mu/2$.
-Their magnitude sum has doubled; the signed sum is still $mu$.
-Endpoint kinetic energy is $mu^2/2$ in both states. We reproduced this exact
-trajectory numerically before adding more masses and a receiver.
+Thus $Z(s)=0.35+R_1/(1+0.08s)+0.55/(1+0.18s)$ ohm.
+The numerical boundary scale is $\alpha=1$; slightly below it the real
+part is nonnegative at every frequency. We retained that control and extended
+the explicitly signed law into its active region. This is a conditional
+terminal model, with its internal component stores and physical implementation
+still unspecified.
 
-The general identity
-$\sum_j|p_j|=\sum_jp_j+2\sum_{p_j<0}|p_j|$ exposes the role of counterflow.
-For a free chain the signed sum stays constant, while active contacts change.
-Finite gaps, branching, restitution and fixture motion are the physical
-extensions behind the open question. Here the calculated extension is a loaded
-three-body line with gaps and a complete return trajectory.
+## Delivering work into a load
 
-## Calculated contact and reset histories
-
-The position deviations $\mathbf x$ start at zero. Each column of $\mathbf B$
-has $-1$ at the left body and $+1$ at the right body of a contact.
-With gap offsets $\mathbf d$, the integrated equations were
+Connect this port in series with $L=1$ H, $C=0.02$ F and an external
+receiver $R_L$. Kirchhoff's laws give
 \begin{equation}
-\dot{\mathbf x}=\mathbf v,\qquad
-\mathbf M\dot{\mathbf v}=\mathbf B\mathbf f+\mathbf u-\mathbf e_3bv_3,
-\qquad f_e=k[-\mathbf B^T\mathbf x-\mathbf d]_{e,+}.
-\label{eq:chain-model}
+\dot q=i,\qquad L\dot i=-q/C-R_Li-v_X,
+\qquad P_R=R_Li^2,\qquad P_X=v_Xi.
+\label{eq:electrical-event}
 \end{equation}
-The outside receiver absorbs $P_R=bv_3^2$; there is no internal damping in this
-model. Contact stiffness was $400\,\mathrm{N/m}$. We computed mass sets
-$(1,3,1/2)$, $(1/2,3,1)$ and $(1,1,1)$ kg, gap pairs $(0,0)$ and
-$(0.05,0.10)$ m, and $b=0.5,2,8\,\mathrm{N\,s/m}$: 18 cases.
+Initially $q=0.100$ C, $i=0$ and $z_1=z_2=0$. The prepared capacitor
+contains $0.250$ J. The event is the declared $0$--$10$ s interval, ending
+before any disconnection; no reset or external event supply is specified.
+Known electrical storage is $U=q^2/(2C)+Li^2/2$. The internal port's
+physical energy account remains open rather than being assigned zero.
 
-The first body received $8\sin^2(\pi t/0.2)$ newtons for $0<t<0.2$ s.
-It then moved without launch drive until $2.5$ s. Finite quintic actuator
-trajectories returned all bodies to their starting positions and zero velocity
-by $3.5$ s. We integrated each actuator's work, including its returned work.
-Kinetic and unilateral spring stores were evaluated independently.
+We executed six residue scales $\alpha=0.99,1,1.01,1.2,1.5,2$ and three
+receivers $R_L=0.01,0.05,0.1\ \Omega$. The representative
+$\alpha=2$, $R_L=0.1\ \Omega$ case gives **4.480110 J** useful work and
+**event COP 17.920440**.
 
-![Computed chain results. Left: the best complete-history case, with equal masses and finite gaps. Right: unequal-mass and equal-mass controls under the same launcher and reset schedule.](figures/chain-results.pdf){#fig:chain-results width=98%}
+![Computed work, independent known stores and internal-port delivery; receiver comparisons use the same 10 s event. The dotted line on the right is COP 1.15.](figures/signed-port-results.pdf){#fig:signed-port-results width=98%}
 
 \FloatBarrier
 
-**What changed under load.** The table compares three cases at $b=8$.
-Here $W_{\mathrm{pre}}$ is all receiver delivery before reset, including any
-delivery during the launcher pulse. $D_{\mathrm{reset}}$ is gross reset input.
+| Residue scale $\alpha$ | Receiver work (J) | Final $L/C$ store (J) | Event COP |
+| --: | --: | --: | --: |
+| 0.99 | 0.150541 | 0.086090 | 0.602163 |
+| 1 | 0.153998 | 0.090979 | 0.615992 |
+| 1.5 | 0.643562 | 1.395023 | 2.574247 |
+| 2 | 4.480110 | 21.075454 | 17.920440 |
 
-| Masses / gaps | $W_{\mathrm{pre}}$ (J) | $D_{\mathrm{reset}}$ (J) | Full COP |
-| :-- | --: | --: | --: |
-| $1:3:1/2$, zero | 0.162612 | 0.971015 | 0.309916 |
-| $1:3:1/2$, finite | 0.239603 | 1.997999 | 0.212969 |
-| $1:1:1$, finite | **0.315183** | **0.145422** | **0.982149** |
+Table: Executed residue comparisons at $R_L=0.1\ \Omega$. Remaining storage is separate from useful output.
 
-Table: Numerical comparison of loaded contact chains. A larger pre-reset output need not give a larger full-history COP.
+The representative trajectory ends with $20.678461$ J in the capacitor and
+$0.396993$ J in the inductor. Direct integration gives
+$W_X=-25.305564$ J. Consequently $\Delta U+W_R+W_X$ is numerically small,
+while the partial-store remainder $\Delta U+W_R$ is $25.305564$ J.
+Both values matter: the calculation resolves the specified terminal transfer,
+and leaves the internal physical account for investigation.
 
-For the unequal chain, the finite gaps raised pre-reset delivery by about
-**47.3%**. The same force pulse supplied $0.196089$ J without gaps and
-$0.319239$ J with gaps, and the latter state cost more to restore. In the equal-mass
-control, launch input was $0.319246\,\mathrm{J}$ and total input
-$0.464668\,\mathrm{J}$. Useful delivery was $0.456373\,\mathrm{J}$, including
-$0.141190\,\mathrm{J}$ during reset; actuator return was $0.008295\,\mathrm{J}$.
-All mechanical endpoint stores returned to numerical zero.
-
-The useful result is the separation of three effects: momentum redistribution,
-loaded delivery and restoration work. The exact counterflow example remains a
-strong clue about transport, while the best computed cycle favored mass matching.
-Gaps improved one output window by nearly half. The complete trajectories show
-which part of that improvement contributes to the COP ambition and which part
-requires a better return path. Branches and dissipative contact laws remain
-outside this calculated line model.
+**Signals for the bench.** The receiver reaches $0.603$ V and $6.032$ A;
+capacitor voltage reaches $45.474$ V. A calibrated shunt, differential voltage
+channels and synchronized DAQ can integrate the actual receiver voltage-current
+product. Assume 200 Hz characterized channels, 2 kHz acquisition and
+$0.1$ ms maximum skew. Input bound $0.005$ J and output bound $0.09067$ J
+leave conservative COP **17.213**. The threshold margin is $4.192610$ J.
+Four separate cases at $\alpha=1.8,2.2$ and $R_L=0.08,0.12\ \Omega$
+give COP $7.24467$--$43.73809$ and pass the same checks. All 22 configurations
+were executed with three solver settings. The next physical step is to
+identify a port realization and measure its own energy transfers alongside
+those already specified.
 
 \newpage
 
-# The coupled-coil release
+# When an impedance fit delivers work
 
-Two inductors exchanging through capacitance form an electrical counterpart
-to the contact chain. Their flux linkages can acquire opposite signs while the
-signed sum stays fixed. The idea is to change the circuit at a favorable phase
-and route the prepared state into a useful receiver.
+A model can fit terminal measurements while changing the work it predicts.
+This investigation starts with a specified passive reference and an
+unconstrained four-pole approximation. The approximation develops a negative
+real impedance band. Connecting both laws to the same prepared circuit turns
+that spectral difference into a measurable work comparison.
 
-![Exact connected-model reference. Opposing linkage signs separate the growing magnitude sum from the fixed signed sum.](figures/coil-observation.pdf){#fig:coil-observation width=98%}
+![Calculated real impedance of the fitted law and its passive reference. Negative values belong to the fitted law; they are not a property transferred to the reference.](figures/fitted-port-observation.pdf){#fig:fitted-port-observation width=98%}
 
-**The observation.** With zero mutual coupling, $L_1=1\,\mathrm{H}$,
-$L_2=19\,\mathrm{H}$, initial currents $(10,0)$ A and zero capacitor voltage,
+The reference has three parallel RLC branches in series with $0.18\ \Omega$:
 \begin{equation}
-i_1=\frac{1+19\cos\theta}{2}\,\mathrm{A},\qquad
-i_2=\frac{1-\cos\theta}{2}\,\mathrm{A},\qquad
-\theta=t\sqrt{\frac{1/L_1+1/L_2}{C}}.
-\label{eq:coil-reference}
+Z_{\rm ref}(s)=0.18+\sum_{j=1}^{3}
+\frac{a_js}{s^2+2\zeta_j\omega_js+\omega_j^2},
+\label{eq:fitted-reference}
 \end{equation}
-At $\theta=\pi$, flux linkages change from $(10,0)$ to $(-9,19)$ Wb.
-Their magnitude sum rises from $10$ to $28$ Wb. The capacitor returns to zero
-voltage and magnetic storage is $50$ J at both endpoints. Independent numerical
-integrations reproduced the closed form.
-
-Release opens a different question. Winding current must continue through
-specified capacitance, clamp and receiver paths. The connected solution identifies
-phases worth examining; the finite release circuit determines their useful yield.
-
-## Calculated release, clamp and receiver work
-
-Our finite model used $L_1=0.1$ H, $L_2=1.9$ H, winding resistances
-$(0.02,0.04)\,\Omega$, and node capacitances $(0.0001,0.01)$ F.
-Winding 1 runs from $a$ to ground; winding 2 runs from ground to $b$.
-The currents obey
+with $a=(0.90,0.60,0.35)\,\Omega/\mathrm{s}$, $\zeta=(0.08,0.15,0.30)$ and
+$\omega=(0.7,2,6)\,\mathrm{rad/s}$. Each term has nonnegative real part.
+An unconstrained real least-squares fit on 321 logarithmic frequencies from
+$0.03$ to $4\,\mathrm{rad/s}$ uses poles
+$p=(-0.25,-0.8,-2.5,-8)\,\mathrm{s^{-1}}$ and gives
 \begin{equation}
-\begin{pmatrix}L_1&M\\M&L_2\end{pmatrix}\dot{\mathbf i}
-=\begin{pmatrix}V_a-0.02i_1\\-V_b-0.04i_2\end{pmatrix},\qquad
-U_M=\tfrac12L_1i_1^2+Mi_1i_2+\tfrac12L_2i_2^2.
-\label{eq:coil-model}
+\dot z_j=p_jz_j+i,\qquad
+v_X=D_0i+\sum_j c_jz_j,\qquad D_0=2.85295645\ \Omega,
+\label{eq:fitted-law}
 \end{equation}
-Kirchhoff's equations evolve both node voltages. A finite switch connects $a,b$;
-a separate switch connects $b$ through receiver $R$ to ground.
-The clamp at $a$ carries
-$I_c=\operatorname{sgn}(V_a)[|V_a|-V_c]_+/(1\,\Omega)$.
+where $c=(-0.24049188,-2.08682151,17.41370233,-49.90285714)$
+in $\Omega/\mathrm{s}$. Calculations retained full precision.
+The fit's relative complex error is $0.823897$ on its fitting band.
+Its minimum sampled real impedance is $-0.326217\ \Omega$ near
+$4.571\,\mathrm{rad/s}$. This gives a concrete prediction to challenge,
+with the supplied passive reference as an independent control.
 
-Each gate obeys $\dot x=(\sigma-x)/(1\,\mathrm{ms})$, implemented by
-$1\,\mu\mathrm{F}$ and $1\,\mathrm{k}\Omega$ at $5\sigma$ volts.
-Exchange and receiver-switch conductances are $10^{-6}+100x$ siemens.
-The preparation branch connects $10\sin^2(\pi t/0.4)$ volts to $a$ through
-$10^{-6}+5x$ siemens for $0<t<0.4$ s. Preparation then switches off and
-exchange switches on. At release, exchange switches off and the receiver on.
+## One fixture, two terminal laws
 
-![Computed coil results. Left: $M=0$, 80 V clamp, $R=1\,\Omega$, release phase $\eta=1/2$; the early history is shown. Right: release/load comparisons. Every COP includes the full 14 s, gate supplies and reset.](figures/coil-results.pdf){#fig:coil-results width=98%}
+We used the series circuit of \eqref{eq:electrical-event}, with $L=1$ H,
+variable $C$ and $R_L$, $0.250$ J initially in the capacitor, zero current
+and zero internal states. Both laws evolve for the same declared $10$ s event,
+without an external event supply. The fitted states have no assigned physical
+stores; its terminal power $v_Xi$ is integrated directly. The reference also
+has independently evaluated branch stores and resistor losses.
+
+For $C=0.05$ F and $R_L=0.1\ \Omega$, the fitted law gives **0.419981 J**
+receiver work and **COP 1.679922**. The matched reference delivers
+**0.061818 J**, giving **COP 0.247271**. The difference is a result about
+these two model laws. It cannot establish above-one performance for the
+passive reference.
+
+![Executed work and capacitance comparisons. The same initial energy and receiver are used for both terminal laws.](figures/fitted-port-results.pdf){#fig:fitted-port-results width=98%}
 
 \FloatBarrier
 
-Release occurred at $t_s=0.4+\eta T_h$, where
-$T_h=\pi\sqrt{0.01/(1/L_1+1/L_2)}\simeq0.0968304$ s.
-We computed five phases $\eta=1/4,1/2,3/4,1,5/4$ and three loads
-$R=1,10,50\,\Omega$. A $10^{-6}+0.1x$ S bleeder at each node was commanded
-on from $1.4$ to $12$ s. The receiver command also ended at $12$ s;
-integration continued to $14$ s.
-
-The first 15 cases used a 20 V clamp, which conducted during exchange.
-A declared second 15-case exploration raised it to 80 V. Two further cases
-reversed signed coupling at the best zero-coupling phase and load.
-
-| Clamp / $\eta$ / coupling $\kappa$ | Input (J) | Output (J) | COP |
+| Law | $C$ (F) | Receiver work (J) | Event COP |
 | :-- | --: | --: | --: |
-| 20 V / $1/4$ / $0$ | 16.8117 | 3.8995 | 0.2319 |
-| 80 V / $1/2$ / $0$ | **16.8117** | **8.0954** | **0.4815** |
-| 80 V / $1/2$ / $-1/2$ | 19.6876 | 8.5788 | 0.4357 |
-| 80 V / $1/2$ / $+1/2$ | 19.6876 | 6.5646 | 0.3334 |
+| Fitted | 0.03 | 0.330435 | 1.321742 |
+| Fitted | 0.05 | 0.419981 | 1.679922 |
+| Fitted | 0.08 | 0.245376 | 0.981502 |
+| Reference | 0.05 | 0.061818 | 0.247271 |
 
-Table: Computed coil histories at $R=1\,\Omega$; $\kappa=M/\sqrt{L_1L_2}$. All numbers are numerical approximations.
+Table: Actual loaded calculations at $R_L=0.1\ \Omega$, including a below-threshold fitted case and the matched reference.
 
-Changing clamp and release phase more than doubled the zero-coupling receiver
-work at essentially the same input. Waiting until $\eta=1$ raised the linkage
-magnitude ratio to about $2.77$, but gave COP $0.0995$ at $R=1$ and 80 V.
-The best energy delivery occurred earlier. Its other exported heat was
-$8.716310$ J and its finite-reset storage remainder $5.0001\,\mu\mathrm{J}$.
-These results make the release path the productive design variable: the largest
-linkage-magnitude excursion and the best COP occur at different times.
+The representative fitted case leaves $0.907188$ J in its known $L/C$
+stores and gives $W_X=-1.077168$ J by direct terminal-power integration.
+The reference ends with $0.010018$ J total storage and exports $0.178164$ J
+through its other resistors. These separate endpoint accounts explain exactly
+which transfers each law specifies.
+
+**Measure the disagreement.** Predicted fitted-case peaks are $0.1285$ V
+at the receiver, $1.285$ A, and $6.014$ V across the capacitor. The same
+200 Hz, 2 kHz and $0.1$ ms prospective acquisition requirements used above
+apply. Input bound $0.005$ J and output bound $0.008958$ J give conservative
+COP **1.611**, with a $0.132481$ J threshold margin. Four separately declared
+fitted cases at $C=0.04,0.06$ F and $R_L=0.08,0.12\ \Omega$ give COP
+$1.28211$--$1.83204$ and pass. All 13 circuits were executed for both laws
+and three solver settings. Measure a realized port's terminal response and
+energy history together: that decides which law describes the apparatus.
 
 \newpage
 
-# What the calculations establish {-}
+# A common event and measurement account {-}
 
-The target is four modelled events above COP 1.2, measurable on an ordinary
-bench. The complete-history results below remain baseline comparisons;
-selection under the event criterion requires reassessment.
-
-| Best tested model | Input $D$ (J) | Useful $W_R$ (J) | COP |
-| :-- | --: | --: | --: |
-| Lever | 7.966219 | 7.927209 | 0.995103 |
-| Transformer, fixed $a$ | 0.593317 | 0.257373 | 0.433787 |
-| Chain, equal masses | 0.464668 | 0.456373 | 0.982149 |
-| Coil release | 16.811682 | 8.095368 | 0.481532 |
-
-Table: Best full-history COP in each explored family. These are selected model results, not universal optima.
-
-**The baseline account.** At every supply or actuator port, inward power
-$P_k$ was integrated separately into gross draw
-$D_k=\int[P_k]_+dt$ and returned work $X_k=\int[-P_k]_+dt$.
-We used $D=\sum D_k$, $X=\sum X_k$, outside receiver delivery $W_R$
-and other exported heat $H$. Stored energy was evaluated from states, giving
+Each model was developed from its force or circuit laws. Energy closure was
+checked afterward. The denominator and receiver are fixed before comparison:
 \begin{equation}
-r_E=\Delta U-D+X+W_R+H,\qquad
-\mathrm{COP}=\frac{W_R}{D}
-=1-\frac{X+H+\Delta U-r_E}{D}.
-\label{eq:complete-account}
+D_{\rm event}=E_{\rm start}+\sum_k\int_{t_0}^{t_1}
+[P_{k,\rm external}]_+\,dt,\qquad
+\mathrm{COP}_{\rm event}=\frac{W_{\rm useful}}{D_{\rm event}}.
+\label{eq:event-account}
 \end{equation}
-These COPs include preparation and reset. Receivers had no backflow; shared
-supplies were counted once. Reset work and remaining stores were calculated,
-with exported heat crossing an ideal bath boundary.
+Prepared stores are counted once. Specified external sources contribute gross
+inward work; returns are recorded separately. Receiver backflow is subtracted
+from useful delivery; the four selected laws have none. The input floor is
+$10^{-9}$ J. All representative events have zero specified external input,
+with their initial stores and references stated in their treatments.
 
-**What was checked.** We integrated Newton/Kirchhoff equations rather than
-imposing energy closure. Refined leading cases used relative tolerance
-$2\times10^{-10}$ and a maximum step of $3$ ms. Independent explicit and implicit
-methods changed their COP by less than $3\times10^{-10}$. Their maximum sampled
-energy residuals were below $7\times10^{-10}$ J.
-The coarser exploratory grid retained residuals up to $1.3\times10^{-4}$ J.
+| Representative event | Input (J) | Useful work (J) | Event COP | Conservative COP |
+| :-- | --: | --: | --: | --: |
+| Lever | 5.886 | 6.994139 | 1.188267 | 1.171 |
+| Third-derivative contact | 0.250 | 0.392699 | 1.570796 | 1.507 |
+| Signed-residue port | 0.250 | 4.480110 | 17.920440 | 17.213 |
+| Fitted port | 0.250 | 0.419981 | 1.679922 | 1.611 |
 
-Uniform power sampling initially missed a fast coil-switch transient by
-$0.178$ J. Independent 8- and 16-point Gaussian integration within resolved
-solver steps reduced the leading cases' power-integral disagreements below
-$3\times10^{-11}$ J. Exact contact/coil reference cases and symbolic component
-power identities supplied further checks. These are numerical sensitivity
-checks for the stated models, not certified error bounds or hardware uncertainty.
+Table: Four conditional model predictions. Conservative ratios use simultaneously applicable prospective input and output bounds.
 
-**The selection account.** For a declared event $[t_0,t_1]$, use
-$$
-D_{\rm event}=E_{\rm start}+\sum_k\int_{t_0}^{t_1}[P_{k,\rm external}]_+dt,
-\qquad \mathrm{COP}_{\rm event}=\frac{W_{\rm useful}}{D_{\rm event}}>1.2.
-$$
-$E_{\rm start}$ is modelled prepared energy above a stated reference. Count
-specified external inputs once and use net receiver delivery. Internal transfers
-stay internal; final stores are reported separately. Unknown component accounts
-and reset can remain open. Use the stated laws and label each result conditional
-on its model; no missing supply is inferred from a residual.
+**Independent work and storage.** For a specified account, compute
+$r_E=U(t_1)-U(t_0)-\int\sum_kP_k\,dt$, with powers positive inward.
+The lever includes gravity and elastic stores. For each hypothetical internal
+law, integrate its force-velocity or voltage-current product independently.
+The remaining physical component account stays unknown. A reproducible
+partial-store remainder is reported as such; it is neither silently assigned
+to a source nor called integration error. Event performance also remains
+separate from preparation efficiency, reset and repeatability.
 
-**Making the surplus visible.** Mechanical work needs synchronized force and
-motion, with a lifted weight as an independent check. Electrical work needs
-synchronized voltage and current, with a characterized receiver. A qualifying
-case must specify ranges, event bandwidth, timing and calibration uncertainty,
-including starting energy, small enough to resolve
-$W_{\rm useful}-1.2D_{\rm event}>0$. These requirements guide reassessment and
-the search for new candidates.
+**Numerical evidence.** We completed 201 integrations over 67 declared
+configurations, including passive and below-threshold controls. DOP853 and
+Radau provide independent methods; tighter tolerances and maximum steps check
+sensitivity. Accepted-step 8- and 16-point Gaussian quadrature checks integrated
+work states. Matrix exponentials independently check all three linear families;
+the cubic reference also matches its exact first-stop solution. Endpoints come
+from the actual states. Each family passed its declared numerical gates;
+refinement supplies error estimates, not certified bounds or physical-law
+uncertainty. Earlier sensor-response failures were retained and followed up.
+
+**What the instrument bounds mean.** Lever input uncertainty is 0.5%; the
+other initial-energy bounds are 2%. Lever output allowances cover 0.3% force
+gain, 0.2% displacement gain, 0.02 N force offset, sampled timing errors,
+0.2% bandwidth/loading and 0.01 J resolution/boundary allowance. Other outputs
+allocate 0.5% each to the two measured gains, bandwidth/loading and timing/
+sampling, plus 0.5 mJ offset/resolution. Gain errors are composed
+multiplicatively. Filtering and synchronization controls fit these allocations.
+For simultaneous bounds $B_{\rm in},B_{\rm out}$ we require
+$(W_{\rm useful}-B_{\rm out})/(D_{\rm event}+B_{\rm in})>1.15$.
+The assumed calibrations must be demonstrated on an apparatus. They establish
+a concrete measurement target for each conditional prediction.

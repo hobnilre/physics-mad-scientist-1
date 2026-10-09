@@ -1,0 +1,25 @@
+\documentclass[border=4pt]{standalone}
+\input{figure-style}
+\input{diagram-style}
+\usepackage{pgfplotstable}
+\input{signed-port-data}
+\begin{document}
+\begin{tikzpicture}
+\begin{axis}[at={(0,0)},width=7cm,height=4.7cm,xlabel={Angular frequency (rad/s)},ylabel={$\mathrm{Re}\,Z$ ($\Omega$)},xmin=0,xmax=15,ymin=-.75,ymax=.6,grid=major,grid style={frameline!12},tick label style={font=\footnotesize},label style={font=\footnotesize},legend style={at={(.5,-.36)},anchor=north,draw=none,font=\footnotesize}]
+\addplot[thick,elemA] table[x=w,y=a99] \signedfrequency;\addlegendentry{$\alpha=0.99$}
+\addplot[dashed,black] table[x=w,y=a1] \signedfrequency;\addlegendentry{$\alpha=1$}
+\addplot[thick,elemD] table[x=w,y=a2] \signedfrequency;\addlegendentry{$\alpha=2$}
+\end{axis}
+\begin{scope}[shift={(8,.1)}]
+\draw[boundary] (-.45,0) rectangle (5.65,3.65);
+\draw[thick] (0,2.4) to[C,l={$0.02$ F}] (2.5,2.4)
+ to[L,l={$1$ H}] (5,2.4) -- (5,1.9)
+ to[generic,l={$Z$}] (5,.4) -- (5,-.8);
+\draw[thick,elemC] (5,-.8) to[R,l={Outside receiver $R_L$}] (0,-.8);
+\draw[thick] (0,-.8)--(0,2.4);
+\node[font=\footnotesize] at (2.4,.35) {Prepared capacitor: 0.25 J};
+\node[font=\footnotesize,align=center] at (2.3,1.15) {Internal terminal law;\\physical account open};
+\node[font=\footnotesize,align=center] at (2.5,-1.8) {Series-loop schematic;\\receiver work $\int v_R i\,dt$};
+\end{scope}
+\end{tikzpicture}
+\end{document}

@@ -1,0 +1,19 @@
+\documentclass[border=4pt]{standalone}
+\input{figure-style}
+\usepackage{pgfplotstable}
+\usepgfplotslibrary{groupplots}
+\input{fitted-port-data}
+\begin{document}
+\begin{tikzpicture}
+\begin{groupplot}[group style={group size=2 by 1,horizontal sep=1.5cm},width=7cm,height=4.3cm,xlabel={Angular frequency (rad/s)},ylabel={$\mathrm{Re}\,Z$ ($\Omega$)},grid=major,grid style={frameline!12},tick label style={font=\footnotesize},label style={font=\footnotesize},title style={font=\small},legend style={at={(.98,.98)},anchor=north east,draw=none,font=\footnotesize}]
+\nextgroupplot[title={Full resonance peak},xmin=0,xmax=8,ymin=-.6,ymax=9]
+\addplot[thick,elemD] table[x=w,y=fit] \fittedfrequency;\addlegendentry{Four-pole fitted law}
+\addplot[thick,elemA] table[x=w,y=reference] \fittedfrequency;\addlegendentry{Passive reference}
+\draw[dotted] (axis cs:0,0)--(axis cs:8,0);
+\nextgroupplot[title={Expanded negative band},xmin=3,xmax=7,ymin=-.4,ymax=.4]
+\addplot[thick,elemD] table[x=w,y=fit] \fittedfrequency;
+\addplot[thick,elemA] table[x=w,y=reference] \fittedfrequency;
+\draw[dotted] (axis cs:3,0)--(axis cs:7,0);
+\end{groupplot}
+\end{tikzpicture}
+\end{document}
