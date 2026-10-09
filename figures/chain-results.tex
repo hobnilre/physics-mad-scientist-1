@@ -1,0 +1,38 @@
+\documentclass[border=4pt]{standalone}
+\input{figure-style}
+\usepackage{pgfplotstable}
+\usepgfplotslibrary{groupplots}
+\input{chain-results-data}
+\begin{document}
+\begin{tikzpicture}
+\begin{groupplot}[
+ group style={group size=2 by 1,horizontal sep=1.4cm},
+ width=7.0cm,height=4.6cm,
+ grid=major,grid style={frameline!12},
+ axis line style={frameline},
+ tick label style={font=\footnotesize},
+ label style={font=\footnotesize},
+ title style={font=\small},
+ legend style={at={(.5,-.38)},anchor=north,draw=none,fill=white,font=\footnotesize,inner sep=1pt},
+ legend cell align=left,
+]
+\nextgroupplot[title={Calculated work history},xlabel={Time (s)},ylabel={Energy (J)},xmin=0,xmax=3.5,ymin=0,ymax=0.52]
+\addplot[thick,elemA] table[x=t,y=D] \chainhistory;
+\addlegendentry{Gross input $D$}
+\addplot[thick,elemC] table[x=t,y=W] \chainhistory;
+\addlegendentry{Useful output $W_R$}
+\addplot[dashed,thick,elemB] table[x=t,y expr=\thisrow{X}+\thisrow{H}] \chainhistory;
+\addlegendentry{Return + other heat}
+\draw[dotted,frameline] (axis cs:2.5,0)--(axis cs:2.5,0.52);
+\node[font=\scriptsize,anchor=north west,fill=white] at (axis cs:2.53,0.52) {Reset};
+\nextgroupplot[title={Mass order and gaps},xlabel={Receiver $b$ (N s/m)},ylabel={Full-history COP},xmode=log,log basis x=2,xmin=.5,xmax=8,ymin=0,ymax=1.06,xtick={.5,2,8},xticklabels={0.5,2,8}]
+\addplot[thick,mark=*,mark size=1.3pt,elemA] table[x=load,y=unequal_zero] \chainsweep;
+\addlegendentry{$1:3:1/2$, zero gap}
+\addplot[thick,mark=*,mark size=1.3pt,elemB] table[x=load,y=unequal_gap] \chainsweep;
+\addlegendentry{$1:3:1/2$, finite gaps}
+\addplot[thick,mark=*,mark size=1.3pt,elemC] table[x=load,y=equal_gap] \chainsweep;
+\addlegendentry{$1:1:1$, finite gaps}
+\draw[dotted,black] (axis cs:\pgfkeysvalueof{/pgfplots/xmin},1)--(axis cs:\pgfkeysvalueof{/pgfplots/xmax},1);
+\end{groupplot}
+\end{tikzpicture}
+\end{document}

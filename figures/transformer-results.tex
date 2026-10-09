@@ -1,0 +1,35 @@
+\documentclass[border=4pt]{standalone}
+\input{figure-style}
+\usepackage{pgfplotstable}
+\usepgfplotslibrary{groupplots}
+\input{transformer-results-data}
+\begin{document}
+\begin{tikzpicture}
+\begin{groupplot}[
+ group style={group size=2 by 1,horizontal sep=1.4cm},
+ width=7.0cm,height=4.6cm,
+ grid=major,grid style={frameline!12},
+ axis line style={frameline},
+ tick label style={font=\footnotesize},
+ label style={font=\footnotesize},
+ title style={font=\small},
+ legend style={at={(.5,-.38)},anchor=north,draw=none,fill=white,font=\footnotesize,inner sep=1pt},
+ legend cell align=left,
+]
+\nextgroupplot[title={Calculated work history},xlabel={Time (s)},ylabel={Energy (J)},xmin=0,xmax=1.8,ymin=0,ymax=1]
+\addplot[thick,elemA] table[x=t,y=D] \transformerhistory;
+\addlegendentry{Gross input $D$}
+\addplot[thick,elemC] table[x=t,y=W] \transformerhistory;
+\addlegendentry{Useful output $W_R$}
+\addplot[dashed,thick,elemB] table[x=t,y expr=\thisrow{X}+\thisrow{H}] \transformerhistory;
+\addlegendentry{Return + other heat}
+\nextgroupplot[title={Finite commutation},xlabel={Switching phase $\psi/\pi$},ylabel={Full-history COP},xmin=0,xmax=1.5,ymin=0,ymax=.52,xtick={0,.5,1,1.5}]
+\addplot[thick,mark=*,mark size=1.3pt,elemA] table[x=phase,y=r1] \transformersweep;
+\addlegendentry{$R=1\,\Omega$}
+\addplot[thick,mark=*,mark size=1.3pt,elemC] table[x=phase,y=r4] \transformersweep;
+\addlegendentry{$R=4\,\Omega$}
+\addplot[thick,mark=*,mark size=1.3pt,elemB] table[x=phase,y=r16] \transformersweep;
+\addlegendentry{$R=16\,\Omega$}
+\end{groupplot}
+\end{tikzpicture}
+\end{document}

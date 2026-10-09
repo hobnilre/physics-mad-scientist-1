@@ -1,20 +1,21 @@
 ---
 title: "Mad Scientist 1"
-subtitle: "Four simulation studies for COP greater than one"
+subtitle: "Four calculated leads toward COP greater than one"
 author: "Hob Nilre & Bo C. Herlin"
 date: "2026-10-09"
 abstract: |
-  Four open problems invite a computational search for complete-cycle COP
-  greater than one. A falling-weight lever, switched transformer, contact chain
-  and coupled-coil release connect striking observations to explicit dynamical
-  models. Each proposed study follows preparation, useful delivery and reset,
-  integrating receiver work and every inward power flow. Exact examples supply
-  reference cases; contact and switching laws define the territory to explore.
-  The aim is to locate reproducible model behavior, resolve its energy transfers
-  and identify the assumptions that make an above-one result possible.
+  We computed preparation, loaded operation and reset for four candidate
+  mechanisms: a falling-weight lever, switched transformer, contact chain
+  and coil release. The lever delivered 1.1666 times its lifting input before
+  reset, and 0.9951 times all input over the complete history. Transformer
+  commutation reduced gross input by 6.90% at matched receiver delivery.
+  Contact geometry and coil-release timing changed useful delivery substantially.
+  The graphs and tables connect these gains to their actual transfers, giving
+  the search for COP greater than one a quantitative starting point. The tested
+  models' complete-history COP values remain below one.
 keywords:
   - coefficient of performance
-  - dynamical simulation
+  - numerical simulation
   - mechanical contact
   - transformer switching
   - coupled coils
@@ -28,469 +29,438 @@ keywords:
 
 # The top four {-}
 
-I want a model that raises a load or charges a receiver, restores its machine
-state, and makes every transfer inspectable. The ambition is a coefficient of
-performance (COP) greater than one: useful receiver work divided by **all gross
-inward energy** over the complete history. Give the output a load, give each
-input an integral, and let the trajectories reveal what happened.
+I want useful output, a repeatable machine state and a complete input record.
+The ambition is COP greater than one. Here COP means useful receiver work divided
+by **all gross inward energy**, including preparation, control and reset.
+The calculations below follow that ambition through four concrete mechanisms.
 
-This list alternates the two leading mechanical and two leading electrical
-questions, preserving their source order within each domain. Begin with the
-lever and transformer; their modeling and accounting tools carry into the chain
-and coil studies.
+The list alternates the two leading mechanical and two leading electrical
+questions, preserving their order within each domain. This is an investigation
+priority, not a prediction of performance.
 
-1. **The falling-weight lever.** Can contact timing and compliance produce
-   receiver work exceeding the model's lifting, release and reset input?
-   [OP-CT-HW-01]
-2. **The switched transformer.** Can a finite tap-commutation model reach COP
-   above one when source, driver and restoration work are included? [OP-TRF-02]
-3. **The contact chain.** Can mass order, gaps and branching produce loaded
-   COP above one through a complete launch-and-reset cycle? [OP-LR54-03]
-4. **The coupled-coil release.** Can a resolved release path deliver more useful
-   work than energization, switching and reset supply? [OP-LR48-03]
+1. **The falling-weight lever.** Timed descent and compliance concentrate
+   motion into a loaded takeoff arm. [OP-CT-HW-01]
+2. **The switched transformer.** Physical commutation changes the receiver's
+   return path and the source-work history. [OP-TRF-02]
+3. **The contact chain.** Mass order and gaps reshape the passage of motion
+   into a terminal load. [OP-LR54-03]
+4. **The coupled-coil release.** Release phase, clamp voltage and winding
+   orientation determine where a prepared electrical state goes. [OP-LR48-03]
 
-The clues are a fast launch, different voltages across different terminal pairs,
-and growing sums of momentum or flux-linkage magnitudes. Each gives a physical
-idea to explore. A simulation can expose the full state history, change one law
-at a time, and show exactly which transfer changes the COP.
+We integrated 69 initial parameter cases and 17 exploratory coil extensions,
+then refined the leading cases and compared independent numerical methods.
+These are new finite model calculations, with exact examples explaining the
+observations that motivated them. Mechanical receivers absorb force--velocity
+work; electrical receivers collect resistor heat. All receiver energy stays
+outside the machine boundary. Runs began at rest with zero electrical and gate
+states.
 
-These are proposed simulation studies, with exact analytic reference cases.
-Derive dynamics from forces, circuit constraints and component laws; evaluate
-energy independently. Follow promising regions by resolving events and identifying
-the responsible law. The final page gives the shared method.
+The affirmative case for pursuing COP greater than one starts with resolved
+transfer gains: a loaded above-one operating-window ratio, a smaller supply
+requirement at equal service, and release choices that more than double the
+coil receiver's yield. The full histories identify exactly how far those gains
+carry.
 
 \newpage
 
 # The falling-weight lever
 
-A teeterboard turns the downward arrival of one or two people into the upward
-flight of another. Timing, leg compression and board flexibility change the
-launch. Replacing performers with guided masses gives a compact model in which
-contact timing can be explored against a complete-cycle COP target.
+A teeterboard turns downward arrivals into an upward launch. Timing, leg
+compression and board flexibility affect the outgoing motion. The motivating
+question is whether that concentration can become useful work exceeding the
+input needed to prepare and repeat it.
 
-![Illustrative endpoint comparison for three equal masses. The mechanism is schematic; descent and deformation continue during contact.](figures/lever-observation.pdf){#fig:lever-observation width=98%}
+![Illustrative equal-mass endpoint comparison. Continued descent and deformation are part of the contact history.](figures/lever-observation.pdf){#fig:lever-observation width=98%}
+
+**The observation.** For two incoming masses and one outgoing mass, each
+$70\,\mathrm{kg}$, speeds of $5$ and $8\,\mathrm{m/s}$ give
+\begin{equation}
+K_{\mathrm{in}}=1750\,\mathrm{J},\qquad
+K_{\mathrm{out}}=2240\,\mathrm{J},\qquad
+K_{\mathrm{out}}/K_{\mathrm{in}}=32/25.
+\label{eq:lever-observation}
+\end{equation}
+The selected kinetic terms differ by $490\,\mathrm{J}$. During contact,
+gravity continues doing work, springs compress, and active forces may act.
+The missing information is the trajectory connecting those endpoints.
+An ideal fixed pivot supplies impulse at zero work; it leaves the descent,
+rotation and contact forces to determine the delivery.
+
+## Calculated descent, delivery and return
+
+We replaced the performers with two $1\,\mathrm{kg}$ vertical drivers at arm
+$a=-0.5\,\mathrm{m}$. The balanced rigid lever has inertia $I=0.15\,\mathrm{kg\,m^2}$,
+a $50\,\mathrm{N\,m/rad}$ torsion spring and bearing damping
+$0.1\,\mathrm{N\,m\,s}$. Its opposite arm, $a_R=0.8\,\mathrm{m}$, drives
+an outside viscous receiver: $v_R=a_R\cos\phi\,\dot\phi$ and
+$P_R=bv_R^2$. This loaded adaptation has its own scope alongside the human launch.
+
+With upward driver heights $y_i$, contact compression is
+$\delta_i=a\sin\phi-y_i$ and $f_i=k[\delta_i]_+$,
+where $[z]_+=\max(z,0)$.
+The equations integrated were
+\begin{equation}
+\begin{split}
+m\ddot y_i&=-mg+f_i+u_i,\\
+I\ddot\phi&=\tau_a-\sum_i f_i a\cos\phi
+-50\phi-0.1\dot\phi-b(a_R\cos\phi)^2\dot\phi.
+\end{split}
+\label{eq:lever-model}
+\end{equation}
+Actuator powers were $u_i\dot y_i$
+and $\tau_a\dot\phi$. We used $g=9.81\,\mathrm{m/s^2}$.
+
+The drivers rose $0.30\,\mathrm{m}$ during the first second, then released
+with a delay of $0$, $0.10$ or $0.20\,\mathrm{s}$. Stiffnesses were $500$
+and $1500\,\mathrm{N/m}$; receiver damping was $2$, $8$ or
+$32\,\mathrm{N\,s/m}$. At $2.5\,\mathrm{s}$, finite actuator trajectories
+returned the machine to its initial positions and velocities by $3.5\,\mathrm{s}$.
+Preparation and return followed quintic position curves with continuous velocity;
+all their positive and negative work was integrated separately.
+
+![Computed lever results. Left: the best full-history case, including its driven reset. Right: the nine $k=1500\,\mathrm{N/m}$ cases; $b$ is in $\mathrm{N\,s/m}$. The dotted horizontal line is COP $=1$.](figures/lever-results.pdf){#fig:lever-results width=98%}
 
 \FloatBarrier
 
-**The observation.** Let each mass be $m=70\,\mathrm{kg}$. Two arrive downward
-at $u=5\,\mathrm{m/s}$ and one receiver leaves upward at $w=8\,\mathrm{m/s}$.
-The selected kinetic terms are
-\begin{equation}
-K_{\mathrm{in}}=mu^2=1750\,\mathrm{J},\quad
-K_{\mathrm{out}}=\tfrac12mw^2=2240\,\mathrm{J},\quad
-K_{\mathrm{out}}-K_{\mathrm{in}}=490\,\mathrm{J}.
-\label{eq:launch-comparison}
-\end{equation}
-Their ratio is $32/25$. The contact history connects that comparison to the COP
-question: descending masses continue losing gravitational potential energy,
-compliance stores and returns work, and active forces can act during contact.
+**What the calculation delivered.** Simultaneous arrival with $k=1500$ and
+$b=32$ gave the highest COP among the 18 cases. Its lifting input was exactly
+$2mgH=5.886\,\mathrm{J}$. Before reset, the receiver had collected
+$6.866664\,\mathrm{J}$: a resolved operating-window ratio of **1.1666**.
+At that instant the machine store was $-1.014425\,\mathrm{J}$ relative to
+its initial reference, including the drivers' lower gravitational positions.
 
-**What made the question open.** An ideal fixed pivot supplies impulse at zero
-work because its point of application stays still. The board's rotation, recoil,
-catch engagement and separation time therefore matter independently of the
-outgoing speed. Models imposing the same takeoff speed can require different
-force and actuator-work histories. Those histories are the information to recover.
+| Interval | Gross input (J) | Useful output (J) |
+| :-- | --: | --: |
+| Lift, $0$--$1$ s | 5.886000 | 0.000000 |
+| Descent/delivery, $1$--$2.5$ s | 0.000000 | 6.866664 |
+| Driven return, $2.5$--$3.5$ s | 2.080219 | 1.060545 |
+| Complete history | **7.966219** | **7.927209** |
 
-The passive model has its own scope, separate from the original human hardware
-question. Let the launch emerge from its equations. Change the arrival delay and
-contact compliance, then ask whether the useful delivery grows faster than all
-work needed to prepare and repeat it.
+Table: Computed work for the best lever case. Output during return is counted and identified explicitly.
 
-## Simulation: let the launch emerge
-
-Use driver heights $y_i$, lever angle $\phi$, receiver height $y_R$ and their
-velocities as states. A rigid lever has inertia $I$ and its center of mass at a
-fixed pivot. At signed arm coordinate $a_\alpha$, its contact height is
-$h_\alpha=a_\alpha\sin\phi$. Define compression
-$\delta_\alpha=h_\alpha-y_\alpha-d_\alpha$, with offset $d_\alpha$.
-These definitions determine the contact motion rather than prescribing a launch.
-
-![Lever simulation model, schematic. Evolve masses, rotation and contact states; integrate actuator inputs and work at the outside receiver.](figures/lever-simulation.pdf){#fig:lever-simulation width=98%}
-
-\FloatBarrier
-
-**Specify the contact law.** Start with
-$f_\alpha=k_\alpha[\delta_\alpha]_+$, where $[x]_+=\max(x,0)$ and
-$f_\alpha$ acts upward on the contacting mass. Newton's equations give
-\begin{equation}
-m_i\ddot y_i=-m_ig+f_i+u_i,\quad
-m_R\ddot y_R=-m_Rg+f_R,\quad
-I\ddot\phi=\tau_a-\sum_\alpha f_\alpha h'_\alpha(\phi).
-\label{eq:lever-dynamics}
-\end{equation}
-Here $u_i$ and $\tau_a$ are preparation/reset actuator efforts; the sum includes
-driver and receiver contacts. Prescribe finite actuator laws and integrate their
-work. A latch or release actuator needs its own law and port. First use elastic
-contacts, then declare a dissipative alternative and account for its heat.
-
-**Calculate the COP.** Integrate the complete cycle from a ready state through
-lifting, release, relaxation and driven restoration:
-\begin{equation}
-W_R=\int_{t_0}^{t_1}f_R\dot y_R\,dt,\qquad
-\mathrm{COP}_L=\frac{W_R}{D_{\mathrm{act}}+D_{\mathrm{release}}
-+D_{\mathrm{other}}}.
-\label{eq:lever-cop}
-\end{equation}
-Each $D$ is gross inward port work. Form $D_{\mathrm{act}}$ from the separate
-powers $u_i\dot y_i$ and $\tau_a\dot\phi$, using the common rule on the final
-page. Include any added support or control supply in the appropriate input.
-Check receiver work against
-$m_Rg\Delta y_R+\tfrac12m_R\Delta(\dot y_R^2)$ in this ideal receiver model.
-
-Evaluate the machine's driver kinetic/gravitational, lever rotational and
-contact-spring stores from its states. Include the receiver-contact spring
-inside the machine but the receiver mass outside. Reposition through actuator
-dynamics; retain every transfer through reset.
-
-**Explore and resolve.** Compare one and two drivers, equal and unequal arrival
-times, contact stiffness and loaded receiver mass. Hold the prepared state fixed
-within each timing comparison while retaining its preparation cost. Locate every
-engagement and release event. Refine the timestep at fixed stiffness before
-investigating harder contacts as a separate physical limit. Report input, output,
-COP and state-return error together. Follow any persistent above-one region
-through an independent contact formulation and its explicit work account.
+The full-history COP was **0.995103**. Other exported heat was
+$0.038999\,\mathrm{J}$ and actuator return $0.000011\,\mathrm{J}$.
+With the same stiffness and simultaneous release, reducing $b$ to $2$ produced
+an upward arm speed of about $5.46\,\mathrm{m/s}$ but COP $0.8971$.
+A $0.10\,\mathrm{s}$ delay at $b=32$ reduced COP to $0.5990$.
+The calculated lead is precise: contact timing gives strong motion and almost
+complete useful delivery in the best case, while restoration determines the
+remaining distance to above-one operation over the whole history.
 
 \newpage
 
 # The switched transformer
 
-A transformer tap offers several places to connect a receiver. The motivating
-analogy is a planet gear: rotation relative to the carrier differs from rotation
-relative to the ring. Electrically, the terminal pair determines the voltage.
-A timed return connection is therefore a concrete variable in the COP search.
+A tapped transformer offers different physical terminal pairs to a receiver.
+The motivating mechanical analogy is a gear train with several moving members:
+a receiver responds to the difference across its chosen connection. Electrical
+taps make the analogous voltage difference directly accessible.
 
-![Same instantaneous ideal state, shown schematically. Opposed winding voltages add algebraically and give different receiver-terminal voltages.](figures/transformer-observation.pdf){#fig:transformer-observation width=98%}
+![Ideal opposed-tap observation. The two terminal-pair voltages belong to one trajectory; a loaded return change creates a different circuit.](figures/transformer-observation.pdf){#fig:transformer-observation width=98%}
 
-\FloatBarrier
-
-**The observation.** Winding 1 joins $a,c$ and winding 2 joins $b,a$. Along
-one electrical trajectory,
+**The observation.** Winding 1 joins $a,c$ and winding 2 joins $b,a$.
+For an opposed ideal turns ratio $-4$,
 \begin{equation}
-V_b-V_c=(V_b-V_a)+(V_a-V_c).
+V_b-V_c=(V_b-V_a)+(V_a-V_c),\qquad
+V_b-V_a=-4(V_a-V_c).
 \label{eq:tap-identity}
 \end{equation}
-An opposed ideal ratio $n=-4$ gives
-$V_b-V_a=n(V_a-V_c)$. At $V_a-V_c=1\,\mathrm{V}$, the two receiver
-voltages are $-4\,\mathrm{V}$ across $b-a$ and $-3\,\mathrm{V}$ across $b-c$.
-The idea is to use different connections during different parts of a cycle.
+At $V_a-V_c=1\,\mathrm{V}$, the two readouts are $-4$ and $-3\,\mathrm{V}$.
+This invites a cycle that uses different connections at different times.
+A potential-zero shift leaves both differences unchanged; a physical return
+selector changes the currents and stored fields.
 
-A lightly loading meter can observe both on essentially the same state.
-A loaded return connection changes the current history. A common potential-zero
-shift leaves voltage differences unchanged; commutation changes the circuit
-itself. A simulation must represent that change in its equations.
+Fixed-tap descriptions leave that transition unspecified. Winding currents,
+stray charge, finite conductance and driver supplies participate in it.
+Earlier bounded switching comparisons do not give a universal supply ordering.
+We calculated an explicit finite selector to determine its ordering at a
+matched receiver service.
 
-**What made the question open.** Fixed-connection descriptions leave the
-transition to be specified. Winding current, capacitor charge, clamp conduction
-and selector drive all participate. Existing finite models cover particular
-transitions; physical switch and gap laws remain questions for the model.
-One bounded complete-history comparison required more supply after switching
-at matched receiver service. That result supplies a specific comparison to extend.
+## Calculated finite commutation
 
-The opportunity is to vary the actual transition law and timing, follow every
-supply and receiver transfer, and determine which choices raise complete-cycle
-COP. A voltage comparison starts the question; a resolved loaded history answers
-it for the chosen model.
+We grounded $c$ and used nodes $(a,b,r)$, each with $2\,\mathrm{mF}$ to ground.
+Currents run $a\to c$ and $b\to a$. The reciprocal winding matrix and series
+resistances were
+\begin{equation}
+\mathbf L=\begin{pmatrix}0.05&-0.19\\-0.19&0.8\end{pmatrix}\!\mathrm{H},
+\qquad \mathbf R=\operatorname{diag}(0.05,0.2)\,\Omega,
+\qquad \mathbf L\dot{\mathbf i}+\mathbf R\mathbf i=\mathbf A^T\mathbf v.
+\label{eq:transformer-model}
+\end{equation}
+The incidence matrix $\mathbf A$ has $+1$ at current entry and $-1$ at exit.
+Kirchhoff's node equations determine the three capacitor voltages.
+The source was $V_s=A_s\sin(4\pi t)$ through $0.2\,\Omega$ for $0<t<1$ s,
+then zero through the same resistor. The useful receiver resistor joins $b,r$.
 
-## Simulation: evolve the finite switching network
+The selector joins $r$ to $a$ or ground through
+$G=0.001+49.999x$ siemens, where $\dot x=(\sigma-x)/(2\,\mathrm{ms})$.
+Each gate is a $1\,\mu\mathrm{F}$ capacitor driven through $2\,\mathrm{k}\Omega$
+from $5\sigma$ volts; its supply power was included. During operation,
+$\sigma_a=1$ when $\sin(4\pi t+\psi)\geq0$ and
+$\sigma_c=1-\sigma_a$. Both commands went to zero at $1$ s.
+A third gate added $x$ siemens to each node's permanent $0.001$ S bleeder
+from $1$ to $10$ s. Integration continued to $12$ s.
 
-Build the tapped circuit with winding resistance, a reciprocal inductance
-matrix, winding/node capacitances and finite selector and clamp paths.
-Use winding currents, capacitor voltages and driver states as dynamic variables.
-The return moves between $a$ and $c$ through a declared gate waveform, with an
-explicit RC driver and its power supply included.
-
-![Transformer simulation topology. The finite selector and driver are modeled elements; source and receiver powers come from the resulting trajectories.](figures/transformer-simulation.pdf){#fig:transformer-simulation width=98%}
+![Computed transformer results. Left: switched $R=4\,\Omega$, $\psi=\pi$; the early history is shown, while totals include the full 12 s. Right: all twelve commutated cases at unit source amplitude.](figures/transformer-results.pdf){#fig:transformer-results width=98%}
 
 \FloatBarrier
 
-**Assemble the equations.** With one node grounded, a useful network form is
-\begin{equation}
-\mathbf L\dot{\mathbf i}+\mathbf R\mathbf i=\mathbf A^{T}\mathbf v,\qquad
-\mathbf C_n\dot{\mathbf v}+\mathbf A\mathbf i+
-\mathbf G_\sigma(\mathbf v)\mathbf v=\mathbf j_{\mathrm{ext}}.
-\label{eq:transformer-model}
-\end{equation}
-$\mathbf A$ has $+1$ at each winding's current-entry node and $-1$ at its exit.
-$\mathbf C_n$ is the nodal capacitance matrix; $\mathbf G_\sigma$ represents
-resistive, switch and clamp paths in state $\sigma$. External sources and the
-receiver supply the signed injections $\mathbf j_{\mathrm{ext}}$. Keep finite
-on/off conductances and transition duration explicit. Choose winding signs
-consistently, with $L_1,L_2>0$ and $M^2<L_1L_2$ for the two-winding model.
+We computed fixed returns $a,c$ and four phases
+$\psi\in\{0,\pi/2,\pi,3\pi/2\}$ at receiver resistances $1$, $4$ and
+$16\,\Omega$: 18 cases. Among switched cases at $4\,\Omega$, phase $\pi$
+gave the highest COP. For the comparison below, we adjusted each fixed case's
+source amplitude and reran it to match the switched receiver's full-history
+$0.388864\,\mathrm{J}$. Load and total interval remained the same; instantaneous
+receiver-power traces were allowed to differ. The fitted source amplitudes were
+$0.971127$ V for fixed $a$ and $1.106268$ V for fixed $c$, against $1$ V
+for commutation.
 
-**Compare useful service.** Simulate fixed return at $a$, fixed return at $c$,
-and finite commutation. Vary switching phase and transition duration independently
-of numerical step size. Use a declared source-amplitude adjustment to match
-receiver work and delivery time at a fixed load; retain cases that cannot match.
-Compare make-before-break and break-before-make paths as separate topologies.
+| Return path | Gross input (J) | Useful output (J) | COP |
+| :-- | --: | --: | --: |
+| Fixed $a$ | 0.972101 | 0.388864 | 0.400025 |
+| Fixed $c$ | 0.946703 | 0.388864 | 0.410756 |
+| Commutated, $\psi=\pi$ | **0.905044** | **0.388864** | **0.429663** |
 
-**Integrate the result.** With $j_R$ entering the outside receiver at $b$,
-\begin{equation}
-W_R=\int_{t_0}^{t_1}(V_b-V_r)j_R\,dt,\qquad
-\mathrm{COP}_T=\frac{W_R}{D_s+D_g+D_{\mathrm{other}}}.
-\label{eq:transformer-cop}
-\end{equation}
-$D_s$ is gross source input and $D_g$ sums independent driver inputs.
-Integrate from before energization through relaxation and simulated restoration.
-Check winding, capacitor and driver states; carry dissipated energy as heat
-or an explicit outward transfer. A constant-capacitance receiver gives the
-independent ideal check $W_R=C_R(V_{R,f}^2-V_{R,i}^2)/2$.
+Table: Calculated matched-service comparison, including gate power and finite reset.
 
-Resolve gate edges and clamp onset with a stiff-system solver, then compare an
-independent method and finer power quadrature. Track the energy residual without
-forcing it to vanish. Report absolute COP beside improvement over the fixed-tap
-controls. A persistent above-one result identifies a particular netlist,
-transition law and parameter region for deeper examination.
+Commutation reduced gross input by **6.90%** against fixed $a$, and **4.40%**
+against fixed $c$. Its source return was $0.004690\,\mathrm{J}$ and other heat
+$0.511491\,\mathrm{J}$; final magnetic, capacitive and gate storage was below
+$10^{-20}\,\mathrm{J}$. Across all 18 unit-amplitude cases, fixed $a$ at
+$16\,\Omega$ reached the largest COP, $0.433787$.
+
+This calculation supplies an affirmative result for the switching idea:
+physical commutation can improve useful delivery per unit of gross input.
+The gain belongs to a specified circuit and service comparison. Its complete
+work account also gives the size of the additional improvement required to
+reach the article's above-one target.
 
 \newpage
 
 # The contact chain
 
-Unequal masses and compliant contacts can pass a disturbance along a chain.
-Some masses reverse while others advance; a light terminal mass can become fast.
-The COP ambition is to turn those exchanges into useful receiver work exceeding
-the complete launch and restoration input.
+A disturbance passing through unequal masses can reverse one body and accelerate
+another. Contact release and re-engagement add a timing variable that a permanent
+spring does not possess. The COP question concerns how much of that rearranged
+motion reaches a useful receiver over a repeatable cycle.
 
-![Exact two-mass elastic-contact illustration, with $p_0=mu>0$. Momentum arrows show how opposite motion doubles the magnitude sum while the signed total stays fixed.](figures/chain-observation.pdf){#fig:chain-observation width=98%}
+![Exact elastic-contact example. Opposite momenta increase the magnitude sum while preserving the signed total.](figures/chain-observation.pdf){#fig:chain-observation width=98%}
 
-\FloatBarrier
-
-**The observation.** A mass $m$ arrives at $u>0$; a mass $3m$ is initially
-still. For a lossless Hooke contact of stiffness $k$, compression $\delta$
-obeys $m\dot v_1=-k\delta$, $3m\dot v_2=k\delta$ and
-$\dot\delta=v_1-v_2$. Starting at $\delta=0$ gives
+**The observation.** A mass $m$ arrives at speed $u>0$ and strikes a stationary
+mass $3m$ through a lossless spring contact of stiffness $k$.
+During compression and recovery,
 \begin{equation}
-v_1=\frac{u}{4}(1+3\cos\theta),\quad
-v_2=\frac{u}{4}(1-\cos\theta),\quad
+v_1=\frac{u}{4}(1+3\cos\theta),\qquad
+v_2=\frac{u}{4}(1-\cos\theta),\qquad
 \theta=t\sqrt{\frac{4k}{3m}}.
-\label{eq:chain-pair}
+\label{eq:chain-reference}
 \end{equation}
-At $\theta=\pi$, compression returns to zero. The separating momenta are
-$-p_0/2$ and $3p_0/2$: their signed sum is $p_0$, their magnitude sum
-$2p_0$. Endpoint kinetic energy is $\tfrac12mu^2$ in both cases.
+At separation, $\theta=\pi$, the momenta are $-mu/2$ and $3mu/2$.
+Their magnitude sum has doubled; the signed sum is still $mu$.
+Endpoint kinetic energy is $mu^2/2$ in both states. We reproduced this exact
+trajectory numerically before adding more masses and a receiver.
 
-For a free chain, $A_p=\sum_j|p_j|=P+2\sum_{p_j<0}|p_j|$, with
-$P=\sum_jp_j$. Internal forces preserve $P$ while opposing motion can increase
-$A_p$. Receiver work and the independently evaluated stores connect that
-motion to the COP question.
+The general identity
+$\sum_j|p_j|=\sum_jp_j+2\sum_{p_j<0}|p_j|$ exposes the role of counterflow.
+For a free chain the signed sum stays constant, while active contacts change.
+Finite gaps, branching, restitution and fixture motion are the physical
+extensions behind the open question. Here the calculated extension is a loaded
+three-body line with gaps and a complete return trajectory.
 
-**What made the question open.** A permanent spring can pull as well as push;
-a contact releases. Gaps change arrival times, branches change the contact
-network, and restitution, plasticity and fixture motion change the laws.
-The original free, zero-gap compliant descriptions leave those extensions open.
-Increasing stiffness also raises a separate rigid-impact-limit question.
+## Calculated contact and reset histories
 
-Choose mass order and spacing to make the terminal contact deliver at a useful
-moment. Its receiver reacts back on the chain. A simulation can follow every
-mass and contact through that feedback while calculating full-cycle COP.
-
-## Simulation: follow the changing contact network
-
-Begin with three translating masses and unilateral spring contacts. Declare
-mass ratios, gaps and the receiver load before exploring timing; a ratio such as
-$1:3:1/2$ is an illustrative starting configuration. Prepare incidence through
-a finite launcher force, then evolve the contacts and receiver together.
-
-![Contact-network simulation, schematic. Integrate all mass states, contact events, launcher/reset work and useful receiver delivery. The branch is a separate model configuration.](figures/chain-simulation.pdf){#fig:chain-simulation width=98%}
-
-\FloatBarrier
-
-**Evolve the states.** For the line, let $\mathbf B$ have $-1$ at an edge's
-left mass and $+1$ at its right mass, and let
-$\mathbf M=\operatorname{diag}(m_j)$. Then
+The position deviations $\mathbf x$ start at zero. Each column of $\mathbf B$
+has $-1$ at the left body and $+1$ at the right body of a contact.
+With gap offsets $\mathbf d$, the integrated equations were
 \begin{equation}
 \dot{\mathbf x}=\mathbf v,\qquad
-\mathbf M\dot{\mathbf v}=\mathbf B\mathbf f+\mathbf u-\mathbf e_N f_R,
-\qquad \dot{\boldsymbol\delta}=-\mathbf B^T\mathbf v.
+\mathbf M\dot{\mathbf v}=\mathbf B\mathbf f+\mathbf u-\mathbf e_3bv_3,
+\qquad f_e=k[-\mathbf B^T\mathbf x-\mathbf d]_{e,+}.
 \label{eq:chain-model}
 \end{equation}
-$\mathbf u$ contains external actuator forces; $\mathbf e_N$ selects the
-terminal mass. Offset each compression by its initial gap. Set
-$f_e=k_e[\delta_e]_+$, with $[x]_+=\max(x,0)$, as the first contact law.
-For a dissipative variant, add $c_e[\dot\delta_e]_+$ only while $\delta_e>0$,
-where $c_e\geq0$. Its dissipated power is $c_e[\dot\delta_e]_+^2$ during contact.
+The outside receiver absorbs $P_R=bv_3^2$; there is no internal damping in this
+model. Contact stiffness was $400\,\mathrm{N/m}$. We computed mass sets
+$(1,3,1/2)$, $(1/2,3,1)$ and $(1,1,1)$ kg, gap pairs $(0,0)$ and
+$(0.05,0.10)$ m, and $b=0.5,2,8\,\mathrm{N\,s/m}$: 18 cases.
 
-Couple the terminal mass to an outside mass-spring receiver through an explicit
-receiver-contact law. Include that contact's spring inside the machine.
-For a branch, replace the line incidence relation by the Jacobian of the
-declared contact geometry and track the extra mass. Compare laws and geometries
-as distinct models.
+The first body received $8\sin^2(\pi t/0.2)$ newtons for $0<t<0.2$ s.
+It then moved without launch drive until $2.5$ s. Finite quintic actuator
+trajectories returned all bodies to their starting positions and zero velocity
+by $3.5$ s. We integrated each actuator's work, including its returned work.
+Kinetic and unilateral spring stores were evaluated independently.
 
-**Calculate useful delivery.** At the receiver interface,
-\begin{equation}
-W_R=\int_{t_0}^{t_1}f_Rv_R\,dt,\qquad
-\mathrm{COP}_C=\frac{W_R}{D_{\mathrm{launch}}+D_{\mathrm{release}}
-+D_{\mathrm{fixture}}+D_{\mathrm{other}}}.
-\label{eq:chain-cop}
-\end{equation}
-Integrate preparation and repositioning forces through the whole history.
-Evaluate $\sum_j m_jv_j^2/2+\sum_e k_e[\delta_e]_+^2/2$ independently,
-adding receiver-contact and any fixture stores. Track heat for dissipative
-contacts. Check an ideal receiver against its kinetic and spring-energy change.
+![Computed chain results. Left: the best complete-history case, with equal masses and finite gaps. Right: unequal-mass and equal-mass controls under the same launcher and reset schedule.](figures/chain-results.pdf){#fig:chain-results width=98%}
 
-**Search with controls.** Compare zero and nonzero gaps, reverse the mass order,
-add one declared branch, and change receiver loading. First reproduce the exact
-two-mass contact above. Locate engagement and force-release events, retain
-event-side states and refine integration at fixed contact parameters. Increase
-stiffness only in a separate sequence. Drive the simulated reset and verify all
-masses, springs and thermal states return within declared tolerances. Report COP,
-input, output and reset mismatch for every case; investigate an above-one region
-by isolating the contact law and event sequence that produced it.
+\FloatBarrier
+
+**What changed under load.** The table compares three cases at $b=8$.
+Here $W_{\mathrm{pre}}$ is all receiver delivery before reset, including any
+delivery during the launcher pulse. $D_{\mathrm{reset}}$ is gross reset input.
+
+| Masses / gaps | $W_{\mathrm{pre}}$ (J) | $D_{\mathrm{reset}}$ (J) | Full COP |
+| :-- | --: | --: | --: |
+| $1:3:1/2$, zero | 0.162612 | 0.971015 | 0.309916 |
+| $1:3:1/2$, finite | 0.239603 | 1.997999 | 0.212969 |
+| $1:1:1$, finite | **0.315183** | **0.145422** | **0.982149** |
+
+Table: Numerical comparison of loaded contact chains. A larger pre-reset output need not give a larger full-history COP.
+
+For the unequal chain, the finite gaps raised pre-reset delivery by about
+**47.3%**. The same force pulse supplied $0.196089$ J without gaps and
+$0.319239$ J with gaps, and the latter state cost more to restore. In the equal-mass
+control, launch input was $0.319246\,\mathrm{J}$ and total input
+$0.464668\,\mathrm{J}$. Useful delivery was $0.456373\,\mathrm{J}$, including
+$0.141190\,\mathrm{J}$ during reset; actuator return was $0.008295\,\mathrm{J}$.
+All mechanical endpoint stores returned to numerical zero.
+
+The useful result is the separation of three effects: momentum redistribution,
+loaded delivery and restoration work. The exact counterflow example remains a
+strong clue about transport, while the best computed cycle favored mass matching.
+Gaps improved one output window by nearly half. The complete trajectories show
+which part of that improvement contributes to the COP ambition and which part
+requires a better return path. Branches and dissipative contact laws remain
+outside this calculated line model.
 
 \newpage
 
 # The coupled-coil release
 
-Two inductors exchanging through a capacitor provide an electrical counterpart
-to the chain. Their flux linkages can acquire opposite signs while their signed
-sum stays fixed. A growing magnitude sum suggests a next step: change the
-connection at a chosen moment and route the state into a receiver.
+Two inductors exchanging through capacitance form an electrical counterpart
+to the contact chain. Their flux linkages can acquire opposite signs while the
+signed sum stays fixed. The idea is to change the circuit at a favorable phase
+and route the prepared state into a useful receiver.
 
-![Exact connected-model curves for the stated zero-coupling illustration. Opposite linkage signs separate the growing magnitude sum from the fixed signed sum.](figures/coil-observation.pdf){#fig:coil-observation width=98%}
+![Exact connected-model reference. Opposing linkage signs separate the growing magnitude sum from the fixed signed sum.](figures/coil-observation.pdf){#fig:coil-observation width=98%}
 
-\FloatBarrier
-
-**The observation.** In the zero-mutual-coupling limit, take
-$L_1=1\,\mathrm{H}$, $L_2=19\,\mathrm{H}$, $C>0$, initial currents
-$i_1=10\,\mathrm{A}$ and $i_2=0$, and zero capacitor voltage.
-For equal-and-opposite winding voltages,
+**The observation.** With zero mutual coupling, $L_1=1\,\mathrm{H}$,
+$L_2=19\,\mathrm{H}$, initial currents $(10,0)$ A and zero capacitor voltage,
 \begin{equation}
-i_1=\frac{1+19\cos\theta}{2}\,\mathrm{A},\quad
-i_2=\frac{1-\cos\theta}{2}\,\mathrm{A},\quad
-\theta=\omega t,\quad \omega^2=\frac{1/L_1+1/L_2}{C}.
-\label{eq:coil-exchange}
+i_1=\frac{1+19\cos\theta}{2}\,\mathrm{A},\qquad
+i_2=\frac{1-\cos\theta}{2}\,\mathrm{A},\qquad
+\theta=t\sqrt{\frac{1/L_1+1/L_2}{C}}.
+\label{eq:coil-reference}
 \end{equation}
-The plotted linkages are $\lambda_j=L_ji_j$. At
-$\theta=\arccos(-1/19)$, the first crosses zero. By $\theta=\pi$, the pair
-has moved from $(10,0)$ to $(-9,19)\,\mathrm{Wb}$. Their signed sum stays
-$10\,\mathrm{Wb}$ while the magnitude sum reaches $28\,\mathrm{Wb}$.
-The capacitor is again at zero voltage; magnetic storage is $50\,\mathrm{J}$
-initially and $(81+19)/2=50\,\mathrm{J}$ finally.
+At $\theta=\pi$, flux linkages change from $(10,0)$ to $(-9,19)$ Wb.
+Their magnitude sum rises from $10$ to $28$ Wb. The capacitor returns to zero
+voltage and magnetic storage is $50$ J at both endpoints. Independent numerical
+integrations reproduced the closed form.
 
-**What made the question open.** Release changes the circuit that linked the
-winding voltages. At finite current, the switch gap, clamp and winding capacitance
-provide the next paths; arc behavior may add further state. The connected
-solution supplies a precise starting point for asking what those paths deliver.
+Release opens a different question. Winding current must continue through
+specified capacitance, clamp and receiver paths. The connected solution identifies
+phases worth examining; the finite release circuit determines their useful yield.
 
-Choose release time, coupling and winding orientation as design variables.
-The COP question compares useful delivery with all work needed to prepare,
-switch and restore the modeled circuit. The exact connected solution becomes
-a reference test for that larger computation.
+## Calculated release, clamp and receiver work
 
-## Simulation: resolve the release and its return cycle
-
-Use currents, capacitor voltages, gate states and any declared clamp/core states.
-Fix winding geometry within each cycle and represent both switches with finite
-conductances and finite transitions. Figure \ref{fig:coil-simulation} supplies
-the model topology and the receiver boundary.
-
-![Coil-release simulation topology. Preserve state through finite switching; integrate preparation/reset, driver and receiver power from the same history.](figures/coil-simulation.pdf){#fig:coil-simulation width=98%}
-
-\FloatBarrier
-
-**Build the connected phase first.** With winding resistances $R_1,R_2$,
-consistent opposed current references and signed mutual inductance $M$,
+Our finite model used $L_1=0.1$ H, $L_2=1.9$ H, winding resistances
+$(0.02,0.04)\,\Omega$, and node capacitances $(0.0001,0.01)$ F.
+Winding 1 runs from $a$ to ground; winding 2 runs from ground to $b$.
+The currents obey
 \begin{equation}
-\begin{pmatrix}L_1&M\\M&L_2\end{pmatrix}
-\begin{pmatrix}\dot i_1\\\dot i_2\end{pmatrix}
-=
-\begin{pmatrix}V_C-R_1i_1\\-V_C-R_2i_2\end{pmatrix},
-\qquad C\dot V_C=i_2-i_1.
+\begin{pmatrix}L_1&M\\M&L_2\end{pmatrix}\dot{\mathbf i}
+=\begin{pmatrix}V_a-0.02i_1\\-V_b-0.04i_2\end{pmatrix},\qquad
+U_M=\tfrac12L_1i_1^2+Mi_1i_2+\tfrac12L_2i_2^2.
 \label{eq:coil-model}
 \end{equation}
-Take $L_1,L_2>0$ and $M^2<L_1L_2$. Reproduce the analytic
-$M=R_1=R_2=0$ reference before adding release. During release, solve the
-new node equations with the same winding constitutive laws; the two winding
-voltages need no longer be opposite. Retain currents and capacitor voltages
-through finite transitions.
+Kirchhoff's equations evolve both node voltages. A finite switch connects $a,b$;
+a separate switch connects $b$ through receiver $R$ to ground.
+The clamp at $a$ carries
+$I_c=\operatorname{sgn}(V_a)[|V_a|-V_c]_+/(1\,\Omega)$.
 
-**Give every path a law.** Start with winding resistance, capacitance and a
-specified clamp current-voltage law. Drive the gates through explicit source,
-resistance and capacitance models. Add a gap/arc state or nonlinear core only
-as a separately declared extension. Its state evolution and power exchange
-must be supplied. Sweep release phase and both orientations. An illustrative
-coupling set is $|M|/\sqrt{L_1L_2}\in\{0,1/2,3/4\}$. Compare zero-current
-and finite-current release with equal prepared states.
+Each gate obeys $\dot x=(\sigma-x)/(1\,\mathrm{ms})$, implemented by
+$1\,\mu\mathrm{F}$ and $1\,\mathrm{k}\Omega$ at $5\sigma$ volts.
+Exchange and receiver-switch conductances are $10^{-6}+100x$ siemens.
+The preparation branch connects $10\sin^2(\pi t/0.4)$ volts to $a$ through
+$10^{-6}+5x$ siemens for $0<t<0.4$ s. Preparation then switches off and
+exchange switches on. At release, exchange switches off and the receiver on.
 
-**Compute the COP and stores.** Integrate receiver power and each gross input
-through energization, exchange, release, relaxation and modeled reset:
-\begin{equation}
-W_R=\int_{t_0}^{t_1}v_Ri_R\,dt,\qquad
-\mathrm{COP}_{\mathrm{coil}}=
-\frac{W_R}{D_{\mathrm{source}}+D_{\mathrm{driver}}+D_{\mathrm{other}}}.
-\label{eq:coil-cop}
-\end{equation}
-Compute the joint store
-$U_M=L_1i_1^2/2+Mi_1i_2+L_2i_2^2/2$ and capacitor stores from the states.
-For fixed inductances, $\dot U_M=i_1\dot\lambda_1+i_2\dot\lambda_2$.
-A constant-capacitance receiver gives the independent ideal check
-$W_R=C_R(V_{R,f}^2-V_{R,i}^2)/2$. Carry winding/clamp losses into thermal
-states or outward heat, and integrate the actual reset trajectory.
+![Computed coil results. Left: $M=0$, 80 V clamp, $R=1\,\Omega$, release phase $\eta=1/2$; the early history is shown. Right: release/load comparisons. Every COP includes the full 14 s, gate supplies and reset.](figures/coil-results.pdf){#fig:coil-results width=98%}
 
-Refine event location, timestep and quadrature while holding component laws
-fixed. Then vary clamp and stray capacitance as physical model choices.
-Report COP and numerical sensitivity beside the restored-state error. A
-persistent above-one region invites a direct comparison of the models: which
-release path changed useful output, which input paid for it, and which law
-accounts for the remaining difference?
+\FloatBarrier
+
+Release occurred at $t_s=0.4+\eta T_h$, where
+$T_h=\pi\sqrt{0.01/(1/L_1+1/L_2)}\simeq0.0968304$ s.
+We computed five phases $\eta=1/4,1/2,3/4,1,5/4$ and three loads
+$R=1,10,50\,\Omega$. A $10^{-6}+0.1x$ S bleeder at each node was commanded
+on from $1.4$ to $12$ s. The receiver command also ended at $12$ s;
+integration continued to $14$ s.
+
+The first 15 cases used a 20 V clamp, which conducted during exchange.
+A declared second 15-case exploration raised it to 80 V. Two further cases
+reversed signed coupling at the best zero-coupling phase and load.
+
+| Clamp / $\eta$ / coupling $\kappa$ | Input (J) | Output (J) | COP |
+| :-- | --: | --: | --: |
+| 20 V / $1/4$ / $0$ | 16.8117 | 3.8995 | 0.2319 |
+| 80 V / $1/2$ / $0$ | **16.8117** | **8.0954** | **0.4815** |
+| 80 V / $1/2$ / $-1/2$ | 19.6876 | 8.5788 | 0.4357 |
+| 80 V / $1/2$ / $+1/2$ | 19.6876 | 6.5646 | 0.3334 |
+
+Table: Computed coil histories at $R=1\,\Omega$; $\kappa=M/\sqrt{L_1L_2}$. All numbers are numerical approximations.
+
+Changing clamp and release phase more than doubled the zero-coupling receiver
+work at essentially the same input. Waiting until $\eta=1$ raised the linkage
+magnitude ratio to about $2.77$, but gave COP $0.0995$ at $R=1$ and 80 V.
+The best energy delivery occurred earlier. Its other exported heat was
+$8.716310$ J and its finite-reset storage remainder $5.0001\,\mu\mathrm{J}$.
+These results make the release path the productive design variable: the largest
+linkage-magnitude excursion and the best COP occur at different times.
 
 \newpage
 
-# The same calculation in every model {-}
+# What the calculations establish {-}
 
-Declare the machine boundary and all state variables before integrating.
-At each crossing port $k$, use inward-positive power $P_k$: $vi$ electrically,
-$\mathbf F\cdot\mathbf v$ mechanically, or
-$\boldsymbol\tau\cdot\boldsymbol\omega$ rotationally. Effort and motion belong
-to the same station and frame. Count shared supplies once. Include any thermal
-or environmental input; keep the useful receiver outside.
+The strongest calculated leads are a lever that crosses one in a loaded
+operating window, transformer commutation that saves input at equal receiver
+service, and coil timing that more than doubles useful delivery. They give
+specific mechanisms and scales to the ambition of COP greater than one.
+The whole-history account shows where each result stands.
 
-For the complete interval $[t_0,t_1]$, calculate each port separately:
-\begin{align}
-D_k&=\int_{t_0}^{t_1}[P_k]_+\,dt,&
-X_k&=\int_{t_0}^{t_1}[-P_k]_+\,dt,&
-W_k&=D_k-X_k,\label{eq:ports}\\
-E_{\mathrm{in}}&=\sum_kD_k,& E_{\mathrm{out}}&=\sum_kX_k,&
-r_E&=\Delta U-E_{\mathrm{in}}+E_{\mathrm{out}}.
-\label{eq:balance}
-\end{align}
-Here $[x]_+=\max(x,0)$ and $\Delta U$ is evaluated independently from endpoint
-states. Internal contact and clamp transfers explain the history; they are
-counted as boundary transfers only when they cross the chosen boundary.
-Retained heat is a store, exported heat a transfer.
+| Best tested model | Input $D$ (J) | Useful $W_R$ (J) | COP |
+| :-- | --: | --: | --: |
+| Lever | 7.966219 | 7.927209 | 0.995103 |
+| Transformer, fixed $a$ | 0.593317 | 0.257373 | 0.433787 |
+| Chain, equal masses | 0.464668 | 0.456373 | 0.982149 |
+| Coil release | 16.811682 | 8.095368 | 0.481532 |
 
-Let $W_R$ be net useful work into the declared receiver after return flow.
-All receiver-to-machine work also contributes to gross input. Report source
-return separately. With a resolved positive denominator,
+Table: Best full-history COP in each explored family. These are selected model results, not universal optima.
+
+**One complete account.** At every supply or actuator port, inward power
+$P_k$ was integrated separately into gross draw
+$D_k=\int[P_k]_+dt$ and returned work $X_k=\int[-P_k]_+dt$.
+We used $D=\sum D_k$, $X=\sum X_k$, outside receiver delivery $W_R$
+and other exported heat $H$. Stored energy was evaluated from states, giving
 \begin{equation}
-\mathrm{COP}=\frac{W_R}{E_{\mathrm{in}}},\qquad
-\mathrm{COP}_{\min}=\frac{W_R-\varepsilon_R}
-{E_{\mathrm{in}}+\varepsilon_{\mathrm{in}}}.
-\label{eq:cop}
+r_E=\Delta U-D+X+W_R+H,\qquad
+\mathrm{COP}=\frac{W_R}{D}
+=1-\frac{X+H+\Delta U-r_E}{D}.
+\label{eq:complete-account}
 \end{equation}
-The second expression is a lower bound only when nonnegative error bounds
-$\varepsilon_R,\varepsilon_{\mathrm{in}}$ are justified simultaneously for
-the fixed model and $W_R-\varepsilon_R>0$. Differences between refined runs
-are numerical error estimates, not automatically certified bounds. Declare an
-input floor before comparing ratios. Keep component-law uncertainty separate.
+The receivers were passive, with no inward return. Shared supplies were counted
+once. Mechanical reset used work-metered forces and torques; electrical reset
+used the stated dissipative paths. Heat crossed an ideal bath boundary.
+Real controller losses and thermal dynamics would require additional laws.
 
-**Simulate the complete history.** Begin before preparation from a declared ready
-state. Evolve preparation, operation, contact/switching, relaxation and reset.
-Return through modeled forces and circuits, recording their work; compare all
-relevant endpoint states with stated tolerances. Bound any remaining depletion
-independently. Keep delivered work outside while accounting for any backflow.
+**What was checked.** We integrated Newton/Kirchhoff equations rather than
+imposing energy closure. Refined leading cases used relative tolerance
+$2\times10^{-10}$ and a maximum step of $3$ ms. Independent explicit and implicit
+methods changed their COP by less than $3\times10^{-10}$. Their maximum sampled
+energy residuals were below $7\times10^{-10}$ J.
+The coarser exploratory grid retained residuals up to $1.3\times10^{-4}$ J.
 
-**Make the numerics answerable.** Check exact reference cases first. Locate
-contact and switch events, split power integration there, and retain both event-side
-states. Refine timestep, solver tolerances and quadrature independently; compare
-another numerical method or formulation. Keep physical stiffness and switch
-duration fixed during refinement. Study their limiting values separately.
-Evaluate the energy residual afterward, without projecting states onto a desired
-balance. Explain any persistent residual within the declared laws and boundary.
+Uniform power sampling initially missed a fast coil-switch transient by
+$0.178$ J. Independent 8- and 16-point Gaussian integration within resolved
+solver steps reduced the leading cases' power-integral disagreements below
+$3\times10^{-11}$ J. Exact contact/coil reference cases and symbolic component
+power identities supplied further checks. These are numerical sensitivity
+checks for the stated models, not certified error bounds or hardware uncertainty.
 
-**Follow the promising region.** Freeze parameter ranges, loads and comparison
-rules before the first sweep. Preserve failures, both residual signs and reset
-mismatches. Follow a stable above-one region with independent runs, broader
-component-law checks and a reconstructed transfer history. A verified bound
-above one establishes a result for that specified model; its physical realization
-becomes the next question. Save the model, parameters, event history and work
-integrals so another researcher can reproduce the finding and pursue it.
+**The case for continuing toward COP greater than one.** Timing, topology and
+release laws changed useful output enough to justify treating them as design
+variables rather than fixed details. The computations also isolate the remaining
+question. For the passive laws used here, the derived power identities give
+$r_E=0$; at a restored state, equation \ref{eq:complete-account} leaves COP
+at or below one. Near-unity conversion by itself is not evidence of a crossing.
+An above-one complete-cycle argument therefore needs an independently supported
+physical contribution beyond these baselines. The calculated histories specify
+where to look for it: contact transfer and return, finite commutation, and the
+release/clamp path. That is the positive research case these results support.

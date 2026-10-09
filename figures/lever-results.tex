@@ -1,0 +1,38 @@
+\documentclass[border=4pt]{standalone}
+\input{figure-style}
+\usepackage{pgfplotstable}
+\usepgfplotslibrary{groupplots}
+\input{lever-results-data}
+\begin{document}
+\begin{tikzpicture}
+\begin{groupplot}[
+ group style={group size=2 by 1,horizontal sep=1.4cm},
+ width=7.0cm,height=4.6cm,
+ grid=major,grid style={frameline!12},
+ axis line style={frameline},
+ tick label style={font=\footnotesize},
+ label style={font=\footnotesize},
+ title style={font=\small},
+ legend style={at={(.5,-.38)},anchor=north,draw=none,fill=white,font=\footnotesize,inner sep=1pt},
+ legend cell align=left,
+]
+\nextgroupplot[title={Calculated work history},xlabel={Time (s)},ylabel={Energy (J)},xmin=0,xmax=3.5,ymin=0,ymax=9]
+\addplot[thick,elemA] table[x=t,y=D] \leverhistory;
+\addlegendentry{Gross input $D$}
+\addplot[thick,elemC] table[x=t,y=W] \leverhistory;
+\addlegendentry{Useful output $W_R$}
+\addplot[dashed,thick,elemB] table[x=t,y expr=\thisrow{X}+\thisrow{H}] \leverhistory;
+\addlegendentry{Return + other heat}
+\draw[dotted,frameline] (axis cs:2.5,0)--(axis cs:2.5,9);
+\node[font=\scriptsize,anchor=north west,fill=white] at (axis cs:2.53,9) {Reset};
+\nextgroupplot[title={Timing and receiver loading},xlabel={Arrival delay (s)},ylabel={Full-history COP},xmin=0,xmax=.2,ymin=0,ymax=1.06,xtick={0,.1,.2}]
+\addplot[thick,mark=*,mark size=1.3pt,elemA] table[x=delay,y=b2] \leversweep;
+\addlegendentry{$b=2$}
+\addplot[thick,mark=*,mark size=1.3pt,elemB] table[x=delay,y=b8] \leversweep;
+\addlegendentry{$b=8$}
+\addplot[thick,mark=*,mark size=1.3pt,elemC] table[x=delay,y=b32] \leversweep;
+\addlegendentry{$b=32$}
+\draw[dotted,black] (axis cs:\pgfkeysvalueof{/pgfplots/xmin},1)--(axis cs:\pgfkeysvalueof{/pgfplots/xmax},1);
+\end{groupplot}
+\end{tikzpicture}
+\end{document}

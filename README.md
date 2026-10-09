@@ -1,25 +1,26 @@
 # Mad Scientist 1
 
-Four simulation studies for COP greater than one
+Four calculated leads toward COP greater than one
 
 ## What this article adds, and why it matters
 
-Can a timed launch, switched transformer, contact chain or coupled-coil release
-deliver more useful receiver work than all the energy supplied over a complete
-cycle? These four proposed simulation studies connect their motivating
-observations to that COP question through explicit dynamical models.
+The article reports executed simulations of a falling-weight lever, switched
+transformer, contact chain and coil release. It follows preparation, useful
+receiver delivery and reset, with 86 explored parameter cases, numerical graphs,
+work tables and independently checked leading results.
 
-Each OP receives two illustrated pages, with background and observation flowing
-into the simulation. State variables, contact or switching laws, receiver work,
-all input ports and modeled reset define the calculation. Parameter comparisons,
-exact reference cases and numerical checks make the resulting COP interpretable.
-The common method distinguishes numerical error estimates, justified bounds and
-uncertainty about component laws.
+The lever reaches an operating-window output/input ratio of 1.1666 and a
+complete-history COP of 0.9951. Transformer commutation reduces gross input by
+6.90% at matched receiver delivery. Gap and release choices produce substantial
+changes in useful output. The complete accounts connect those gains to the
+continuing search for COP greater than one; none of the tested models has an
+above-one complete-history COP.
 
-This is a local, unpublished draft. The PDF contains ten pages and eight figures:
-an introduction, four two-page studies, and the common simulation account.
-The studies are proposed work; the exact illustrations are analytic reference
-cases, with no numerical simulation results reported.
+This local, unpublished draft has ten pages: an introduction, four continuous
+two-page treatments, and a shared account of the results and numerical checks.
+Eight figures include exact observation references and four computed result
+figures; five tables report calculated comparisons. Numerical plotting data are
+embedded in the LaTeX figure inputs. No hardware measurements are reported.
 
 <!-- article-tools:translations:start -->
 <!-- article-tools:translations:end -->
