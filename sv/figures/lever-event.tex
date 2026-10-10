@@ -1,0 +1,19 @@
+\documentclass[border=4pt]{standalone}
+\input{../../figures/figure-style}
+\usepackage{pgfplotstable}
+\usepgfplotslibrary{groupplots}
+\input{../../figures/lever-event-data}
+\begin{document}
+\begin{tikzpicture}
+\begin{groupplot}[group style={group size=2 by 1,horizontal sep=1.5cm},width=7cm,height=4.6cm,grid=major,grid style={frameline!12},tick label style={font=\footnotesize},label style={font=\footnotesize},title style={font=\small},legend style={at={(.5,-.36)},anchor=north,draw=none,font=\footnotesize},legend cell align=left]
+\nextgroupplot[title={Frigöring till före återställning},xlabel={Tid från frigöring (s)},ylabel={Energi (J)},xmin=0,xmax=1.5,ymin=-2,ymax=8]
+\addplot[thick,elemC] table[x=t,y=W] \leverevent;\addlegendentry{Mottagararbete}
+\addplot[thick,elemA] table[x=t,y=U] \leverevent;\addlegendentry{Känt lager}
+\addplot[dashed,black] table[x=t,y=D] \leverevent;\addlegendentry{Startreferens}
+\nextgroupplot[title={Separata bekräftelsefall},xlabel={Kontaktstyvhet (N/m)},ylabel={Händelse-COP},xmin=440,xmax=560,ymin=1.14,ymax=1.205,xtick={450,500,550}]
+\addplot[thick,elemA,mark=*] table[x=k,y=b30] \leverconfirm;\addlegendentry{$b=30$ N s/m}
+\addplot[thick,elemB,mark=square*] table[x=k,y=b34] \leverconfirm;\addlegendentry{$b=34$ N s/m}
+\addplot[dashed,black,domain=440:560] {1.15};\addlegendentry{Tröskel}
+\end{groupplot}
+\end{tikzpicture}
+\end{document}

@@ -45,3 +45,10 @@ Shared typography is installed locally in `article-style.yaml`, `preamble.tex`
 and `figures/figure-style.tex`. Article-specific definitions are in
 `preamble-local.tex`. These files are complete build inputs; no tools checkout
 is required.
+
+<!-- article-tools:translations:start -->
+## Translations
+
+- Svenska: [PDF](sv/physics-mad-scientist-1-sv.pdf) · [Markdown](sv/physics-mad-scientist-1-sv.md)
+
+<!-- article-tools:translations:end -->

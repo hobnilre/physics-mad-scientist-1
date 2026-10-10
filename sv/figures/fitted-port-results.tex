@@ -1,0 +1,19 @@
+\documentclass[border=4pt]{standalone}
+\input{../../figures/figure-style}
+\usepackage{pgfplotstable}
+\usepgfplotslibrary{groupplots}
+\input{../../figures/fitted-port-data}
+\begin{document}
+\begin{tikzpicture}
+\begin{groupplot}[group style={group size=2 by 1,horizontal sep=1.5cm},width=7cm,height=4.6cm,grid=major,grid style={frameline!12},tick label style={font=\footnotesize},label style={font=\footnotesize},title style={font=\small},legend style={at={(.5,-.36)},anchor=north,draw=none,font=\footnotesize},legend cell align=left]
+\nextgroupplot[title={Samma krets, olika lagar},xlabel={Tid (s)},ylabel={Energi (J)},xmin=0,xmax=10,ymin=0,ymax=1]
+\addplot[thick,elemC] table[x=t,y=W] \fittedevent;\addlegendentry{Mottagare, anpassning}
+\addplot[thick,elemD] table[x=t,y=E] \fittedevent;\addlegendentry{$L/C$-lager, anpassning}
+\addplot[thick,elemA] table[x=t,y=reference] \fittedevent;\addlegendentry{Mottagare, referens}
+\nextgroupplot[title={Mottagare $R_L=0.1\ \Omega$},xlabel={Kapacitans (F)},ylabel={Händelse-COP},xmin=.025,xmax=.085,ymin=0,ymax=1.9,xtick={.03,.05,.08},scaled x ticks=false,xticklabel style={/pgf/number format/fixed,/pgf/number format/precision=2}]
+\addplot[thick,elemD,mark=*] table[x=C,y=fit] \fittedsweep;\addlegendentry{Anpassad lag}
+\addplot[thick,elemA,mark=*] table[x=C,y=reference] \fittedsweep;\addlegendentry{Passiv referens}
+\addplot[dashed,black,domain=.025:.085] {1.15};\addlegendentry{Tröskel}
+\end{groupplot}
+\end{tikzpicture}
+\end{document}
