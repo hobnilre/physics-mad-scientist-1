@@ -17,11 +17,11 @@ law is compared directly with its passive reference, whose matched COP is
 0.247271; the fitted result is not attributed to that reference. Preparation,
 reset and physical realization remain further questions.
 
-The local draft has ten pages: an opening, exactly two pages per investigation,
+The article has ten pages: an opening, exactly two pages per investigation,
 and a common accounting page. Eight vector figures and five result tables
 present 201 new integrations, including separate confirmation cases and
 below-threshold controls. Instrument error budgets are prospective assumptions,
-not measurements. The article remains unpublished.
+not measurements.
 
 ## Article and build
 
@@ -35,7 +35,7 @@ the article without any sibling repository or private working files.
 The title date is the first version's creation date, pinned in `ARTICLE_DATE`
 in the Makefile and retained in the manuscript's `date`. Keep both unchanged
 when revising the article. The first page also gives the PDF creation time in UTC
-and a planned GitHub destination, explicitly marked as unpublished.
+and the [GitHub repository](https://github.com/hobnilre/physics-mad-scientist-1).
 An up-to-date PDF keeps its timestamp;
 `make -B pdf` forces a rebuild. Intermediates go to ignored `build/` by default;
 `BUILD_DIR=/absolute/path` selects another location. `make clean` removes that

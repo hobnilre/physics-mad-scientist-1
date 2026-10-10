@@ -23,8 +23,7 @@ keywords:
 
 \begingroup\scriptsize
 \noindent PDF created: \pdfbuildtimestamp\par
-\noindent Local draft; the GitHub destination below is planned, not published.\par
-\noindent Latest on GitHub: \url{https://github.com/hobnilre/physics-mad-scientist-1} (planned destination)\par
+\noindent Latest on GitHub: \url{https://github.com/hobnilre/physics-mad-scientist-1}\par
 \endgroup
 
 # Four predictions to investigate {-}
