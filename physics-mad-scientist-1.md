@@ -141,7 +141,7 @@ rate of change of acceleration. Dimensional construction permits this term;
 its physical realization is the open question. It gives a precise way to ask
 what resistance work the assumed law predicts before the moving mass stops.
 
-![Declared force model and receiver boundary, shown schematically. The internal jerk element has an assigned force law; its physical storage and preparation remain open.](figures/cubic-observation.pdf){#fig:cubic-observation width=98%}
+![Parallel mechanical branches share displacement $x$ relative to a fixed support; the receiver lies outside the dashed accounting boundary. The element port force is $F_X$, and its force on the mass is $-F_X$. Schematic; internal storage and preparation remain open.](figures/cubic-observation.pdf){#fig:cubic-observation width=98%}
 
 Let displacement be $x$, velocity $v$, mass $m$, spring stiffness $k$ and
 receiver resistance $d$. Add the constitutive force $F_X=Xx'''$, with
@@ -150,14 +150,13 @@ $X=\alpha md/k$ in kg s. Newton's law becomes
 Xx'''+mx''+dx'+kx=0,\qquad P_R=dv^2,\qquad P_X=Xx'''v.
 \label{eq:cubic-model}
 \end{equation}
-The sign of $P_X$ measures work entering the internal element from the
-resolved motion. It is computed from that force law, independently of the
-kinetic and spring stores.
+The element exerts $-F_X$ on the mass; $P_X=F_Xv$ is positive into the
+element. This force-work is computed independently of the kinetic and spring stores.
 
 At $\alpha=1$, the operator factors as
-$(dD+k)((m/k)D^2+1)$, where $D$ means time differentiation. This is also the
-boundary between stable and unstable roots in the normalized cubic control
-when $d^2=mk$. Root stability and physical realizability are separate questions.
+$(dD+k)((m/k)D^2+1)$, where $D$ means time differentiation. For positive
+$m,d,k,X$, the stability condition $md>Xk$ is equivalent to $\alpha<1$.
+Root stability and physical realizability are separate questions.
 
 ## First contact to first stop
 
@@ -280,6 +279,10 @@ while the partial-store remainder $\Delta U+W_R$ is $25.305564$ J.
 Both values matter: the calculation resolves the specified terminal transfer,
 and leaves the internal physical account for investigation.
 
+The connected circuit has an unstable pole pair with real part
+$+0.221483\,\mathrm{s^{-1}}$. Its growing trajectory makes the reported COP
+specific to the declared 10 s event and the law's assumed signal range.
+
 **Signals for the bench.** The receiver reaches $0.603$ V and $6.032$ A;
 capacitor voltage reaches $45.474$ V. A calibrated shunt, differential voltage
 channels and synchronized DAQ can integrate the actual receiver voltage-current
@@ -322,7 +325,7 @@ v_X=D_0i+\sum_j c_jz_j,\qquad D_0=2.85295645\ \Omega,
 \end{equation}
 where $c=(-0.24049188,-2.08682151,17.41370233,-49.90285714)$
 in $\Omega/\mathrm{s}$. Calculations retained full precision.
-The fit's relative complex error is $0.823897$ on its fitting band.
+The fit's relative complex discrete $L^2$ error is $0.823897$ on its fitting band.
 Its minimum sampled real impedance is $-0.326217\ \Omega$ near
 $4.571\,\mathrm{rad/s}$. This gives a concrete prediction to challenge,
 with the supplied passive reference as an independent control.
@@ -361,11 +364,15 @@ The reference ends with $0.010018$ J total storage and exports $0.178164$ J
 through its other resistors. These separate endpoint accounts explain exactly
 which transfers each law specifies.
 
+Although the fitted port's poles are negative, the connected circuit has an
+unstable pair with real part $+0.086147\,\mathrm{s^{-1}}$. The reported COP
+samples its growing trajectory over 10 s, assuming the law holds at these signals.
+
 **Measure the disagreement.** Predicted fitted-case peaks are $0.1285$ V
 at the receiver, $1.285$ A, and $6.014$ V across the capacitor. The same
 200 Hz, 2 kHz and $0.1$ ms prospective acquisition requirements used above
 apply. Input bound $0.005$ J and output bound $0.008958$ J give conservative
-COP **1.611**, with a $0.132481$ J threshold margin. Four separately declared
+COP **1.612**, with a $0.132481$ J threshold margin. Four separately declared
 fitted cases at $C=0.04,0.06$ F and $R_L=0.08,0.12\ \Omega$ give COP
 $1.28211$--$1.83204$ and pass. All 13 circuits were executed for both laws
 and three solver settings. Measure a realized port's terminal response and
@@ -375,47 +382,50 @@ energy history together: that decides which law describes the apparatus.
 
 # A common event and measurement account {-}
 
-Each model was developed from its force or circuit laws. Energy closure was
-checked afterward. The denominator and receiver are fixed before comparison:
+Each model's event, denominator and receiver were fixed before evaluating work:
 \begin{equation}
 D_{\rm event}=E_{\rm start}+\sum_k\int_{t_0}^{t_1}
 [P_{k,\rm external}]_+\,dt,\qquad
 \mathrm{COP}_{\rm event}=\frac{W_{\rm useful}}{D_{\rm event}}.
 \label{eq:event-account}
 \end{equation}
-Prepared stores are counted once. Specified external sources contribute gross
-inward work; returns are recorded separately. Receiver backflow is subtracted
-from useful delivery; the four selected laws have none. The input floor is
-$10^{-9}$ J. All representative events have zero specified external input,
-with their initial stores and references stated in their treatments.
+Count prepared stores once and gross inward work at each specified external
+source; report returns separately. Net receiver work subtracts backflow (zero
+here). The input floor is $10^{-9}$ J; all representative events have zero
+specified external input.
 
-| Representative event | Input (J) | Useful work (J) | Event COP | Conservative COP |
+| Model | Input (J) | Useful work (J) | Event COP | Conservative COP |
 | :-- | --: | --: | --: | --: |
 | Lever | 5.886 | 6.994139 | 1.188267 | 1.171 |
-| Third-derivative contact | 0.250 | 0.392699 | 1.570796 | 1.507 |
-| Signed-residue port | 0.250 | 4.480110 | 17.920440 | 17.213 |
-| Fitted port | 0.250 | 0.419981 | 1.679922 | 1.611 |
+| Third derivative | 0.250 | 0.392699 | 1.570796 | 1.507 |
+| Signed residue | 0.250 | 4.480110 | 17.920440 | 17.213 |
+| Fitted port | 0.250 | 0.419981 | 1.679922 | 1.612 |
 
 Table: Four conditional model predictions. Conservative ratios use simultaneously applicable prospective input and output bounds.
 
 **Independent work and storage.** For a specified account, compute
 $r_E=U(t_1)-U(t_0)-\int\sum_kP_k\,dt$, with powers positive inward.
-The lever includes gravity and elastic stores. For each hypothetical internal
-law, integrate its force-velocity or voltage-current product independently.
-The remaining physical component account stays unknown. A reproducible
-partial-store remainder is reported as such; it is neither silently assigned
-to a source nor called integration error. Event performance also remains
-separate from preparation efficiency, reset and repeatability.
+Evaluate endpoint stores from states; the lever includes gravity and elastic
+stores. Integrate each internal force-velocity or voltage-current product
+independently. Unknown component accounts and partial-store remainders stay
+distinct from numerical residuals. Preparation efficiency, reset and repeatability
+require separate accounts.
 
-**Numerical evidence.** We completed 201 integrations over 67 declared
-configurations, including passive and below-threshold controls. DOP853 and
-Radau provide independent methods; tighter tolerances and maximum steps check
-sensitivity. Accepted-step 8- and 16-point Gaussian quadrature checks integrated
-work states. Matrix exponentials independently check all three linear families;
-the cubic reference also matches its exact first-stop solution. Endpoints come
-from the actual states. Each family passed its declared numerical gates;
-refinement supplies error estimates, not certified bounds or physical-law
-uncertainty. Earlier sensor-response failures were retained and followed up.
+**Numerical evidence.** The 201 integrations cover 67 configurations, including
+passive and below-threshold controls. DOP853/Radau, step refinement and accepted-step
+8/16-point Gaussian quadrature check the trajectories and work. Matrix exponentials
+check the linear families; the cubic also matches its exact first-stop solution.
+Acceptance required COP spread below $10^{-5}$; quadrature and accounted-energy
+residuals below $10^{-6}$ J for the lever, $10^{-7}$ J for the cubic, and
+$10^{-7}$ relative to the largest accounted energy for the electrical cases.
+
+A separate implementation of all 67 configurations found maximum absolute
+disagreements of $3.63\times10^{-12}$ in COP, $1.82\times10^{-12}$ J in work
+quadrature, and $6.26\times10^{-13}$ J in endpoint stores. Its largest
+account residual was $3.14\times10^{-12}$ J: the full lever store account,
+or known mechanical/electrical stores with independently integrated internal-port
+work. These numerical estimates are not certified bounds; physical component-law
+uncertainty remains open. Earlier sensor-response failures were retained and followed up.
 
 **What the instrument bounds mean.** Lever input uncertainty is 0.5%; the
 other initial-energy bounds are 2%. Lever output allowances cover 0.3% force

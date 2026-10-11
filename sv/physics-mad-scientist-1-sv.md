@@ -145,7 +145,7 @@ mot ryck, accelerationens tidsderivata. Termen är dimensionellt möjlig;
 dess fysiska realisering är den öppna frågan. Den ger ett precist sätt att
 beräkna vilket motståndsarbete lagen förutsäger innan massan stannar.
 
-![Angiven kraftmodell och mottagargräns, schematiskt visade. Det interna ryckelementet har en bestämd kraftlag; dess fysiska lagring och förberedelse är öppna frågor.](figures/cubic-observation.pdf){#fig:cubic-observation width=98%}
+![Parallella mekaniska grenar delar förskjutningen $x$ relativt ett fast stöd; mottagaren ligger utanför den streckade kontogränsen. Elementets portkraft är $F_X$ och dess kraft på massan är $-F_X$. Schematisk bild; intern lagring och förberedelse är öppna frågor.](figures/cubic-observation.pdf){#fig:cubic-observation width=98%}
 
 Låt förskjutningen vara $x$, hastigheten $v$, massan $m$, fjäderstyvheten $k$
 och mottagarens motstånd $d$. Lägg till kraftlagen $F_X=Xx'''$, där
@@ -154,13 +154,13 @@ $X=\alpha md/k$ i kg s. Newtons lag blir
 Xx'''+mx''+dx'+kx=0,\qquad P_R=dv^2,\qquad P_X=Xx'''v.
 \label{eq:cubic-model}
 \end{equation}
-Tecknet hos $P_X$ anger arbete in i det interna elementet från den beräknade
-rörelsen. Det beräknas från kraftlagen, oberoende av rörelseenergin och fjäderlagret.
+Elementet utövar $-F_X$ på massan; $P_X=F_Xv$ är positiv in i elementet.
+Detta kraftarbete beräknas oberoende av rörelseenergin och fjäderlagret.
 
 Vid $\alpha=1$ faktoriseras operatorn som
-$(dD+k)((m/k)D^2+1)$, där $D$ betecknar tidsderivering. Detta är också
-gränsen mellan stabila och instabila rötter i den normaliserade kubiska
-kontrollmodellen när $d^2=mk$. Rotstabilitet och fysisk realiserbarhet är skilda frågor.
+$(dD+k)((m/k)D^2+1)$, där $D$ betecknar tidsderivering. För positiva
+$m,d,k,X$ är stabilitetsvillkoret $md>Xk$ likvärdigt med $\alpha<1$.
+Rotstabilitet och fysisk realiserbarhet är skilda frågor.
 
 ## Från första kontakt till första stopp
 
@@ -282,6 +282,10 @@ partiella lagerkontot $\Delta U+W_R$ är $25.305564$ J. Båda värdena spelar
 roll: beräkningen bestämmer den angivna portöverföringen och lämnar det
 interna fysiska kontot att undersöka.
 
+Den kopplade kretsen har ett instabilt polpar med realdelen
+$+0.221483\,\mathrm{s^{-1}}$. Det växande förloppet gör det redovisade COP-värdet
+specifikt för den angivna 10 s-händelsen och lagens antagna signalområde.
+
 **Signaler på mätbänken.** Mottagaren når $0.603$ V och $6.032$ A;
 kondensatorspänningen når $45.474$ V. Kalibrerad shunt, differentialspänningskanaler
 och synkron datainsamling kan integrera mottagarens faktiska produkt av spänning
@@ -323,7 +327,7 @@ v_X=D_0i+\sum_j c_jz_j,\qquad D_0=2.85295645\ \Omega,
 \end{equation}
 där $c=(-0.24049188,-2.08682151,17.41370233,-49.90285714)$
 i $\Omega/\mathrm{s}$. Beräkningarna behöll full precision.
-Anpassningens relativa komplexa fel är $0.823897$ över anpassningsbandet.
+Anpassningens relativa komplexa diskreta $L^2$-fel är $0.823897$ över anpassningsbandet.
 Minsta samplade realimpedans är $-0.326217\ \Omega$ nära
 $4.571\,\mathrm{rad/s}$. Detta ger en konkret förutsägelse att pröva,
 med den angivna passiva referensen som oberoende kontroll.
@@ -362,10 +366,14 @@ porteffekten. Referensen slutar med totalt $0.010018$ J lagrat och avger
 $0.178164$ J genom övriga resistorer. De separata slutpunktskontona visar
 exakt vilka överföringar varje lag anger.
 
+Trots den anpassade portens negativa poler har den kopplade kretsen ett
+instabilt par med realdelen $+0.086147\,\mathrm{s^{-1}}$. Redovisat COP gäller
+dess växande förlopp under 10 s, förutsatt att lagen gäller vid dessa signaler.
+
 **Mät skillnaden.** Förutsagda toppvärden för anpassningen är $0.1285$ V
 vid mottagaren, $1.285$ A och $6.014$ V över kondensatorn. Samma föreslagna
 krav på 200 Hz, 2 kHz och $0.1$ ms som ovan gäller. Inenergins felgräns $0.005$ J
-och utarbetets felgräns $0.008958$ J ger konservativt COP **1.611**, med
+och utarbetets felgräns $0.008958$ J ger konservativt COP **1.612**, med
 tröskelmarginalen $0.132481$ J. Fyra separat angivna anpassade fall vid
 $C=0.04,0.06$ F och $R_L=0.08,0.12\ \Omega$ ger COP $1.28211$--$1.83204$
 och passerar. Alla 13 kretsar kördes för båda lagarna med tre lösarinställningar.
@@ -376,48 +384,51 @@ lag som beskriver apparaten.
 
 # Ett gemensamt händelse- och mätkonto {-}
 
-Varje modell utvecklades från sina kraft- eller kretslagar. Energikontot
-kontrollerades därefter. Nämnare och mottagare bestäms före jämförelsen:
+Varje modells händelse, nämnare och mottagare bestämdes före arbetsberäkningen:
 \begin{equation}
 D_{\rm event}=E_{\rm start}+\sum_k\int_{t_0}^{t_1}
 [P_{k,\rm external}]_+\,dt,\qquad
 \mathrm{COP}_{\rm event}=\frac{W_{\rm useful}}{D_{\rm event}}.
 \label{eq:event-account}
 \end{equation}
-Förberedda lager räknas en gång. Angivna externa källor bidrar med bruttoarbete
-inåt; returer redovisas separat. Mottagarens återflöde dras från nyttig leverans;
-ingen av de fyra valda lagarna har sådant återflöde. Indatagolvet är
-$10^{-9}$ J. Alla representativa händelser har noll angivet externt inflöde,
-med startlager och referenser angivna i respektive avsnitt.
+Räkna förberedda lager en gång och bruttoarbete inåt vid varje angiven extern
+källa; redovisa returer separat. Mottagarens nettoarbete drar av återflöde
+(noll här). Indatagolvet är $10^{-9}$ J; alla representativa händelser har
+noll angivet externt inflöde.
 
-| Representativ händelse | In (J) | Nyttigt arbete (J) | Händelse-COP | Konservativt COP |
+| Modell | In (J) | Nyttigt arbete (J) | Händelse-COP | Konservativt COP |
 | :-- | --: | --: | --: | --: |
 | Hävarm | 5.886 | 6.994139 | 1.188267 | 1.171 |
-| Kontakt med tredjederivata | 0.250 | 0.392699 | 1.570796 | 1.507 |
-| Port med tecknade residyer | 0.250 | 4.480110 | 17.920440 | 17.213 |
-| Anpassad port | 0.250 | 0.419981 | 1.679922 | 1.611 |
+| Tredjederivata | 0.250 | 0.392699 | 1.570796 | 1.507 |
+| Tecknade residyer | 0.250 | 4.480110 | 17.920440 | 17.213 |
+| Anpassad port | 0.250 | 0.419981 | 1.679922 | 1.612 |
 
 Table: Fyra villkorade modellförutsägelser. Konservativa kvoter använder samtidigt tillämpliga föreslagna in- och utgränser.
 
 **Oberoende arbete och lagring.** Beräkna för ett angivet konto
 $r_E=U(t_1)-U(t_0)-\int\sum_kP_k\,dt$, med effekter positiva inåt.
-Hävarmen inkluderar tyngdenergi och elastiska lager. För varje hypotetisk
-intern lag integreras kraft gånger hastighet eller spänning gånger ström
-oberoende. Komponentens återstående fysiska konto är okänt. En reproducerbar
-restterm i ett partiellt lagerkonto redovisas som sådan; den tilldelas varken
-tyst en källa eller kallas integrationsfel. Händelseprestanda hålls också
-skild från förberedelsens verkningsgrad, återställning och upprepbarhet.
+Beräkna slutlager från tillstånden; hävarmen inkluderar tyngdenergi och elastiska
+lager. Integrera varje intern kraft-hastighets- eller spännings-strömprodukt
+oberoende. Okända komponentkonton och partiella lagerresttermer hålls skilda
+från numeriska residualer. Förberedelsens verkningsgrad, återställning och
+upprepbarhet kräver separata konton.
 
-**Numeriskt underlag.** Vi slutförde 201 integrationer över 67 angivna
-konfigurationer, inklusive passiva kontroller och fall under tröskeln.
-DOP853 och Radau ger oberoende metoder; strängare toleranser och mindre
-maxsteg kontrollerar känsligheten. Gausskvadratur med 8 och 16 punkter per
-accepterat steg kontrollerar de integrerade arbetstillstånden. Matrisexponentialer
-kontrollerar oberoende alla tre linjära familjer; den kubiska referensen
-stämmer också med sin exakta lösning till första stoppet. Slutpunkterna kommer
-från de faktiska tillstånden. Varje familj klarade sina angivna numeriska krav;
-förfining ger feluppskattningar, inte certifierade gränser eller osäkerhet i
-fysikaliska lagar. Tidigare underkända givarsvar bevarades och följdes upp.
+**Numeriskt underlag.** De 201 integrationerna omfattar 67 konfigurationer,
+inklusive passiva kontroller och fall under tröskeln. DOP853/Radau, stegförfining
+och Gausskvadratur med 8/16 punkter per accepterat steg kontrollerar förlopp och
+arbete. Matrisexponentialer kontrollerar de linjära familjerna; den kubiska modellen
+stämmer också med sin exakta lösning till första stoppet. Acceptans krävde
+COP-spridning under $10^{-5}$; kvadratur- och energikontoresidualer under
+$10^{-6}$ J för hävarmen, $10^{-7}$ J för den kubiska modellen och
+$10^{-7}$ relativt största redovisade energi för de elektriska fallen.
+
+En separat implementation av alla 67 konfigurationer gav största absoluta
+avvikelser $3.63\times10^{-12}$ i COP, $1.82\times10^{-12}$ J i arbetskvadratur
+och $6.26\times10^{-13}$ J i slutlager. Största kontoresidual var
+$3.14\times10^{-12}$ J: hävarmens fullständiga lagerkonto, eller kända
+mekaniska/elektriska lager med oberoende integrerat internt portarbete.
+Detta är numeriska uppskattningar, inte certifierade gränser; osäkerhet i fysiska
+komponentlagar är fortsatt öppen. Tidigare underkända givarsvar bevarades och följdes upp.
 
 **Instrumentgränserna.** Hävarmens inenergi har 0.5% osäkerhet; övriga
 startenergigränser är 2%. Hävarmens utbudget täcker 0.3% kraftförstärkning,

@@ -3,19 +3,33 @@
 \input{diagram-style}
 \begin{document}
 \begin{tikzpicture}
-\path[use as bounding box] (0,-.6) rectangle (15,3.4);
-\draw[boundary] (.2,-.3) rectangle (9.2,3.1);
-\node[font=\footnotesize,anchor=west] at (.4,2.83) {Mass, spring and hypothetical internal element};
-\node[block,massA,minimum width=2cm,minimum height=1.1cm] (m) at (3,1.2) {$m=0.5$ kg};
-\draw[flow,elemA] (.6,1.2)--(1.8,1.2);\node[above,font=\footnotesize] at (1.1,1.3) {$v_0=1$ m/s};
-\node[block,mediator,minimum width=2.8cm] (x) at (6.8,2.1) {$F_X=Xx'''$};
-\draw[thick] (m.east)--(4.5,1.2)--(4.5,2.1)--(x.west);
-\draw[spring] (4.5,.5)--(8.5,.5);\draw[thick] (4.5,.5)--(4.5,1.2);
-\node[below,font=\footnotesize] at (6.5,.45) {$k=5000$ N/m};
-\draw[thick] (8.5,.5)--(8.5,2.1)--(x.east);
-\node[block,receiver,minimum width=3.7cm,minimum height=1cm] (r) at (12,1.2) {Resistance receiver\\$F_R=d\dot x$};
-\draw[flow,elemC] (8.5,1.2)--(r.west);
-\node[font=\footnotesize,align=center] at (12,2.5) {Measure force and motion\\$W_R=\int F_R\,dx$};
-\node[font=\footnotesize] at (12,-.05) {Stop at first $\dot x=0$};
+\path[use as bounding box] (0,-1.5) rectangle (15,3.55);
+\draw[boundary] (.2,.35) rectangle (7.95,3.5);
+\node[font=\footnotesize,anchor=west] at (.4,3.2) {Mass, spring and hypothetical internal element};
+\node[block,massA,minimum width=2cm,minimum height=1.1cm] (m) at (2.1,1.4) {$m=0.5$ kg};
+\draw[flow,elemA] (.9,2.4)--(3.3,2.4);
+\node[above,font=\footnotesize] at (2.1,2.4) {$x,\ v=\dot x$};
+\node[font=\footnotesize] at (2.1,.55) {$v_0=1$ m/s};
+\draw[thick] (m.east)--(4.1,1.4);
+\draw[thick] (4.1,-.7)--(4.1,2.4);
+\node[block,mediator,minimum width=2.65cm] (x) at (6.1,2.4) {$F_X=Xx'''$};
+\draw[thick] (4.1,2.4)--(x.west);
+\draw[thick] (x.east)--(8.35,2.4);
+\draw[spring] (4.1,1.2)--(8.35,1.2);
+\node[below,font=\footnotesize] at (6.1,1.03) {$k=5000$ N/m};
+\node[block,receiver,minimum width=2.65cm] (r) at (6.1,-.7) {Receiver $d$};
+\draw[thick,elemC] (4.1,-.7)--(r.west);
+\draw[thick,elemC] (r.east)--(8.35,-.7);
+\node[below,font=\footnotesize,text=elemC] at (6.1,-1.03) {Outside accounting boundary};
+\draw[very thick,frameline] (8.35,-1.15)--(8.35,2.9);
+\foreach \h in {-1,-.65,...,2.85}
+  \draw[frameline] (8.35,\h)--(8.6,\h+.16);
+\node[font=\footnotesize,rotate=90] at (8.95,1) {Fixed support};
+\node[font=\footnotesize,align=center] at (12,2.45)
+  {Forces on the mass\\$-kx,\quad-dv,\quad-F_X$};
+\node[font=\footnotesize,align=center] at (12,1.1)
+  {Receiver port\\$F_R=dv,\quad P_R=F_Rv$};
+\node[font=\footnotesize,align=center] at (12,-.4)
+  {$W_R=\int F_R\,dx$\\Stop at first $v=0$};
 \end{tikzpicture}
 \end{document}
